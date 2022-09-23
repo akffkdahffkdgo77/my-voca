@@ -5,6 +5,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import ReactDOM from 'react-dom';
 
 import App from 'app/App';
+import 'styles/index.css';
 
 const queryClient = new QueryClient();
 
