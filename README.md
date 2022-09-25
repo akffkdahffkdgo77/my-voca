@@ -1,14 +1,11 @@
-# react typescript template
+# my-voca
 
-## Installed Packages
+## 일일 단어장
 
--   react v18
--   react-query v4
--   react-router-dom v6
--   tailwindcss
--   typescript
+## Features
 
-## Code Convention
-
--   ESLint - Airbnb
--   Prettier
+-   단어 입력 폼
+-   단어 카드
+-   단어 테스트
+-   10개, 30개, 50개
+-   엑셀 업로드
