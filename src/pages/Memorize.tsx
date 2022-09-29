@@ -22,13 +22,22 @@ function randomize(data: IVocaList[]) {
 }
 
 export default function Memorize() {
-    const voca = JSON.parse(localStorage.getItem('words') || '');
+    const voca = localStorage.getItem('words') ? JSON.parse(localStorage.getItem('words') || '') : [];
     const dataset = voca.length && randomize(voca);
+
     const [index, setIndex] = useState(0);
 
     return (
-        <div className="w-full h-screen flex items-center justify-center">
+        <div className="w-full h-screen flex items-center justify-center flex-col">
             <div className="border border-black rounded-md p-5 w-[400px] h-[300px] flex items-center justify-center text-[24px] font-medium">{dataset[index].word}</div>
+            <div className="w-[400px] mt-2.5 flex justify-end items-center gap-x-[5px]">
+                <button className="bg-black rounded-md py-[5px] px-2.5 text-white text-[12px] font-bold" type="button" onClick={() => setIndex((prev) => prev - 1)}>
+                    이전
+                </button>
+                <button className="bg-black rounded-md py-[5px] px-2.5 text-white text-[12px] font-bold" type="button" onClick={() => setIndex((prev) => prev + 1)}>
+                    다음
+                </button>
+            </div>
         </div>
     );
 }
