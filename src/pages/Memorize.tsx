@@ -38,7 +38,7 @@ export default function Memorize() {
                 <h1 className="w-full text-center text-5xl font-bold underline tracking-tighter mb-10">My Voca</h1>
             </Link>
             <div className="w-full flex items-center justify-center flex-col">
-                <div className={`relative border border-black rounded-md p-5 w-[400px] h-[300px] flex items-center justify-center font-medium ${isWord ? 'text-[52px]' : 'text-[24px]'}`}>
+                <div className={`relative border border-black rounded-md p-5 w-[500px] h-[300px] flex items-center justify-center font-medium ${isWord ? 'text-[52px]' : 'text-[24px]'}`}>
                     <div className="absolute top-2.5 left-2.5 border rounded-full w-8 h-8 [line-height:32px] bg-black text-white border-black text-[14px] text-center font-bold font-mono">
                         {index + 1}
                     </div>
@@ -50,7 +50,7 @@ export default function Memorize() {
                         {isWord ? 'Definition' : 'Word'}
                     </button>
                 </div>
-                <div className="w-[400px] mt-2.5 flex justify-end items-center gap-x-[5px]">
+                <div className="w-[500px] mt-2.5 flex justify-end items-center gap-x-[5px]">
                     <button
                         className="bg-black rounded-md py-[5px] px-2.5 text-white text-[12px] font-bold"
                         type="button"

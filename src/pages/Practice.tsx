@@ -77,17 +77,19 @@ export default function Practice() {
             </Link>
             <div className="w-full flex justify-center items-center flex-col">
                 <h1 className="text-[24px] font-bold font-mono mb-2.5">Practice!</h1>
-                <section className="border border-black rounded-md min-w-[500px]">
+                <section className="border border-black rounded-md min-w-[700px]">
                     <h2 className="text-[16px] font-bold font-mono mb-2.5 border-b border-black p-5">
                         <span className="text-[20px]">{voca?.[random]?.word}</span>의 뜻을 입력해주세요.
                     </h2>
-                    <textarea ref={ref} rows={3} cols={55} className="p-5 outline-none text-[16px]" placeholder="답을 입력해주세요." />
-                    <button onClick={onReset} className="p-2.5 bg-white text-black border border-black font-bold rounded-md text-[14px] mb-2.5 hover:scale-95 active:scale-95" type="button">
-                        입력 초기화
-                    </button>
-                    <button onClick={onSubmit} className="p-2.5 bg-black text-white font-bold rounded-md text-[14px] m-2.5 hover:scale-95 active:scale-95" type="button">
-                        제출하기
-                    </button>
+                    <textarea ref={ref} rows={5} className="w-full p-5 outline-none text-[16px]" placeholder="답을 입력해주세요." />
+                    <div className="flex justify-end items-center gap-x-2.5 mb-2.5 mx-2.5">
+                        <button onClick={onReset} className="p-2.5 bg-white text-black border border-black font-bold rounded-md text-[14px] hover:scale-95 active:scale-95" type="button">
+                            입력 초기화
+                        </button>
+                        <button onClick={onSubmit} className="p-2.5 bg-black text-white font-bold rounded-md text-[14px] hover:scale-95 active:scale-95" type="button">
+                            제출하기
+                        </button>
+                    </div>
                 </section>
                 <div className="flex justify-end w-[700px] mt-5 ">
                     <button className="bg-black text-white rounded-md font-bold text-[12px] p-2.5 hover:scale-95 active:scale-95" type="button" onClick={handleNewDataset}>
