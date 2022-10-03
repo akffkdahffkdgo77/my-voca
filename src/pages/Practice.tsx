@@ -4,9 +4,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 export default function Practice() {
-    const navigate = useNavigate();
-
     const voca = JSON.parse(localStorage.getItem('words') || '');
+
+    const navigate = useNavigate();
 
     const ref = useRef<HTMLTextAreaElement>(null);
     const [random, setRandom] = useState<number>(Math.floor(Math.random() * (voca.length - 0) + 0));

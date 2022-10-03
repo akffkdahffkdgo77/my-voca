@@ -10,15 +10,15 @@ type FormValues = {
 
 export default function Add() {
     const navigate = useNavigate();
+
+    const [total, setTotal] = useState(10);
+
     const { control, register, handleSubmit, reset } = useForm<FormValues>({
         defaultValues: {
             voca: Array.from(Array(10)).map(() => ({ word: '', definition: '' }))
         }
     });
-
     const { fields } = useFieldArray({ control, name: 'voca' });
-
-    const [total, setTotal] = useState(10);
 
     const handleMessage = ({ text, icon, confirmButtonText, onConfirm }: { text: string; icon?: SweetAlertIcon; confirmButtonText?: string; onConfirm: () => void }) => {
         Swal.fire({
