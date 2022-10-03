@@ -36,3 +36,7 @@
 
 -   ESLint + AirBnB
 -   Prettier
+
+## Deploy
+
+-   gh-pages
