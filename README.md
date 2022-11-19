@@ -1,5 +1,17 @@
 # my-voca
 
+<p align="center">
+<img width="739" alt="스크린샷 2022-11-19 오후 8 42 36" src="https://user-images.githubusercontent.com/52883505/202849068-a794052b-1e0a-443f-b1a0-7552204f31c0.png">
+</p>
+
+<p align="center">
+<img width="563" alt="스크린샷 2022-11-19 오후 8 42 56" src="https://user-images.githubusercontent.com/52883505/202849076-1fc33d2d-2fe9-46c4-9271-f84f8d213028.png">
+</p>
+
+<p align="center">
+<img width="750" alt="스크린샷 2022-11-19 오후 8 43 07" src="https://user-images.githubusercontent.com/52883505/202849082-77283d1e-7958-4248-91fc-4bde3cbb5042.png">
+</p>
+
 ## Weekly Clone Coding
 
 Part 1 of [Weekly Clone Coding Challenge](https://github.com/namiein/weekly-clone-coding)
