@@ -1,6 +1,12 @@
 # my-voca
 
-## 일일 단어장
+## Weekly Clone Coding
+
+Part 1 of [Weekly Clone Coding Challenge](https://github.com/namiein/weekly-clone-coding)
+
+## Project Description
+
+Clone Coding Vocabulary List
 
 ## v1.0.0 (2022.09.22 ~ 2022.10.02)
 

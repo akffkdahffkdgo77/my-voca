@@ -1,6 +1,7 @@
 {
     "name": "my-voca",
     "version": "1.0.0",
+    "license": "MIT",
     "homepage": "http://namiein.github.io/my-voca",
     "dependencies": {
         "react": "^18.2.0",
