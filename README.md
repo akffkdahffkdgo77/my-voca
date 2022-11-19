@@ -42,7 +42,3 @@ Clone Coding Vocabulary List
 
 -   ESLint + AirBnB
 -   Prettier
-
-## Deploy
-
--   gh-pages
