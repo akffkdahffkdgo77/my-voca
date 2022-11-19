@@ -1,4 +1,4 @@
-# my-voca
+# my voca
 
 <p align="center">
 <img width="739" alt="스크린샷 2022-11-19 오후 8 42 36" src="https://user-images.githubusercontent.com/52883505/202849068-a794052b-1e0a-443f-b1a0-7552204f31c0.png">
@@ -31,13 +31,13 @@ Clone Coding Vocabulary List
 -   단어 테스트
     -   단어의 뜻을 입력하며 맞추기
 
-## v1.0.1 업데이트 (예정)
+## v1.0.1 (TO-BE)
 
--   모바일 UI
--   UI 개선하기 (네비게이션, header, footer)
+-   Responsive UI
+-   Improve UI (Navigation, Header, Footer)
 -   자주 틀리는 단어 모음
 
-## 추가 개발 (미정)
+## Additional Features
 
 -   엑셀 업로드 (엑셀 양식 다운로드 + 양식에 맞춰 업로드한 데이터로 단어 연습할 수 있도록)
 -   단어 테스트 통계 PNG (테스트를 한 후 어떤 단어를 틀렸는지에 대한 결과표를 이미지 파일로 다운받게 할 수 있도록 → canvas API를 사용)
