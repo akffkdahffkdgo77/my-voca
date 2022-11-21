@@ -22,13 +22,13 @@ Clone Coding Vocabulary List
 
 ## v1.0.0 (2022.09.22 ~ 2022.10.02)
 
--   단어 입력 폼
+-   [단어 입력 폼](https://github.com/namiein/weekly-clone-coding/blob/main/my-voca/1.md)
     -   이전 데이터 불러오기
     -   이전 데이터 삭제하기
     -   단어 수량 선택하기 (10개, 30개, 50개)
--   단어 카드
+-   [단어 카드](https://github.com/namiein/weekly-clone-coding/blob/main/my-voca/2.md)
     -   카드 형식으로 단어 외우기
--   단어 테스트
+-   [단어 테스트](https://github.com/namiein/weekly-clone-coding/blob/main/my-voca/3.md)
     -   단어의 뜻을 입력하며 맞추기
 
 ## v1.0.1 (TO-BE)
