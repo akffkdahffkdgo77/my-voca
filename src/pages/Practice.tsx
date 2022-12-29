@@ -54,6 +54,7 @@ export default function Practice() {
         const { value } = ref.current as HTMLTextAreaElement;
         if (value && voca[random].definition === value) {
             setSuccessCount((prev) => prev + 1);
+
             Swal.fire({
                 icon: 'success',
                 confirmButtonColor: '#000000',
