@@ -33,6 +33,7 @@ Clone Coding Vocabulary List
 
 ## v1.0.1 (TO-BE)
 
+-   Code Refactoring
 -   Responsive UI
 -   Improve UI (Navigation, Header, Footer)
 -   자주 틀리는 단어 모음
@@ -42,15 +43,38 @@ Clone Coding Vocabulary List
 -   엑셀 업로드 (엑셀 양식 다운로드 + 양식에 맞춰 업로드한 데이터로 단어 연습할 수 있도록)
 -   단어 테스트 통계 PNG (테스트를 한 후 어떤 단어를 틀렸는지에 대한 결과표를 이미지 파일로 다운받게 할 수 있도록 → canvas API를 사용)
 
+## Folder Structure
+
+```
+.
+├── app
+│   └── App.tsx
+├── index.tsx
+├── pages
+│   ├── Add
+│   │   └── index.tsx
+│   ├── Home
+│   │   └── index.tsx
+│   ├── Memorize
+│   │   └── index.tsx
+│   └── Practice
+│       └── index.tsx
+├── react-app-env.d.ts
+├── routes
+│   └── index.tsx
+└── styles
+    └── index.css
+```
+
 ## NPM Packages
 
--   react v18 + typescript
+-   React v18 + TypeScript
+-   react-router-dom v6
 -   react-hook-form
--   react-router-dom
 -   sweetalert2
 -   tailwindcss
 
 ## Code Convention
 
--   ESLint + AirBnB
+-   ESLint - AirBnB
 -   Prettier
