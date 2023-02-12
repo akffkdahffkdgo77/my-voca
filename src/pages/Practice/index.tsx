@@ -14,38 +14,54 @@ export default function Practice() {
     const [successCount, setSuccessCount] = useState(0);
     const [failCount, setFailCount] = useState(0);
 
-    const handleNewDataset = () => {
+    const showSuccessModal = ({ successCount, failCount }: { successCount: number; failCount: number }) => {
+        Swal.fire({
+            icon: 'success',
+            html: `테스트를 완료했습니다!! <br/> 맞춘 단어 : ${successCount} <br/> 틀린 / 스킵한 단어 : ${failCount} <br/> 홈 화면으로 돌아가겠습니까?`,
+            showCancelButton: true,
+            confirmButtonColor: '#083AA9',
+            confirmButtonText: '홈으로 돌아가기',
+            cancelButtonColor: '#EB1D36',
+            cancelButtonText: '테스트 계속하기'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                navigate('/', { replace: true });
+            } else {
+                window.location.reload();
+            }
+        });
+    };
+
+    const showNextWord = () => {
+        if (ref.current) {
+            ref.current.value = '';
+        }
+
+        let nextRandom = random;
+        while (random === nextRandom) {
+            nextRandom = Math.floor(Math.random() * (voca.length - 0) + 0);
+            if (prevArray.includes(nextRandom)) {
+                nextRandom = random;
+            }
+        }
+
+        setPrevArray((prev) => [...prev, random]);
+        setRandom(nextRandom);
+    };
+
+    const handleNewDataset = (countObj: { successCount: number; failCount: number }) => {
         if (prevArray.length === voca.length - 1) {
-            Swal.fire({
-                icon: 'success',
-                html: `테스트를 완료했습니다!! <br/> 맞춘 단어 : ${successCount} <br/> 틀린 / 스킵한 단어 : ${failCount} <br/> 홈 화면으로 돌아가겠습니까?`,
-                showCancelButton: true,
-                confirmButtonColor: '#083AA9',
-                confirmButtonText: '홈으로 돌아가기',
-                cancelButtonColor: '#EB1D36',
-                cancelButtonText: '테스트 계속하기'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    navigate('/', { replace: true });
-                } else {
-                    window.location.reload();
-                }
-            });
+            showSuccessModal(countObj);
         } else {
-            let nextRandom = random;
-            while (random === nextRandom) {
-                nextRandom = Math.floor(Math.random() * (voca.length - 0) + 0);
-                if (prevArray.includes(nextRandom)) {
-                    nextRandom = random;
-                }
-            }
+            showNextWord();
+        }
+    };
 
-            if (ref.current) {
-                ref.current.value = '';
-            }
-
-            setPrevArray((prev) => [...prev, random]);
-            setRandom(nextRandom);
+    const handleWordSkip = () => {
+        if (prevArray.length === voca.length - 1) {
+            Swal.fire({ icon: 'error', confirmButtonColor: '#000000', text: '마지막 단어입니다!' });
+        } else {
+            showNextWord();
             setFailCount((prev) => prev + 1);
         }
     };
@@ -54,14 +70,13 @@ export default function Practice() {
         const { value } = ref.current as HTMLTextAreaElement;
         if (value && voca[random].definition === value) {
             setSuccessCount((prev) => prev + 1);
-
             Swal.fire({
                 icon: 'success',
                 confirmButtonColor: '#000000',
-                html: `${voca[random].word} <br/> ${voca[random].definition}`
-            }).then(() => handleNewDataset());
+                html: `단어: ${voca[random].word} <br/> 뜻: ${voca[random].definition}`
+            }).then(() => handleNewDataset({ successCount: successCount + 1, failCount }));
         } else {
-            Swal.fire({ icon: 'error', confirmButtonColor: '#000000', text: '다시 시도해주세요.' });
+            Swal.fire({ icon: 'error', confirmButtonColor: '#000000', text: '다시 시도해 주세요.' });
         }
     };
 
@@ -93,7 +108,7 @@ export default function Practice() {
                     </div>
                 </section>
                 <div className="flex justify-end w-[700px] mt-5 ">
-                    <button className="bg-black text-white rounded-md font-bold text-[12px] p-2.5 hover:scale-95 active:scale-95" type="button" onClick={handleNewDataset}>
+                    <button className="bg-black text-white rounded-md font-bold text-[12px] p-2.5 hover:scale-95 active:scale-95" type="button" onClick={handleWordSkip}>
                         다른 단어 연습하기
                     </button>
                 </div>
