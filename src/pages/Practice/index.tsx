@@ -1,30 +1,31 @@
 import { useRef, useState } from 'react';
 
 import { Link, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
+
+import MESSAGES from 'constants/messages';
+import useModal from 'contexts/modal/useModal';
+
+import type { ResultType } from 'pages/Practice/types';
+
+const VOCA = JSON.parse(localStorage.getItem('words') || '') || [];
 
 export default function Practice() {
-    const voca = JSON.parse(localStorage.getItem('words') || '');
-
     const navigate = useNavigate();
 
     const ref = useRef<HTMLTextAreaElement>(null);
-    const [random, setRandom] = useState<number>(Math.floor(Math.random() * (voca.length - 0) + 0));
+    const [random, setRandom] = useState<number>(Math.floor(Math.random() * (VOCA.length - 0) + 0));
     const [prevArray, setPrevArray] = useState<number[]>([]);
     const [successCount, setSuccessCount] = useState(0);
     const [failCount, setFailCount] = useState(0);
 
-    const showSuccessModal = ({ successCount, failCount }: { successCount: number; failCount: number }) => {
-        Swal.fire({
-            icon: 'success',
-            html: `테스트를 완료했습니다!! <br/> 맞춘 단어 : ${successCount} <br/> 틀린 / 스킵한 단어 : ${failCount} <br/> 홈 화면으로 돌아가겠습니까?`,
-            showCancelButton: true,
-            confirmButtonColor: '#083AA9',
-            confirmButtonText: '홈으로 돌아가기',
-            cancelButtonColor: '#EB1D36',
-            cancelButtonText: '테스트 계속하기'
-        }).then((result) => {
-            if (result.isConfirmed) {
+    const handleModal = useModal();
+
+    const handleResult = ({ successTotal, failTotal }: ResultType) => {
+        handleModal({
+            ...MESSAGES.FINAL_RESULT,
+            message: `테스트를 완료했습니다!! \n맞춘 단어 : ${successTotal} \n틀린 / 스킵한 단어 : ${failTotal} \n홈 화면으로 돌아가시겠습니까?`
+        }).then((hasConfirmed) => {
+            if (hasConfirmed) {
                 navigate('/', { replace: true });
             } else {
                 window.location.reload();
@@ -32,14 +33,14 @@ export default function Practice() {
         });
     };
 
-    const showNextWord = () => {
+    const handleNextWord = () => {
         if (ref.current) {
             ref.current.value = '';
         }
 
         let nextRandom = random;
         while (random === nextRandom) {
-            nextRandom = Math.floor(Math.random() * (voca.length - 0) + 0);
+            nextRandom = Math.floor(Math.random() * (VOCA.length - 0) + 0);
             if (prevArray.includes(nextRandom)) {
                 nextRandom = random;
             }
@@ -49,38 +50,37 @@ export default function Practice() {
         setRandom(nextRandom);
     };
 
-    const handleNewDataset = (countObj: { successCount: number; failCount: number }) => {
-        if (prevArray.length === voca.length - 1) {
-            showSuccessModal(countObj);
+    const handleNewDataset = (countObj: ResultType) => {
+        if (prevArray.length === VOCA.length - 1) {
+            handleResult(countObj);
         } else {
-            showNextWord();
+            handleNextWord();
         }
     };
 
     const handleWordSkip = () => {
-        if (prevArray.length === voca.length - 1) {
-            Swal.fire({ icon: 'error', confirmButtonColor: '#000000', text: '마지막 단어입니다!' });
+        if (prevArray.length === VOCA.length - 1) {
+            handleModal(MESSAGES.LAST_WORD);
         } else {
-            showNextWord();
+            handleNextWord();
             setFailCount((prev) => prev + 1);
         }
     };
 
-    const onSubmit = () => {
+    const handleSubmit = () => {
         const { value } = ref.current as HTMLTextAreaElement;
-        if (value && voca[random].definition === value) {
+        if (value && VOCA[random].definition === value) {
             setSuccessCount((prev) => prev + 1);
-            Swal.fire({
-                icon: 'success',
-                confirmButtonColor: '#000000',
-                html: `단어: ${voca[random].word} <br/> 뜻: ${voca[random].definition}`
-            }).then(() => handleNewDataset({ successCount: successCount + 1, failCount }));
+            handleModal({
+                ...MESSAGES.CURRENT_RESULT,
+                message: `단어: ${VOCA[random].word} \n뜻: ${VOCA[random].definition}`
+            }).then(() => handleNewDataset({ successTotal: successCount + 1, failTotal: failCount }));
         } else {
-            Swal.fire({ icon: 'error', confirmButtonColor: '#000000', text: '다시 시도해 주세요.' });
+            handleModal(MESSAGES.RETRY);
         }
     };
 
-    const onReset = () => {
+    const handleReset = () => {
         if (ref.current) {
             ref.current.value = '';
         }
@@ -95,14 +95,14 @@ export default function Practice() {
                 <h1 className="text-[24px] font-bold font-mono mb-2.5">Practice!</h1>
                 <section className="border border-black rounded-md min-w-[700px]">
                     <h2 className="text-[16px] font-bold font-mono mb-2.5 border-b border-black p-5">
-                        <span className="text-[20px]">{voca?.[random]?.word}</span>의 뜻을 입력해주세요.
+                        <span className="text-[20px]">{VOCA?.[random]?.word}</span>의 뜻을 입력해주세요.
                     </h2>
                     <textarea ref={ref} rows={5} className="w-full p-5 outline-none text-[16px]" placeholder="답을 입력해주세요." />
                     <div className="flex justify-end items-center gap-x-2.5 mb-2.5 mx-2.5">
-                        <button onClick={onReset} className="p-2.5 bg-white text-black border border-black font-bold rounded-md text-[14px] hover:scale-95 active:scale-95" type="button">
+                        <button onClick={handleReset} className="p-2.5 bg-white text-black border border-black font-bold rounded-md text-[14px] hover:scale-95 active:scale-95" type="button">
                             입력 초기화
                         </button>
-                        <button onClick={onSubmit} className="p-2.5 bg-black text-white font-bold rounded-md text-[14px] hover:scale-95 active:scale-95" type="button">
+                        <button onClick={handleSubmit} className="p-2.5 bg-black text-white font-bold rounded-md text-[14px] hover:scale-95 active:scale-95" type="button">
                             제출하기
                         </button>
                     </div>

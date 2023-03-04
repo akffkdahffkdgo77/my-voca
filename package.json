@@ -3,12 +3,13 @@
     "version": "1.0.0",
     "license": "MIT",
     "dependencies": {
+        "@heroicons/react": "^2.0.16",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-hook-form": "^7.36.0",
+        "react-modal": "^3.16.1",
         "react-router-dom": "^6.3.0",
-        "react-scripts": "^5.0.1",
-        "sweetalert2": "^11.4.33"
+        "react-scripts": "^5.0.1"
     },
     "scripts": {
         "start": "react-scripts start",
@@ -41,6 +42,7 @@
         "@types/node": "^18.7.16",
         "@types/react": "^18.0.19",
         "@types/react-dom": "^18.0.6",
+        "@types/react-modal": "^3.13.1",
         "@types/react-router-dom": "^5.3.3",
         "@typescript-eslint/eslint-plugin": "^5.32.0",
         "@typescript-eslint/parser": "^5.32.0",

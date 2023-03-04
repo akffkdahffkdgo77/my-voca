@@ -14,30 +14,30 @@
  
   <h3>🗒️ Project Description</h3>
 
-  __*Clone Coding Vocabulary List*__
+**_Clone Coding Vocabulary List_**
 
   <h3>😎 Project Features</h3>
 
-  ✨ [단어 입력 폼](https://github.com/namiein/weekly-clone-coding/blob/main/my-voca/1.md)   
-      ✨ 이전 데이터 불러오기   
-      ✨ 이전 데이터 삭제하기   
-      ✨ 단어 수량 선택하기 (10개, 30개, 50개)   
-  ✨ [단어 카드](https://github.com/namiein/weekly-clone-coding/blob/main/my-voca/2.md)   
-      ✨ 카드 형식으로 단어 외우기   
-  ✨ [단어 테스트](https://github.com/namiein/weekly-clone-coding/blob/main/my-voca/3.md)   
-      ✨ 단어의 뜻을 입력하며 맞추기   
+✨ [단어 입력 폼](https://github.com/namiein/weekly-clone-coding/blob/main/my-voca/1.md)  
+ ✨ 이전 데이터 불러오기  
+ ✨ 이전 데이터 삭제하기  
+ ✨ 단어 수량 선택하기 (10개, 30개, 50개)  
+ ✨ [단어 카드](https://github.com/namiein/weekly-clone-coding/blob/main/my-voca/2.md)  
+ ✨ 카드 형식으로 단어 외우기  
+ ✨ [단어 테스트](https://github.com/namiein/weekly-clone-coding/blob/main/my-voca/3.md)  
+ ✨ 단어의 뜻을 입력하며 맞추기
 
   <h3>🔮 v1.0.1 (TO-BE)</h3>
 
-  ✨ Code Refactoring   
-  ✨ Responsive UI   
-  ✨ Improve UI (Navigation, Header, Footer)   
-  ✨ 자주 틀리는 단어 모음   
+✨ Code Refactoring  
+ ✨ Responsive UI  
+ ✨ Improve UI (Navigation, Header, Footer)  
+ ✨ 자주 틀리는 단어 모음
 
   <h3>➕ Additional Features</h3>
 
-  ✨ 엑셀 업로드 (엑셀 양식 다운로드 + 양식에 맞춰 업로드한 데이터로 단어 연습할 수 있도록)   
-  ✨ 단어 테스트 통계 PNG (테스트를 한 후 어떤 단어를 틀렸는지에 대한 결과표를 이미지 파일로 다운받게 할 수 있도록 → canvas API를 사용)   
+✨ 엑셀 업로드 (엑셀 양식 다운로드 + 양식에 맞춰 업로드한 데이터로 단어 연습할 수 있도록)  
+ ✨ 단어 테스트 통계 PNG (테스트를 한 후 어떤 단어를 틀렸는지에 대한 결과표를 이미지 파일로 다운받게 할 수 있도록 → canvas API를 사용)
 
   <h3>📁 Folder Structure</h3>
   <img width="278" alt="스크린샷 2023-01-01 오후 6 57 58" src="https://user-images.githubusercontent.com/52883505/210166945-6049bf9f-b92a-4857-b277-69ea20784791.png">
@@ -49,9 +49,10 @@
   <br/>
   <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white" alt="React Router" />
   <img src="https://img.shields.io/badge/React%20Hook%20Form-%23EC5990.svg?style=for-the-badge&logo=reacthookform&logoColor=white" alt="React Hook Form" />
-  <img src="https://img.shields.io/badge/-sweetalert2-black?style=for-the-badge" alt="sweetalert2" />
+  <img src="https://img.shields.io/badge/-react--modal-black?style=for-the-badge" alt="react-modal" />
   <br/>
   <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="TailwindCSS" />
+  <img src="https://img.shields.io/badge/-heroicons-8B5CF6?style=for-the-badge" alt="heroicons" />
 
   <h3>🪄 Code Conventions</h3>
 

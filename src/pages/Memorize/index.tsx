@@ -2,26 +2,7 @@ import { useMemo, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
-interface IVocaList {
-    word: string;
-    definition: string;
-}
-
-function randomize(data: IVocaList[]) {
-    const arr: IVocaList[] = [];
-    const max = data.length;
-
-    while (arr.length !== data.length) {
-        const random = Math.floor(Math.random() * (max - 0) + 0);
-        const index = arr.findIndex((d) => d.word === data[random]?.word && d.definition === data[random]?.definition);
-        if (index === -1) {
-            const randomData = data[random] as IVocaList;
-            arr.push(randomData);
-        }
-    }
-
-    return arr;
-}
+import { randomize } from 'utils';
 
 export default function Memorize() {
     const dataset = useMemo(() => {
