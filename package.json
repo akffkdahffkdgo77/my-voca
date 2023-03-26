@@ -4,12 +4,15 @@
     "license": "MIT",
     "dependencies": {
         "@heroicons/react": "^2.0.16",
+        "@hookform/resolvers": "^3.0.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-hook-form": "^7.36.0",
         "react-modal": "^3.16.1",
         "react-router-dom": "^6.3.0",
-        "react-scripts": "^5.0.1"
+        "react-scripts": "^5.0.1",
+        "yup": "^1.0.2",
+        "zustand": "^4.3.6"
     },
     "scripts": {
         "start": "react-scripts start",

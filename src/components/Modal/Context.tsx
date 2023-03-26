@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-import type { ModalContextType } from 'contexts/modal/types';
+import type { ModalContextType } from 'components/Modal/types';
 
 const ModalContext = createContext<ModalContextType | undefined>(undefined);
 
