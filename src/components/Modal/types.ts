@@ -1,4 +1,4 @@
-export type ModalProviderPropsType = {
+export type ModalProviderType = {
     children: React.ReactElement;
 };
 

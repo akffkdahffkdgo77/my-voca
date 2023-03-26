@@ -38,21 +38,13 @@
     },
     "rules": {
         "prettier/prettier": "off",
-        "react/jsx-props-no-spreading": "off",
         "no-nested-ternary": "off",
+        "no-restricted-exports": "off",
+        "react/jsx-props-no-spreading": "off",
+        "import/prefer-default-export": "off",
         "import/no-extraneous-dependencies": "off",
         "react/jsx-filename-extension": ["warn", { "extensions": [".ts", ".tsx"] }],
-        "import/extensions": [
-            "error",
-            "ignorePackages",
-            {
-                "js": "never",
-                "jsx": "never",
-                "ts": "never",
-                "tsx": "never",
-                "": "never"
-            }
-        ],
+        "import/extensions": ["error", "ignorePackages", { "js": "never", "jsx": "never", "ts": "never", "tsx": "never", "": "never" }],
         "import/order": [
             "error",
             {
@@ -61,6 +53,11 @@
                     {
                         "pattern": "react",
                         "group": "external",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "components/**",
+                        "group": "internal",
                         "position": "before"
                     }
                 ],
