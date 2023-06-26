@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { useCallback, useMemo, useRef, useState } from 'react';
-
-import { InformationCircleIcon } from '@heroicons/react/24/outline';
 import Modal from 'react-modal';
 
-import ModalContext from 'components/Modal/Context';
-import customStyles from 'components/Modal/styles';
-import type { ModalContextType, ModalOptionsType, ModalProviderType } from 'components/Modal/types';
+import ModalContext from './Context';
+import customStyles from './styles';
+
+import { InformationCircleIcon } from '@heroicons/react/24/outline';
+
+import type { ModalContextType, ModalOptionsType, ModalProviderType } from './types';
 
 Modal.setAppElement('#root');
 Modal.defaultStyles.overlay!.zIndex = 10001;
@@ -45,24 +46,24 @@ export default function ModalProvider({ children }: ModalProviderType) {
             {children}
             {open && (
                 <Modal isOpen={open} onRequestClose={handleClose} style={customStyles} contentLabel="Confirm Modal">
-                    <h3 className="text-lg font-bold flex items-center justify-start gap-2.5 p-3 bg-slate-900 dark:bg-slate-500 text-slate-50 dark:text-slate-50">
-                        <InformationCircleIcon className="w-7 h-7 animate-pulse" />
+                    <h3 className="flex items-center justify-start gap-2.5 bg-slate-900 p-3 text-lg font-bold text-slate-50 dark:bg-slate-500 dark:text-slate-50">
+                        <InformationCircleIcon className="h-7 w-7 animate-pulse" />
                         {options?.title}
                     </h3>
                     <div className="bg-slate-50 dark:bg-slate-300">
-                        <div className="border-b border-slate-900 w-full h-px mb-2.5" />
-                        <p className="flex items-center justify-center text-center min-w-[350px] min-h-[100px] whitespace-pre-wrap font-semibold text-[16px]">{options?.message}</p>
+                        <div className="mb-2.5 h-px w-full border-b border-slate-900" />
+                        <p className="flex min-h-[100px] min-w-[350px] items-center justify-center whitespace-pre-wrap text-center text-[16px] font-semibold">{options?.message}</p>
                         <div className="mt-2.5 flex items-center justify-center gap-5 p-2.5">
                             {options?.messageType === 'confirm' && (
                                 <button
-                                    className="hover:animate-pulse min-w-[80px] min-h-[40px] text-sm font-medium dark:bg-slate-500 dark:text-slate-50 text-slate-900 rounded-md"
+                                    className="min-h-[40px] min-w-[80px] rounded-md text-sm font-medium text-slate-900 hover:animate-pulse dark:bg-slate-500 dark:text-slate-50"
                                     type="button"
                                     onClick={handleClose}
                                 >
                                     {options?.cancelText}
                                 </button>
                             )}
-                            <button className="hover:animate-pulse min-w-[80px] min-h-[40px] text-sm font-medium bg-slate-900 text-slate-50 rounded-md" type="button" onClick={handleConfirm}>
+                            <button className="min-h-[40px] min-w-[80px] rounded-md bg-slate-900 text-sm font-medium text-slate-50 hover:animate-pulse" type="button" onClick={handleConfirm}>
                                 {options?.confirmText || '확인'}
                             </button>
                         </div>
