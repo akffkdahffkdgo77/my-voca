@@ -59,8 +59,7 @@
 
 ```
 -- components        # reusable components
--- features          # feature-related
--- hooks             # global hooks
+-- layout            # layout components
 -- lib               # configs/files for external libraries
 -- pages             # page
 -- routes            # router
