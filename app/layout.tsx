@@ -1,10 +1,6 @@
 import { Inter } from 'next/font/google';
 
-import { ModalProvider } from '@components/Modal';
-import Header from '@layouts/header';
-import Menu from '@layouts/menu';
-
-import './globals.css';
+import '@app/globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,15 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
-            <body className={inter.className}>
-                <ModalProvider>
-                    <div className="min-h-screen w-full bg-slate-50 dark:bg-slate-900">
-                        <Header />
-                        <Menu />
-                        <main className="min-h-screen w-full p-5 pt-[80px]">{children}</main>
-                    </div>
-                </ModalProvider>
-            </body>
+            <body className={inter.className}>{children}</body>
         </html>
     );
 }
