@@ -1,11 +1,17 @@
 'use client';
 
-import LinkButton from '@app/home/LinkButton';
+import { useEffect, useState } from 'react';
+
+import LinkButton from './LinkButton';
 
 import { getWords } from '@utils/localStorage';
 
 export default function Home() {
-    const wordList = getWords();
+    const [wordList, setWordList] = useState([]);
+
+    useEffect(() => {
+        setWordList(getWords());
+    }, []);
 
     return (
         <div className="flex w-full items-center justify-center [height:calc(100vh-100px)]">
