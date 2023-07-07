@@ -48,7 +48,9 @@
         <br/>
         <img src="https://img.shields.io/badge/v1.0.1-2023--03-ffc2d1?style=flat" alt="v1.0.1" />
         <br/>
-        <img src="https://img.shields.io/badge/Coming Soon v1.0.2-2023-ff8da9?style=flat" alt="v1.0.2" />
+        <img src="https://img.shields.io/badge/v1.0.2-2023--07-ffa0b7?style=flat" alt="v1.0.2" />
+        <br/>
+        <img src="https://img.shields.io/badge/Coming Soon v1.0.3-2023-ff8da9?style=flat" alt="v1.0.2" />
       </td>
     </tr>
   </tbody>
@@ -96,7 +98,11 @@
 -   [x] Layout 작업
 -   [x] 1차 코드 리팩토링
 
-### 🔮 v1.0.2 (7월 또는 8월 업데이트)
+### 🚀 v1.0.2
+
+-   [x] NextJS Migration
+
+### 🔮 v1.0.3 (7월 또는 8월 업데이트)
 
 -   [ ] 2차 코드 리팩토링
     -   [ ] Customized Components 정리
