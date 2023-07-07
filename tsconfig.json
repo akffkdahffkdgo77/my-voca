@@ -22,6 +22,7 @@
         "paths": {
             "@/*": ["./*"],
             "@app/*": ["./app/*"],
+            "@components": ["./components/index.ts"],
             "@components/*": ["./components/*"],
             "@layout/*": ["./layout/*"],
             "@zustand/*": ["./lib/zustand/*"],

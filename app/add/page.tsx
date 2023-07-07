@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { FormProvider, useForm, useWatch } from 'react-hook-form';
 
-import { MESSAGES, useModal } from '@components/Modal';
+import { MESSAGES, useModal } from '@components/customized-modal';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 

@@ -3,7 +3,8 @@
 import { redirect, useRouter } from 'next/navigation';
 import { FormProvider, useFieldArray, useForm, useWatch } from 'react-hook-form';
 
-import { MESSAGES, useModal } from '@components/Modal';
+import { CustomizedButton, CustomizedTypography } from '@components';
+import { MESSAGES, useModal } from '@components/customized-modal';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { object, string, array, number, InferType } from 'yup';
@@ -108,31 +109,36 @@ export default function Practice() {
         <div className="flex w-full flex-col items-center justify-center [height:calc(100vh-100px)]">
             <FormProvider {...methods}>
                 <form onSubmit={handleSubmit(handleSubmission)} className="min-w-[700px] rounded-md border border-slate-900 text-slate-900 dark:border-slate-300 dark:text-slate-50">
-                    <h2 className="mb-2.5 border-b border-slate-900 p-5 font-mono text-[16px] font-bold dark:border-slate-300">
-                        <span className="text-[20px]">{wordList?.[fields[1]]?.word}</span>의 뜻을 입력해주세요.
-                    </h2>
+                    <CustomizedTypography component="h2" className="mb-2.5 border-b border-slate-900 p-5 font-mono text-[16px] font-bold dark:border-slate-300">
+                        <CustomizedTypography component="span" className="text-[20px]">
+                            {wordList?.[fields[1]]?.word}
+                        </CustomizedTypography>
+                        의 뜻을 입력해주세요.
+                    </CustomizedTypography>
                     <textarea rows={5} placeholder="답을 입력해주세요." {...register('word')} className="w-full p-5 text-[16px] outline-none dark:bg-slate-900" />
                     <div className="mx-2.5 mb-2.5 flex items-center justify-end gap-x-2.5">
-                        <button
-                            type="button"
+                        <CustomizedButton
                             onClick={() => resetField('word')}
                             className="dark:bg-slate-40 rounded-md border border-slate-900 bg-slate-50 p-2.5 text-[14px] font-medium text-slate-900 hover:scale-95 active:scale-95"
                         >
                             입력 초기화
-                        </button>
-                        <button type="submit" className="rounded-md bg-slate-900 p-2.5 text-[14px] font-medium text-slate-50 hover:scale-95 active:scale-95 dark:bg-slate-300 dark:text-slate-900">
+                        </CustomizedButton>
+                        <CustomizedButton
+                            type="submit"
+                            className="rounded-md bg-slate-900 p-2.5 text-[14px] font-medium text-slate-50 hover:scale-95 active:scale-95 dark:bg-slate-300 dark:text-slate-900"
+                        >
                             제출하기
-                        </button>
+                        </CustomizedButton>
                     </div>
                 </form>
                 <div className="mt-5 flex w-[700px] justify-end">
-                    <button
+                    <CustomizedButton
                         type="button"
                         onClick={handleWordSkip}
                         className="rounded-md bg-slate-900 p-2.5 text-[12px] font-bold text-slate-50 hover:scale-95 active:scale-95 dark:bg-slate-300 dark:text-slate-900"
                     >
                         다른 단어 연습하기
-                    </button>
+                    </CustomizedButton>
                 </div>
             </FormProvider>
         </div>
