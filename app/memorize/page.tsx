@@ -3,6 +3,8 @@
 import { redirect } from 'next/navigation';
 import { useCallback, useMemo, useState } from 'react';
 
+import CustomizedButton from '@components/customized-button';
+
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import { getWords } from '@utils/localStorage';
 
@@ -57,25 +59,24 @@ export default function Memorize() {
                 <div className="absolute left-2.5 top-2.5 h-8 w-8 rounded-full border border-slate-900 bg-slate-900 text-center font-mono text-[14px] font-bold text-slate-50 [line-height:32px] dark:border-slate-300 dark:bg-slate-300 dark:text-slate-900">
                     {index + 1}
                 </div>
-                <button className="absolute right-2.5 top-2.5 text-[12px] font-bold" type="button" onClick={() => window.location.reload()}>
+                <CustomizedButton onClick={() => window.location.reload()} className="absolute right-2.5 top-2.5 text-[12px] font-bold">
                     Shuffle
-                </button>
+                </CustomizedButton>
                 {dataset?.[index]?.[isWord ? 'word' : 'definition']}
-                <button className="absolute bottom-2.5 right-2.5 animate-pulse text-[12px] font-bold" type="button" onClick={() => setIsWord((prev) => !prev)}>
+                <CustomizedButton onClick={() => setIsWord((prev) => !prev)} className="absolute bottom-2.5 right-2.5 animate-pulse text-[12px] font-bold">
                     <ArrowPathIcon className="h-5 w-5" />
-                </button>
+                </CustomizedButton>
             </div>
             <div className="mt-2.5 flex w-[500px] items-center justify-end gap-x-[5px]">
-                <button
-                    type="button"
+                <CustomizedButton
                     onClick={() => handleClick('prev')}
                     className="rounded-md border border-slate-900 bg-slate-50 px-2.5 py-[5px] text-[12px] font-bold text-slate-900 dark:border-slate-300 dark:bg-slate-900 dark:text-slate-50"
                 >
                     이전
-                </button>
-                <button type="button" onClick={() => handleClick('next')} className="rounded-md bg-slate-900 px-2.5 py-[5px] text-[12px] font-bold text-slate-50 dark:bg-slate-500 dark:text-slate-900">
+                </CustomizedButton>
+                <CustomizedButton onClick={() => handleClick('next')} className="rounded-md bg-slate-900 px-2.5 py-[5px] text-[12px] font-bold text-slate-50 dark:bg-slate-500 dark:text-slate-900">
                     다음
-                </button>
+                </CustomizedButton>
             </div>
         </div>
     );

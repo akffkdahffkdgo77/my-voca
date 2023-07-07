@@ -25,6 +25,7 @@
     },
     "rules": {
         "import/extensions": "off",
+        "react/require-default-props": "off",
         "react/jsx-props-no-spreading": "off",
         "import/prefer-default-export": "off",
         "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
@@ -39,7 +40,7 @@
                         "position": "before"
                     },
                     {
-                        "pattern": "{@components/**,@layouts/**}",
+                        "pattern": "{@components*,@components/**,@layout/**}",
                         "group": "external",
                         "position": "before"
                     },

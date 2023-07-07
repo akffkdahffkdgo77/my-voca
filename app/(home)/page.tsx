@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-import LinkButton from './LinkButton';
+import LinkButton from './link-button';
 
 import { getWords } from '@utils/localStorage';
 

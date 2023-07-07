@@ -2,7 +2,7 @@
 
 import { useCallback, useMemo, useRef, useState } from 'react';
 
-import ModalContext from './Context';
+import ModalContext from './modal-context';
 
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
 

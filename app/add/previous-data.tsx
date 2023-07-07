@@ -2,7 +2,8 @@
 
 import { useFormContext } from 'react-hook-form';
 
-import { MESSAGES, useModal } from '@components/Modal';
+import CustomizedButton from '@components/customized-button';
+import { MESSAGES, useModal } from '@components/customized-modal';
 
 import { ArrowDownOnSquareIcon, TrashIcon } from '@heroicons/react/24/outline';
 import { getWords } from '@utils/localStorage';
@@ -37,16 +38,15 @@ export default function PreviousData() {
     return (
         <div className="w-full">
             <div className="flex items-center gap-2.5">
-                <button className="rounded-md border border-red-500 p-[5px] font-mono text-[14px] font-bold text-slate-900 hover:animate-pulse dark:text-slate-50" type="button" onClick={handleDelete}>
+                <CustomizedButton onClick={handleDelete} className="rounded-md border border-red-500 p-[5px] font-mono text-[14px] font-bold text-slate-900 hover:animate-pulse dark:text-slate-50">
                     <TrashIcon className="h-5 w-5 text-red-500" />
-                </button>
-                <button
-                    className="rounded-md bg-slate-900 p-[5px] font-mono text-[14px] font-bold text-slate-50 hover:animate-pulse dark:bg-slate-50 dark:text-slate-900"
-                    type="button"
+                </CustomizedButton>
+                <CustomizedButton
                     onClick={handlePreviousData}
+                    className="rounded-md bg-slate-900 p-[5px] font-mono text-[14px] font-bold text-slate-50 hover:animate-pulse dark:bg-slate-50 dark:text-slate-900"
                 >
                     <ArrowDownOnSquareIcon className="h-5 w-5" />
-                </button>
+                </CustomizedButton>
             </div>
         </div>
     );
