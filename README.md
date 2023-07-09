@@ -44,13 +44,13 @@
     <tr>
       <th align="left" width="200">프로젝트 상태</th>
       <td>
-        <img src="https://img.shields.io/badge/v1.0.0-2022--09--22%20~%202022--10--02-ffe5ec?style=flat" alt="Duration" />
+        <img src="https://img.shields.io/badge/v1.0-2022--09--22%20~%202022--10--02-ffe5ec?style=flat" alt="v1.0" />
         <br/>
         <img src="https://img.shields.io/badge/v1.0.1-2023--03-ffc2d1?style=flat" alt="v1.0.1" />
         <br/>
-        <img src="https://img.shields.io/badge/v1.0.2-2023--07-ffa0b7?style=flat" alt="v1.0.2" />
+        <img src="https://img.shields.io/badge/v1.2-2023--07-ffa0b7?style=flat" alt="v1.2" />
         <br/>
-        <img src="https://img.shields.io/badge/Coming Soon v1.0.3-2023-ff8da9?style=flat" alt="v1.0.2" />
+        <img src="https://img.shields.io/badge/Coming Soon v1.3-2023-ff8da9?style=flat" alt="v1.3" />
       </td>
     </tr>
   </tbody>
@@ -98,18 +98,18 @@
 -   [x] Layout 작업
 -   [x] 1차 코드 리팩토링
 
-### 🚀 v1.0.2
+### 🚀 v1.2
 
 -   [x] NextJS Migration
 
-### 🔮 v1.0.3 (7월 또는 8월 업데이트)
+### 🔮 v1.3 (7월 또는 8월 업데이트)
 
 -   [ ] 2차 코드 리팩토링
     -   [ ] Customized Components 정리
 -   [ ] 반응형 UI
 -   [ ] 자주 틀리는 단어 모음
 
-### ➕ v2.0.0 (여름 또는 가을 업데이트)
+### ➕ v1.4 (여름 또는 가을 업데이트)
 
 -   [ ] 엑셀 업로드 (Multi Upload)
 -   [ ] 단어 테스트 통계 PNG
