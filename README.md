@@ -1,10 +1,4 @@
-<picture>
-  <source media="(max-width: 799px)" srcset="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/28aca8ff-1ae2-42af-8320-efd302402c6a" />
-  <source media="(min-width: 800px)" srcset="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/edb04826-efca-4a44-8fff-de1f665e1a0d" />
-  <img width="1500" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/edb04826-efca-4a44-8fff-de1f665e1a0d" alt="my voca header" />
-</picture>
-<br/>
-<br/>
+<img src="https://capsule-render.vercel.app/api?section=header&type=waving&height=300&text=My%20Voca&color=gradient&fontSize=90&customColorList=0,2,2,5,30" alt="" />
 <table>
   <tbody>
     <tr>
@@ -15,7 +9,7 @@
       <th align="left" width="200">My Toy Projects</th>
       <td>
         <a href="https://github.com/akffkdahffkdgo77/weekly-clone-coding">
-          <img src="https://img.shields.io/badge/Part%201-My%20Toy%20Projects-blue?style=flat" alt="NO 1" />
+          <img src="https://img.shields.io/badge/NO%201-My%20Toy%20Projects-blue?style=flat" alt="NO 1" />
         </a>
       </td>
     </tr>
