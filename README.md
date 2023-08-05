@@ -12,10 +12,10 @@
       <td><strong><i>나만의 일일 단어장 만들기</i></strong></td>
     </tr>
     <tr>
-      <th align="left" width="200">Weekly Clone Coding</th>
+      <th align="left" width="200">My Toy Projects</th>
       <td>
         <a href="https://github.com/akffkdahffkdgo77/weekly-clone-coding">
-          <img src="https://img.shields.io/badge/Part%201-Weekly%20Clone%20Coding-blue?style=flat" alt="Part 1" />
+          <img src="https://img.shields.io/badge/Part%201-My%20Toy%20Projects-blue?style=flat" alt="NO 1" />
         </a>
       </td>
     </tr>
