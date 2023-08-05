@@ -2,11 +2,11 @@
 <table>
   <tbody>
     <tr>
-      <th align="left" width="200">프로젝트 소개</th>
+      <th align="left" width="200">Project Description</th>
       <td><strong><i>나만의 일일 단어장 만들기</i></strong></td>
     </tr>
     <tr>
-      <th align="left" width="200">My Toy Projects</th>
+      <th align="left" width="200">Project Group</th>
       <td>
         <a href="https://github.com/akffkdahffkdgo77/my-toy-projects">
           <img src="https://img.shields.io/badge/NO%201-My%20Toy%20Projects-blue?style=flat" alt="NO 1" />
@@ -14,7 +14,7 @@
       </td>
     </tr>
     <tr>
-      <th align="left" width="200">Tech Stacks</th>
+      <th align="left" width="200">Project Tech Stacks</th>
       <td>
         <div>
           <img src="https://img.shields.io/badge/Next-black?style=flat&logo=next.js&logoColor=white" alt="NextJS" />
@@ -36,7 +36,7 @@
       </td>
     </tr>
     <tr>
-      <th align="left" width="200">프로젝트 상태</th>
+      <th align="left" width="200">Project Status</th>
       <td>
         <img src="https://img.shields.io/badge/v1.0-2022--09--22%20~%202022--10--02-ffe5ec?style=flat" alt="v1.0" />
         <br/>
