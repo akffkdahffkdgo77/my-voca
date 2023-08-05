@@ -8,7 +8,7 @@
     <tr>
       <th align="left" width="200">My Toy Projects</th>
       <td>
-        <a href="https://github.com/akffkdahffkdgo77/weekly-clone-coding">
+        <a href="https://github.com/akffkdahffkdgo77/my-toy-projects">
           <img src="https://img.shields.io/badge/NO%201-My%20Toy%20Projects-blue?style=flat" alt="NO 1" />
         </a>
       </td>
