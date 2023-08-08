@@ -50,28 +50,6 @@
   </tbody>
 </table>
 
-## Demo
-
-### 홈 화면
-
-<img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/fb51a3d0-5544-4275-9923-f4451d1d7111" alt="my voca home demo" />
-
-### 단어 추가하기
-
-<img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/2c9e61b8-4729-47d8-abe4-178ebe6ffe9f" alt="my voca add demo" />
-
-### 단어 외우기
-
-<img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/f1dbbc49-9964-4a1d-9d28-a378cc957366" alt="my voca flip demo" />
-<br/>
-<img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/b9f65da7-0be4-4fa5-9026-7bc03699494c" alt="my voca change word demo" />
-<br/>
-<img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/1667ec2e-ba00-4a23-a1ce-87465b3bb3a7" alt="my voca page move demo" />
-
-### 시험보기
-
-<img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/14213350-ac65-425a-93ce-a5eeb23139a5" alt="my voca test demo" />
-
 ## Project History
 
 ### 😎 v1.0
@@ -107,3 +85,25 @@
 
 -   [ ] 엑셀 업로드 (Multi Upload)
 -   [ ] 단어 테스트 통계 PNG
+
+## Demo
+
+### 홈 화면
+
+<img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/fb51a3d0-5544-4275-9923-f4451d1d7111" alt="my voca home demo" />
+
+### 단어 추가하기
+
+<img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/2c9e61b8-4729-47d8-abe4-178ebe6ffe9f" alt="my voca add demo" />
+
+### 단어 외우기
+
+<img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/f1dbbc49-9964-4a1d-9d28-a378cc957366" alt="my voca flip demo" />
+<br/>
+<img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/b9f65da7-0be4-4fa5-9026-7bc03699494c" alt="my voca change word demo" />
+<br/>
+<img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/1667ec2e-ba00-4a23-a1ce-87465b3bb3a7" alt="my voca page move demo" />
+
+### 시험보기
+
+<img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/14213350-ac65-425a-93ce-a5eeb23139a5" alt="my voca test demo" />
