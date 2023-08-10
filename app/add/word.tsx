@@ -1,8 +1,8 @@
 'use client';
 
-import { useFieldArray, useFormContext } from 'react-hook-form';
+import { Controller, useFieldArray, useFormContext } from 'react-hook-form';
 
-import { CustomizedButton, CustomizedTypography } from '@components';
+import { CustomizedButton, CustomizedTextarea } from '@components';
 
 import { PlusIcon, XMarkIcon } from '@heroicons/react/24/outline';
 
@@ -13,38 +13,53 @@ export default function Word() {
     const { fields, append, remove } = useFieldArray<AddType>({ control, name: 'words' });
 
     return (
-        <div className="mb-2.5 h-full min-h-[500px] w-full">
-            <div className="mb-2.5 flex w-full items-center justify-center">
-                <CustomizedTypography component="h2" className="-mr-[48px] flex-1 text-center font-mono text-[24px] font-bold text-slate-900 dark:text-slate-50">
-                    단어를 입력해주세요.
-                </CustomizedTypography>
-                <CustomizedButton
-                    onClick={() => append({ word: '', definition: '' })}
-                    className="h-[40px] w-[40px] cursor-pointer rounded-md border-2 border-slate-900 font-bold text-slate-900 dark:border-slate-50 dark:text-slate-50"
-                >
-                    <PlusIcon className="mx-auto h-5 w-5" />
-                </CustomizedButton>
+        <div className="h-full w-full">
+            <div className="sticky top-20 z-10 flex h-16 w-full flex-col items-center justify-center bg-slate-50 dark:bg-slate-900 max-sm:top-16">
+                <div className="relative flex w-full items-center">
+                    <input
+                        maxLength={20}
+                        title="단어장"
+                        placeholder="단어장 이름을 입력해주세요"
+                        className="h-14 w-full truncate rounded-md bg-inherit p-2.5 pr-[50px] text-center font-mono text-[24px] text-slate-900 focus:outline-none focus:ring-0 dark:text-slate-50 max-sm:text-lg"
+                    />
+                    <CustomizedButton
+                        disabled={Boolean(fields.length > 10)}
+                        onClick={() => append({ word: '', definition: '' })}
+                        className="absolute right-0 h-10 w-10 cursor-pointer rounded-md border-2 border-slate-900 font-bold text-slate-900 disabled:pointer-events-none disabled:border-gray-300 disabled:text-gray-300 dark:border-slate-50 dark:text-slate-50 dark:disabled:border-gray-500 dark:disabled:text-gray-500 max-sm:h-8 max-sm:w-8"
+                    >
+                        <PlusIcon className="mx-auto h-5 w-5 max-sm:h-4 max-sm:w-4" />
+                    </CustomizedButton>
+                </div>
             </div>
-            <div className="flex flex-col gap-2.5">
+            <div className="w-full space-y-2.5 pb-16">
                 {fields.map((field, index) => (
-                    <div key={field.id} className="flex h-full items-center justify-between gap-2.5">
-                        <input
-                            title="단어"
-                            placeholder="단어를 입력해주세요"
-                            {...register(`words.${index}.word` as const)}
-                            className="w-[250px] rounded-md border border-slate-900 p-2.5 font-mono text-[16px] dark:border-slate-50"
-                        />
-                        <textarea
-                            cols={50}
-                            rows={1}
-                            title="뜻"
-                            placeholder="뜻을 입력해주세요"
-                            {...register(`words.${index}.definition` as const)}
-                            className="w-full rounded-md border border-slate-900 p-2.5 font-mono text-[14px] dark:border-slate-50"
-                        />
-                        <CustomizedButton onClick={() => remove(index)} className="h-[46px] w-[64px] rounded-md border border-red-500">
-                            <XMarkIcon className="mx-auto h-5 w-5 text-red-500" />
-                        </CustomizedButton>
+                    <div key={field.id} className="group relative flex h-full w-full items-center justify-between gap-2.5">
+                        <div className="w-full space-y-px">
+                            <input
+                                {...register(`words.${index}.word` as const)}
+                                title="단어"
+                                placeholder="단어를 입력해주세요"
+                                className="h-10 w-full truncate rounded-md rounded-b-none p-2.5 font-mono text-[14px] focus:outline-none focus:ring-0"
+                            />
+                            <Controller
+                                control={control}
+                                name={`words.${index}.definition`}
+                                render={({ field: { onChange, value } }) => (
+                                    <CustomizedTextarea
+                                        value={value}
+                                        onChange={onChange}
+                                        title="뜻"
+                                        placeholder="뜻을 입력해주세요"
+                                        className="min-h-[80px] w-full truncate rounded-md rounded-t-none p-2.5 font-mono text-[14px] ring-0 focus:outline-none focus:ring-0"
+                                    />
+                                )}
+                            />
+                        </div>
+                        {fields.length > 1 && (
+                            <CustomizedButton onClick={() => remove(index)} className="hidden h-10 w-10 flex-none rounded-md bg-red-500 group-hover:block">
+                                <XMarkIcon className="mx-auto h-5 w-5 text-white" />
+                            </CustomizedButton>
+                        )}
                     </div>
                 ))}
             </div>
