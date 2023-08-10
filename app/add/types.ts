@@ -9,6 +9,8 @@ export const schema = object().shape({
             })
         )
         .required()
+        .min(1)
+        .max(10)
 });
 
 export type AddType = InferType<typeof schema>;
