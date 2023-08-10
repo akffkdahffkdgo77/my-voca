@@ -14,7 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <html lang="ko">
             <body>
                 <ModalProvider>
-                    <div className="min-h-screen w-full bg-slate-50 dark:bg-slate-900">
+                    <div className="min-h-screen w-full max-w-3xl bg-slate-50 dark:bg-slate-900">
                         <Header />
                         <Menu />
                         <main className="min-h-screen w-full p-5 pt-[80px]">{children}</main>
