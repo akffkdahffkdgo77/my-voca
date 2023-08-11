@@ -17,6 +17,7 @@ export default function Word() {
             <div className="sticky top-20 z-10 flex h-16 w-full flex-col items-center justify-center bg-slate-50 dark:bg-slate-900 max-sm:top-16">
                 <div className="relative flex w-full items-center">
                     <input
+                        {...register('title')}
                         maxLength={20}
                         title="단어장"
                         placeholder="단어장 이름을 입력해주세요"

@@ -48,7 +48,7 @@
                         "position": "before"
                     },
                     {
-                        "pattern": "{@zustand/**,@utils/**,@styles/**,@heroicons/**,*.+(css|scss)}",
+                        "pattern": "{@zustand/**,@api/**,@utils/**,@styles/**,@heroicons/**,*.+(css|scss)}",
                         "patternOptions": {
                             "dot": true,
                             "nocomment": true,
