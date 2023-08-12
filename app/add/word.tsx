@@ -3,7 +3,6 @@
 import { Controller, useFieldArray, useFormContext } from 'react-hook-form';
 
 import { CustomizedButton, CustomizedTextarea } from '@components';
-
 import { PlusIcon, XMarkIcon } from '@heroicons/react/24/outline';
 
 import type { AddType } from './types';

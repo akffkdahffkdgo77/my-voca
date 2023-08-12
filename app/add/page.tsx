@@ -7,10 +7,10 @@ import { MESSAGES, useModal } from '@components/customized-modal';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { getWords } from '@/utils/localStorage';
-
 import { AddType, schema } from './types';
 import Word from './word';
+
+import { getWords, setLocalStorage } from '@utils/localStorage';
 
 const DEFAULT_VALUES = {
     defaultValues: { title: '', words: [{ word: '', definition: '' }] },
@@ -33,7 +33,7 @@ export default function Add() {
                 const filtered = words.map((d, index) => (d.word !== words?.[index + 1]?.word ? d : null)).filter((d) => d);
                 const data = { idx: new Date().getTime(), title, createdAt: new Date().getTime(), words: filtered };
                 const prevList = getWords();
-                localStorage.setItem('words', JSON.stringify([...prevList, data]));
+                setLocalStorage('words', [...prevList, data]);
                 handleModal(MESSAGES.SUBMISSION_COMPLETE).then((hasConfirmed) => {
                     if (hasConfirmed) {
                         navigate.replace('/list');

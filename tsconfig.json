@@ -26,6 +26,8 @@
             "@components/*": ["./components/*"],
             "@layout/*": ["./layout/*"],
             "@api/*": ["./lib/mock/*"],
+            "@hooks": ["./hooks/index.ts"],
+            "@hooks/*": ["./hooks/*"],
             "@zustand/*": ["./lib/zustand/*"],
             "@utils/*": ["./utils/*"]
         }

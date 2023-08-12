@@ -9,7 +9,10 @@ type LinkButtonPropsType = {
 
 export default function LinkButton({ text, path }: LinkButtonPropsType) {
     return (
-        <CustomizedLink href={path} className="rounded-md bg-slate-900 p-2.5 font-bold text-slate-50  hover:animate-pulse dark:border-0 dark:bg-slate-300 dark:text-slate-900">
+        <CustomizedLink
+            href={path}
+            className="h-40 w-40 rounded-md  bg-slate-900 text-center text-2xl font-bold leading-[160px] text-slate-50 hover:animate-pulse dark:border-0 dark:bg-slate-300 dark:text-slate-900 max-sm:h-32 max-sm:w-32 max-sm:text-lg max-sm:leading-[128px]"
+        >
             {text}
         </CustomizedLink>
     );
