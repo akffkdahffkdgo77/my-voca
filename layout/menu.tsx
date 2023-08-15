@@ -3,8 +3,8 @@
 import { usePathname } from 'next/navigation';
 
 import { CustomizedButton, CustomizedLink } from '@components';
-
 import { XMarkIcon } from '@heroicons/react/24/outline';
+
 import { useBoundStore } from '@zustand/store';
 
 const LINKS = [

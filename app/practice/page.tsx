@@ -6,31 +6,9 @@ import { FormProvider, useFieldArray, useForm, useWatch } from 'react-hook-form'
 import { CustomizedButton, CustomizedTypography } from '@components';
 import { MESSAGES, useModal } from '@components/customized-modal';
 
-import { yupResolver } from '@hookform/resolvers/yup';
-import { object, string, array, number, InferType } from 'yup';
+import { DEFAULT_VALUES, PracticeType } from './types';
 
-import { getWords } from '@utils/localStorage';
-
-const schema = object().shape({
-    word: string().required(),
-    list: array().required(),
-    random: number().required(),
-    successCount: number().required(),
-    failCount: number().required()
-});
-
-type PracticeType = InferType<typeof schema>;
-
-const DEFAULT_VALUES = {
-    defaultValues: {
-        word: '',
-        random: 0,
-        list: [],
-        successCount: 0,
-        failCount: 0
-    },
-    resolver: yupResolver(schema)
-};
+import { getWords } from '@utils/data';
 
 export default function Practice() {
     const wordList = getWords() as { word: string; definition: string }[];

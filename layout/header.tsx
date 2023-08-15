@@ -1,10 +1,10 @@
 'use client';
 
 import { CustomizedButton, CustomizedLink, CustomizedTypography } from '@components';
+import { Bars3Icon, MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 
 import useMode from './useMode';
 
-import { Bars3Icon, MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 import { useBoundStore } from '@zustand/store';
 
 export default function Header() {
