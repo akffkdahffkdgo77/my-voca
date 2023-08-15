@@ -24,6 +24,7 @@
         }
     },
     "rules": {
+        "react/no-array-index-key": "off",
         "react-hooks/exhaustive-deps": "off",
         "react-hooks/rules-of-hooks": "off",
         "no-param-reassign": "off",
@@ -43,12 +44,12 @@
                         "position": "before"
                     },
                     {
-                        "pattern": "{@components*,@components/**,@layout/**}",
+                        "pattern": "{@components*,@components/**,@layout/**,@styles/**,@heroicons/**,*.+(css|scss)}",
                         "group": "external",
                         "position": "before"
                     },
                     {
-                        "pattern": "{@zustand/**,@utils/**,@styles/**,@heroicons/**,*.+(css|scss)}",
+                        "pattern": "{@hooks/**,@hooks*,@zustand/**,@api/**,@utils/**,}",
                         "patternOptions": {
                             "dot": true,
                             "nocomment": true,

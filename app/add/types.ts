@@ -1,6 +1,7 @@
 import { InferType, array, object, string } from 'yup';
 
 export const schema = object().shape({
+    title: string().max(20).required(),
     words: array()
         .of(
             object({
