@@ -22,7 +22,6 @@
           <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat&logo=typescript&logoColor=white" alt="TypeScript" />
           <br/>
           <img src="https://img.shields.io/badge/React%20Hook%20Form-%23EC5990.svg?style=flat&logo=reacthookform&logoColor=white" alt="React Hook Form" />
-          <img src="https://img.shields.io/badge/-react--modal-black?style=flat" alt="react-modal" />
           <img src="https://img.shields.io/badge/-zustand-black?style=flat" alt="zustand" />
           <br/>
           <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat&logo=tailwind-css&logoColor=white" alt="TailwindCSS" />
