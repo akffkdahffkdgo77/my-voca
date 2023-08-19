@@ -1,6 +1,6 @@
 'use client';
 
-import { WordType, getWords } from '@utils/localStorage';
+import { WordType, getWords } from '@utils/data';
 
 export const getWord = async (idx: string): Promise<WordType> => {
     return new Promise((resolve) => {

@@ -11,7 +11,7 @@ const useClickAway = <T>({ ref, onClickOutside }: IClickAway<T>) => {
     useEffect(() => {
         const handleClickOutside = (event: BaseSyntheticEvent | MouseEvent) => {
             const element = ref.current as HTMLElement;
-            if (!element.contains(event.target)) {
+            if (element && !element.contains(event.target)) {
                 onClickOutside();
             }
         };

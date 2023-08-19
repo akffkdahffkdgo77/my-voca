@@ -8,7 +8,8 @@ import { ArrowLeftIcon, TrashIcon } from '@heroicons/react/24/outline';
 
 import { getWord } from '@api/get-word';
 import { useFetch } from '@hooks';
-import { WordListType, WordType, getWords, setLocalStorage } from '@utils/localStorage';
+import { WordListType, WordType, getWords } from '@utils/data';
+import { setLocalStorage } from '@utils/localStorage';
 
 // TODO: infinite scroll
 export default function DetailPage({ params }: { params: { id: string } }) {
@@ -50,7 +51,7 @@ export default function DetailPage({ params }: { params: { id: string } }) {
                 <ul className="mt-5 space-y-2.5 max-sm:mt-2.5">
                     {data?.words.map((word) => (
                         <li key={word.wordIdx}>
-                            <p className="h-10 w-full break-all rounded-md rounded-b-none border border-slate-300 p-2.5 font-mono text-[14px]">{word.word}</p>
+                            <p className="h-10 w-full break-all rounded-md rounded-b-none border border-slate-300 p-2.5 font-mono text-[14px] font-bold">{word.word}</p>
                             <p className="min-h-[80px] w-full break-all rounded-md rounded-t-none border border-t-0 border-slate-300 p-2.5 font-mono text-[14px]">{word.definition}</p>
                         </li>
                     ))}

@@ -4,9 +4,9 @@ import { redirect } from 'next/navigation';
 import { useCallback, useMemo, useState } from 'react';
 
 import CustomizedButton from '@components/customized-button';
-
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
-import { getWords } from '@utils/localStorage';
+
+import { getWords } from '@utils/data';
 
 type DataType = {
     word: string;
