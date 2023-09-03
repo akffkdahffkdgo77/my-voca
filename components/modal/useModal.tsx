@@ -1,14 +1,38 @@
 'use client';
 
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { createContext, useCallback, useContext, useMemo, useRef, useState } from 'react';
 
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
 
-import ModalContext from './modal-context';
+export type ModalProviderType = {
+    children: React.ReactNode;
+};
 
-import type { ModalContextType, ModalOptionsType, ModalProviderType } from './types';
+export type ModalOptionsType = {
+    messageType?: string;
+    title?: string;
+    message?: string;
+    confirmText?: string;
+    cancelText?: string;
+};
 
-export default function ModalProvider({ children }: ModalProviderType) {
+export type ModalContextType = {
+    handleModal: (options: ModalOptionsType) => Promise<boolean>;
+};
+
+const ModalContext = createContext<ModalContextType | undefined>(undefined);
+
+export const useModal = () => {
+    const context = useContext(ModalContext);
+
+    if (!context) {
+        throw new Error('Modal should be used within `ModalContext`');
+    }
+
+    return context.handleModal;
+};
+
+export function ModalProvider({ children }: ModalProviderType) {
     const promiseInfo = useRef<(value: boolean | PromiseLike<boolean>) => void>(() => null);
 
     const [open, setOpen] = useState(false);
