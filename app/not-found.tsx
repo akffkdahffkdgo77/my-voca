@@ -3,7 +3,6 @@
 import { useRouter } from 'next/navigation';
 
 import { CustomizedButton, CustomizedTypography } from '@components';
-
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 
 export default function NotFound() {

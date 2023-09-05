@@ -3,7 +3,7 @@
 import { useFormContext } from 'react-hook-form';
 
 import CustomizedButton from '@components/customized-button';
-import { MESSAGES, useModal } from '@components/customized-modal';
+import { MESSAGES, useModal } from '@components/modal';
 import { ArrowDownOnSquareIcon, TrashIcon } from '@heroicons/react/24/outline';
 
 import { getWords } from '@utils/data';

@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { MESSAGES, useModal } from '@components/customized-modal';
+import { MESSAGES, useModal } from '@components/modal';
 
 import { AddType, DEFAULT_VALUES } from './types';
 import Word from './word';
