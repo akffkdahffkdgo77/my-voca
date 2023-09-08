@@ -4,14 +4,23 @@ import { redirect, useRouter } from 'next/navigation';
 import { FormProvider, useFieldArray, useForm, useWatch } from 'react-hook-form';
 
 import { CustomizedButton, CustomizedTypography } from '@components';
-import { MESSAGES, useModal } from '@components/customized-modal';
+import { MESSAGES, useModal } from '@components/modal';
 
-import { DEFAULT_VALUES, PracticeType } from './types';
+import { DEFAULT_VALUES, PracticeType } from '../types';
 
-import { getWords } from '@utils/data';
+import { getWord } from '@api/get-word';
+import { useFetch } from '@hooks';
+import { DataType } from '@utils/data';
 
-export default function Practice() {
-    const wordList = getWords() as { word: string; definition: string }[];
+export default function Practice({ params }: { params: { id: string } }) {
+    const { data } = useFetch<DataType>(() => getWord(params.id));
+
+    if (data?.words && data.words.length === 0) {
+        redirect('/add');
+    }
+
+    const wordList = data?.words ?? [];
+
     const navigate = useRouter();
     const handleModal = useModal();
 
@@ -19,10 +28,6 @@ export default function Practice() {
     const { control, setValue, register, resetField, trigger, handleSubmit, getValues } = methods;
     const fields = useWatch<PracticeType>({ control, name: ['list', 'random'] });
     const { append } = useFieldArray({ name: 'list' as never, control });
-
-    if (!wordList.length) {
-        redirect('/add');
-    }
 
     const handleWordSkip = () => {
         const [list, random] = fields;
@@ -45,8 +50,8 @@ export default function Practice() {
     };
 
     // TODO: Refactoring
-    const handleSubmission = (data: PracticeType) => {
-        const { list, word, random, successCount, failCount } = data;
+    const handleSubmission = (formData: PracticeType) => {
+        const { list, word, random, successCount, failCount } = formData;
         if (word && wordList[random].definition === word) {
             setValue('successCount', successCount + 1);
             trigger('successCount');
