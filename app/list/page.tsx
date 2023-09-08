@@ -4,13 +4,14 @@ import Link from 'next/link';
 import { useRef, useState } from 'react';
 
 import { CustomizedButton, TopButton } from '@components';
+import { useSnackbar } from '@components/snackbar';
 import { ArrowUpOnSquareIcon, CheckCircleIcon, EllipsisVerticalIcon, QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
 
 import Skeleton from './skeleton';
 
 import { getList } from '@api/get-list';
 import { useClickAway, useFetch, useMobile } from '@hooks';
-import { WordListType, addWord, getWords } from '@utils/data';
+import { DataListType, addWord, getWords } from '@utils/data';
 import { exportFile, importFile } from '@utils/file';
 import { formatDate } from '@utils/format';
 import { setLocalStorage } from '@utils/localStorage';
@@ -29,17 +30,19 @@ export default function List() {
         }
     });
 
-    const { isLoading, data, refetch } = useFetch<WordListType>(getList);
+    const { isLoading, data, refetch } = useFetch<DataListType>(getList);
+    const { setMessage } = useSnackbar();
 
     const handleDelete = (idx: number) => {
-        const currentList: WordListType = getWords();
+        const currentList: DataListType = getWords();
         const filteredList = currentList.filter((d) => d.idx !== idx);
         setLocalStorage('words', filteredList);
         refetch();
+        setMessage('단어장이 삭제되었습니다.', { variant: 'error' });
     };
 
     const handleExport = (idx: number) => {
-        const currentList: WordListType = getWords();
+        const currentList: DataListType = getWords();
         const selectedList = currentList.filter((d) => d.idx === idx)[0];
         const wordList = selectedList.words
             .map(({ word, definition }) => `${word}:${definition}\n`)
@@ -144,6 +147,12 @@ export default function List() {
                                                 className="block h-8 rounded-md bg-slate-900 px-2.5 text-right text-sm leading-8 text-slate-50 hover:scale-95 dark:border dark:border-slate-50 dark:bg-transparent"
                                             >
                                                 상세
+                                            </Link>
+                                            <Link
+                                                href={`/memorize/${idx}`}
+                                                className="block h-8 rounded-md bg-slate-900 px-2.5 text-right text-sm leading-8 text-slate-50 hover:scale-95 dark:border dark:border-slate-50 dark:bg-transparent"
+                                            >
+                                                외우기
                                             </Link>
                                             <Link
                                                 href={`/test/${idx}`}
