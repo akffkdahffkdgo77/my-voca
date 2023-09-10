@@ -155,7 +155,7 @@ export default function List() {
                                                 외우기
                                             </Link>
                                             <Link
-                                                href={`/test/${idx}`}
+                                                href={`/practice/${idx}`}
                                                 className="block h-8 rounded-md bg-slate-900 px-2.5 text-right text-sm leading-8 text-slate-50 hover:scale-95 dark:border dark:border-slate-50 dark:bg-transparent"
                                             >
                                                 테스트
@@ -200,7 +200,7 @@ export default function List() {
                                                 </Link>
                                             </li>
                                             <li className="w-full border-b border-slate-300 px-2 hover:bg-slate-200 dark:border-slate-50 dark:hover:bg-slate-800">
-                                                <Link href={`/test/${idx}`} className="block h-10 text-right text-base leading-10">
+                                                <Link href={`/practice/${idx}`} className="block h-10 text-right text-base leading-10">
                                                     테스트
                                                 </Link>
                                             </li>
