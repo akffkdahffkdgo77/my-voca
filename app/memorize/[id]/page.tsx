@@ -3,7 +3,7 @@
 import { redirect } from 'next/navigation';
 import { useMemo, useState } from 'react';
 
-import CustomizedButton from '@components/customized-button';
+import { CustomizedButton } from '@components';
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
 
 import { getWord } from '@api/get-word';

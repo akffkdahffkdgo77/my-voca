@@ -2,8 +2,7 @@
 
 import { useFormContext } from 'react-hook-form';
 
-import CustomizedButton from '@components/customized-button';
-import { MESSAGES, useModal } from '@components/modal';
+import { CustomizedButton, MESSAGES, useModal } from '@components';
 import { ArrowDownOnSquareIcon, TrashIcon } from '@heroicons/react/24/outline';
 
 import { getWords } from '@utils/data';
