@@ -1,8 +1,8 @@
 'use client';
 
-import { WordListType, getWords } from '@utils/data';
+import { DataListType, getWords } from '@utils/data';
 
-export const getList = async (): Promise<WordListType> => {
+export const getList = async (): Promise<DataListType> => {
     return new Promise((resolve) => {
         const list = getWords();
         setTimeout(() => {
