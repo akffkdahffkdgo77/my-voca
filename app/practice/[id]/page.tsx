@@ -91,7 +91,7 @@ export default function Practice({ params }: { params: { id: string } }) {
     return (
         <div className="flex w-full flex-col items-center justify-center [height:calc(100vh-100px)]">
             <FormProvider {...methods}>
-                <form onSubmit={handleSubmit(handleSubmission)} className="min-w-[700px] rounded-md border border-slate-900 text-slate-900 dark:border-slate-300 dark:text-slate-50">
+                <form onSubmit={handleSubmit(handleSubmission)} className="mx-5 w-full rounded-md border border-slate-900 text-slate-900 dark:border-slate-300 dark:text-slate-50 max-sm:mx-10">
                     <CustomizedTypography component="h2" className="mb-2.5 border-b border-slate-900 p-5 font-mono text-[16px] font-bold dark:border-slate-300">
                         <CustomizedTypography component="span" className="text-[20px]">
                             {wordList?.[fields[1]]?.word}
@@ -114,7 +114,7 @@ export default function Practice({ params }: { params: { id: string } }) {
                         </CustomizedButton>
                     </div>
                 </form>
-                <div className="mt-5 flex w-[700px] justify-end">
+                <div className="mx-5 mt-5 flex w-full justify-end max-sm:mx-10">
                     <CustomizedButton
                         type="button"
                         onClick={handleWordSkip}
