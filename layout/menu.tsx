@@ -10,8 +10,8 @@ import { useBoundStore } from '@zustand/store';
 const LINKS = [
     { text: '홈', href: '/' },
     { text: '단어장', href: '/list' },
-    { text: '등록', href: '/add' },
-    { text: '마이페이지', href: '/statistics' }
+    { text: '등록', href: '/add' }
+    // { text: '마이페이지', href: '/statistics' }
 ];
 
 export default function Menu() {

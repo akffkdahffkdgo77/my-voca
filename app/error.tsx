@@ -1,7 +1,6 @@
 'use client';
 
 import { CustomizedButton, CustomizedTypography } from '@components';
-
 import { ArrowPathIcon, ExclamationCircleIcon } from '@heroicons/react/24/outline';
 
 type ErrorType = { error: Error; reset: () => void };

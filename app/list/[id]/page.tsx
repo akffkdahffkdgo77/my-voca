@@ -8,21 +8,22 @@ import { ArrowLeftIcon, TrashIcon } from '@heroicons/react/24/outline';
 
 import { getWord } from '@api/get-word';
 import { useFetch } from '@hooks';
-import { WordListType, WordType, getWords } from '@utils/data';
+import { DataListType, DataType, getWords } from '@utils/data';
 import { setLocalStorage } from '@utils/localStorage';
 
 // TODO: infinite scroll
 export default function DetailPage({ params }: { params: { id: string } }) {
-    const { isLoading, data } = useFetch<WordType>(() => getWord(params.id));
+    const { isLoading, data } = useFetch<DataType>(() => getWord(params.id));
     const navigate = useRouter();
 
     // TODO: confirm modal
     const handleDelete = () => {
-        const currentList: WordListType = getWords();
+        const currentList: DataListType = getWords();
         const filteredList = currentList.filter((d) => d.idx.toString() !== params.id);
         setLocalStorage('words', filteredList);
         navigate.replace('/list');
     };
+
     return (
         <div className="text-slate-900 dark:text-slate-50">
             <div className="sticky top-20 z-10 flex h-16 w-full flex-col items-center justify-center bg-slate-50 dark:bg-slate-900 max-sm:top-16">

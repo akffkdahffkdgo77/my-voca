@@ -1,4 +1,4 @@
-import { WordType } from './data';
+import { DataType } from './data';
 import { formatDate } from './format';
 
 export function exportFile(data: string, name: string) {
@@ -16,7 +16,7 @@ export function exportFile(data: string, name: string) {
 
 function createList(list: string[]) {
     const curTime = new Date().getTime();
-    const newWordList: WordType = { idx: curTime, title: `단어장 ${formatDate(curTime)}`, createdAt: curTime, words: [] };
+    const newWordList: DataType = { idx: curTime, title: `단어장 ${formatDate(curTime)}`, createdAt: curTime, words: [] };
     for (let i = 0; i < list.length; i++) {
         const [word, definition] = list[i].split(':');
         newWordList.words[i] = {
@@ -31,7 +31,7 @@ function createList(list: string[]) {
     return newWordList;
 }
 
-export function importFile(file: File): Promise<WordType> {
+export function importFile(file: File): Promise<DataType> {
     return new Promise((resolve) => {
         const reader = new FileReader();
         reader.onloadend = () => {

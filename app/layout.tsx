@@ -1,4 +1,5 @@
-import { ModalProvider } from '@components/customized-modal';
+import { ModalProvider } from '@components/modal';
+import { SnackbarProvider } from '@components/snackbar';
 import Header from '@layout/header';
 import Menu from '@layout/menu';
 
@@ -14,13 +15,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <html lang="ko">
             <body>
                 <ModalProvider>
-                    <div className="min-h-screen w-full bg-gray-100">
-                        <Header />
-                        <Menu />
-                        <main className="mx-auto min-h-screen w-full max-w-md border-x border-slate-300 bg-slate-50 px-5 pt-20 dark:bg-slate-900 max-sm:max-w-full max-sm:border-x-0 max-sm:px-2.5 max-sm:pt-16">
-                            {children}
-                        </main>
-                    </div>
+                    <SnackbarProvider position="bottom-right">
+                        <div className="min-h-screen w-full bg-gray-100">
+                            <Header />
+                            <Menu />
+                            <main className="mx-auto min-h-screen w-full max-w-md border-x border-slate-300 bg-slate-50 px-5 pt-20 dark:bg-slate-900 max-sm:max-w-full max-sm:border-x-0 max-sm:px-2.5 max-sm:pt-16">
+                                {children}
+                            </main>
+                        </div>
+                        <div id="portal" />
+                    </SnackbarProvider>
                 </ModalProvider>
             </body>
         </html>

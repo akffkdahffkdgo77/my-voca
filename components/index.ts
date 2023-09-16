@@ -1,5 +1,4 @@
-export { default as CustomizedButton } from './customized-button';
-export { default as CustomizedLink } from './customized-link';
-export { default as CustomizedTypography } from './customized-typography';
-export { default as CustomizedTextarea } from './customized-textarea';
+export * from './customized';
+export * from './modal';
+export * from './snackbar';
 export { default as TopButton } from './top-button';

@@ -3,12 +3,12 @@
 import { useRouter } from 'next/navigation';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { MESSAGES, useModal } from '@components/customized-modal';
+import { MESSAGES, useModal } from '@components/modal';
 
 import { AddType, DEFAULT_VALUES } from './types';
 import Word from './word';
 
-import { WordType, addWord } from '@utils/data';
+import { DataType, addWord } from '@utils/data';
 
 export default function Add() {
     const navigate = useRouter();
@@ -24,7 +24,7 @@ export default function Add() {
         handleModal(MESSAGES.DATA_SUBMISSION).then((isConfirmed) => {
             if (isConfirmed) {
                 const filtered = words.map((d, index) => ({ ...d, wordIdx: index + 1, successCount: 0, failCount: 0 }));
-                const data: WordType = { idx: new Date().getTime(), title, createdAt: new Date().getTime(), words: filtered };
+                const data: DataType = { idx: new Date().getTime(), title, createdAt: new Date().getTime(), words: filtered };
                 addWord(data);
                 handleModal(MESSAGES.SUBMISSION_COMPLETE).then((hasConfirmed) => {
                     if (hasConfirmed) {

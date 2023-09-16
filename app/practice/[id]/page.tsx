@@ -4,14 +4,23 @@ import { redirect, useRouter } from 'next/navigation';
 import { FormProvider, useFieldArray, useForm, useWatch } from 'react-hook-form';
 
 import { CustomizedButton, CustomizedTypography } from '@components';
-import { MESSAGES, useModal } from '@components/customized-modal';
+import { MESSAGES, useModal } from '@components/modal';
 
-import { DEFAULT_VALUES, PracticeType } from './types';
+import { DEFAULT_VALUES, PracticeType } from '../types';
 
-import { getWords } from '@utils/data';
+import { getWord } from '@api/get-word';
+import { useFetch } from '@hooks';
+import { DataType } from '@utils/data';
 
-export default function Practice() {
-    const wordList = getWords() as { word: string; definition: string }[];
+export default function Practice({ params }: { params: { id: string } }) {
+    const { data } = useFetch<DataType>(() => getWord(params.id));
+
+    if (data?.words && data.words.length === 0) {
+        redirect('/add');
+    }
+
+    const wordList = data?.words ?? [];
+
     const navigate = useRouter();
     const handleModal = useModal();
 
@@ -19,10 +28,6 @@ export default function Practice() {
     const { control, setValue, register, resetField, trigger, handleSubmit, getValues } = methods;
     const fields = useWatch<PracticeType>({ control, name: ['list', 'random'] });
     const { append } = useFieldArray({ name: 'list' as never, control });
-
-    if (!wordList.length) {
-        redirect('/add');
-    }
 
     const handleWordSkip = () => {
         const [list, random] = fields;
@@ -45,8 +50,8 @@ export default function Practice() {
     };
 
     // TODO: Refactoring
-    const handleSubmission = (data: PracticeType) => {
-        const { list, word, random, successCount, failCount } = data;
+    const handleSubmission = (formData: PracticeType) => {
+        const { list, word, random, successCount, failCount } = formData;
         if (word && wordList[random].definition === word) {
             setValue('successCount', successCount + 1);
             trigger('successCount');
@@ -86,7 +91,7 @@ export default function Practice() {
     return (
         <div className="flex w-full flex-col items-center justify-center [height:calc(100vh-100px)]">
             <FormProvider {...methods}>
-                <form onSubmit={handleSubmit(handleSubmission)} className="min-w-[700px] rounded-md border border-slate-900 text-slate-900 dark:border-slate-300 dark:text-slate-50">
+                <form onSubmit={handleSubmit(handleSubmission)} className="mx-5 w-full rounded-md border border-slate-900 text-slate-900 dark:border-slate-300 dark:text-slate-50 max-sm:mx-10">
                     <CustomizedTypography component="h2" className="mb-2.5 border-b border-slate-900 p-5 font-mono text-[16px] font-bold dark:border-slate-300">
                         <CustomizedTypography component="span" className="text-[20px]">
                             {wordList?.[fields[1]]?.word}
@@ -109,7 +114,7 @@ export default function Practice() {
                         </CustomizedButton>
                     </div>
                 </form>
-                <div className="mt-5 flex w-[700px] justify-end">
+                <div className="mx-5 mt-5 flex w-full justify-end max-sm:mx-10">
                     <CustomizedButton
                         type="button"
                         onClick={handleWordSkip}

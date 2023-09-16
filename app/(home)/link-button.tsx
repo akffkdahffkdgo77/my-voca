@@ -1,6 +1,6 @@
 'use client';
 
-import CustomizedLink from '@components/customized-link';
+import { CustomizedLink } from '@components';
 
 type LinkButtonPropsType = {
     text: string;

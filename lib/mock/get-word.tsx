@@ -1,10 +1,10 @@
 'use client';
 
-import { WordType, getWords } from '@utils/data';
+import { DataType, getWords } from '@utils/data';
 
-export const getWord = async (idx: string): Promise<WordType> => {
+export const getWord = async (idx: string): Promise<DataType> => {
     return new Promise((resolve) => {
-        const list: WordType[] = getWords();
+        const list: DataType[] = getWords();
         const data = list.filter((val) => val.idx.toString() === idx)[0];
         setTimeout(() => {
             resolve(data);

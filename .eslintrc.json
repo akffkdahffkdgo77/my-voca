@@ -27,6 +27,7 @@
         "no-plusplus": "off",
         "no-param-reassign": "off",
         "import/extensions": "off",
+        "consistent-return": "off",
         "react/no-array-index-key": "off",
         "react-hooks/exhaustive-deps": "off",
         "react-hooks/rules-of-hooks": "off",
