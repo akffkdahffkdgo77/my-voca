@@ -4,34 +4,18 @@
         "lib": ["dom", "dom.iterable", "esnext"],
         "allowJs": true,
         "skipLibCheck": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
         "strict": true,
         "forceConsistentCasingInFileNames": true,
-        "noEmit": true,
-        "esModuleInterop": true,
+        "noFallthroughCasesInSwitch": true,
         "module": "esnext",
         "moduleResolution": "node",
         "resolveJsonModule": true,
         "isolatedModules": true,
-        "jsx": "preserve",
-        "incremental": true,
-        "plugins": [
-            {
-                "name": "next"
-            }
-        ],
-        "paths": {
-            "@/*": ["./*"],
-            "@app/*": ["./app/*"],
-            "@components": ["./components/index.ts"],
-            "@components/*": ["./components/*"],
-            "@layout/*": ["./layout/*"],
-            "@api/*": ["./lib/mock/*"],
-            "@hooks": ["./hooks/index.ts"],
-            "@hooks/*": ["./hooks/*"],
-            "@zustand/*": ["./lib/zustand/*"],
-            "@utils/*": ["./utils/*"]
-        }
+        "noEmit": true,
+        "jsx": "react-jsx",
+        "baseUrl": "src"
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-    "exclude": ["node_modules"]
+    "include": ["src", "tailwind.config.js"]
 }
