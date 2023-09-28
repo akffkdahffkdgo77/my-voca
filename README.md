@@ -43,7 +43,9 @@
         <br/>
         <img src="https://img.shields.io/badge/v1.1-2023--07-ffa0b7?style=flat" alt="v1.1" />
         <br/>
-        <img src="https://img.shields.io/badge/Coming Soon v1.2-2023-ff8da9?style=flat" alt="v1.2" />
+        <img src="https://img.shields.io/badge/v1.2-2023--09-ff8da9?style=flat" alt="v1.2" />
+        <br/>
+        <img src="https://img.shields.io/badge/Coming Soon v1.3-2023-ff7194?style=flat" alt="v1.3" />
       </td>
     </tr>
   </tbody>
@@ -73,23 +75,23 @@
 
 -   [x] NextJS Migration
 
-### 🔮 v1.2 (9월 업데이트)
+### 🔮 v1.2
 
--   [ ] UI 개선
-    -   [ ] 반응형 UI (PC & MWEB)
-    -   [ ] 홈 화면 개선
-    -   [ ] 등록 UI 개선
--   [ ] 새로운 페이지
-    -   [ ] 단어장 리스트 
-    -   [ ] 단어장 상세 
--   [ ] 기능 업데이트
-    -   [ ] 최대 10개까지 수동 입력 가능하도록
-    -   [ ] 단어장 export / import 기능
+-   [x] UI 개선
+    -   [x] 반응형 UI (PC & MWEB)
+    -   [x] 홈 화면 개선
+    -   [x] 등록 UI 개선
+-   [x] 새로운 페이지
+    -   [x] 단어장 리스트 
+    -   [x] 단어장 상세 
+-   [x] 기능 업데이트
+    -   [x] 최대 10개까지 수동 입력 가능하도록
+    -   [x] 단어장 export / import 기능
  ### 🎃 v1.3 (10월 업데이트)
--   [ ] 새로운 페이지   
-    -   [ ] 통계   
--   [ ] 기능 업데이트   
-    -   [ ] 단어 테스트 통계 PNG
+-   [ ] 등록 + 상세 + 테스트 화면 합치기
+-   [ ] 공통 컴포넌트 분리
+-   [ ] 리액트로 변경
+-   [ ] 테마 추가
 
 
 ## Demo (v1.0 기준)
