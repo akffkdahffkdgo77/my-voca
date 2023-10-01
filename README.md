@@ -126,9 +126,12 @@
   <img width="768" alt="PC Home" src="https://github.com/akffkdahffkdgo77/my-voca/assets/52883505/ee7bb80f-dda6-44e5-a114-0ee2455a7fa8">
 </details>
 <details>
-  <summary><h3>리스트 화면 (MWEB & PC)</h3></summary>
+  <summary><h3>리스트 & 상세 화면 (MWEB & PC)</h3></summary>
   <h4>MWEB</h4>
   <img src="https://github.com/akffkdahffkdgo77/my-voca/assets/52883505/a4341254-ef70-4930-be98-1ce77d7a5cc5" alt="MWEB List" />
   <h4>PC</h4>
   <img src="https://github.com/akffkdahffkdgo77/my-voca/assets/52883505/e5d5e9ef-8167-4df9-8cc2-ec61e5978d4d" alt="PC List" />
+</details>
+<details>
+  <summary><h3>단어장 삭제</h3></summary>
 </details>
