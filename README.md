@@ -90,7 +90,7 @@
  ### 🎃 v1.3 (10월 업데이트)
 -   [ ] 등록 + 상세 + 테스트 화면 합치기
 -   [ ] 공통 컴포넌트 분리
--   [ ] 리액트로 변경
+-   [x] 리액트로 변경
 -   [ ] 테마 추가
 
 
@@ -134,4 +134,7 @@
 </details>
 <details>
   <summary><h3>단어장 삭제</h3></summary>
+</details>
+<details>
+  <summary><h3>기타</h3></summary>
 </details>
