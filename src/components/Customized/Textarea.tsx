@@ -4,6 +4,13 @@ import useForwardRef from 'hooks/useForwardRef';
 
 type CustomizedTextareaType = TextareaHTMLAttributes<HTMLTextAreaElement>;
 
+/**
+ *  TODO LIST
+ *  - scrollable
+ *  - dimension (width & height)
+ *  - background-color
+ *  - font style
+ */
 const CustomizedTextarea = forwardRef<HTMLTextAreaElement, CustomizedTextareaType>(function useCreateTextarea({ value, onChange, ...rest }, ref) {
     const textareaRef = useForwardRef<HTMLTextAreaElement>(ref);
 

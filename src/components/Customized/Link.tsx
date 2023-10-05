@@ -5,6 +5,7 @@ type CustomizedLinkType = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
     children: React.ReactNode;
 };
 
+// TODO: Remove
 export default function CustomizedLink({ to, children, ...props }: CustomizedLinkType) {
     return (
         <Link {...props} to={to}>
