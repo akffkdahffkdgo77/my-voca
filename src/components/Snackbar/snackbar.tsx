@@ -35,7 +35,7 @@ export default function Snackbar({ children, options, onClose }: SnackbarType) {
     }, [onClose]);
 
     return (
-        <div className={`${getVariant(options?.variant)} animate-fade-in-out flex h-full min-h-[48px] w-full min-w-[280px] items-center justify-between rounded-xl px-3 py-[9px]`}>
+        <div className={`${getVariant(options?.variant)} flex h-full min-h-[48px] w-full min-w-[280px] animate-fade-in-out items-center justify-between rounded-xl px-3 py-[9px]`}>
             <p className="whitespace-pre-wrap break-all text-sm">{children}</p>
             <div className="flex items-center">
                 <div className={`mx-2.5 h-5 w-px ${options?.variant === 'warning' ? 'bg-black' : 'bg-gray-50/50'}`} />
