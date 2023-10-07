@@ -2,7 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
 @layer base {
+    html,
+    body,
+    #root {
+        font-family: 'Namum Pen Script', cursive;
+    }
     textarea {
         resize: none;
     }
