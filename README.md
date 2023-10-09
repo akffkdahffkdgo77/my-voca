@@ -51,10 +51,13 @@
   </tbody>
 </table>
 
-## Project History
+<details>
+  <summary>
+    <h2>Project History</h2>
+  </summary>
 
 ### 😎 v1.0
-
+   
 -   [x] [단어 입력 폼](https://github.com/akffkdahffkdgo77/weekly-clone-coding/blob/main/my-voca/1.md)
     -   [x] 이전 데이터 불러오기
     -   [x] 이전 데이터 삭제하기
@@ -87,13 +90,17 @@
 -   [x] 기능 업데이트
     -   [x] 최대 10개까지 수동 입력 가능하도록
     -   [x] 단어장 export / import 기능
- ### 🎃 v1.3 (10월 ~ 11월 업데이트)
+       
+### 🎃 v1.3 (10월 ~ 11월 업데이트)
+
 -   [ ] UI 업데이트
     -   [ ] 등록 + 상세 + 테스트 화면 합치기
     -   [ ] 테마 추가
 -   [ ] 기타
     -   [x] 리액트로 변경
     -   [ ] 공통 컴포넌트 분리
+       
+</details>
 
 ## Demo (v1.0 기준)
 
@@ -101,10 +108,12 @@
   <summary><h3>홈 화면</h3></summary>
   <img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/fb51a3d0-5544-4275-9923-f4451d1d7111" alt="my voca home demo" />
 </details>
+
 <details>
   <summary><h3>단어 추가하기</h3></summary>
   <img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/2c9e61b8-4729-47d8-abe4-178ebe6ffe9f" alt="my voca add demo" />
 </details>
+
 <details>
   <summary><h3>단어 외우기</h3></summary>
   <img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/f1dbbc49-9964-4a1d-9d28-a378cc957366" alt="my voca flip demo" />
@@ -113,12 +122,14 @@
   <br/>
   <img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/1667ec2e-ba00-4a23-a1ce-87465b3bb3a7" alt="my voca page move demo" />
 </details>
+
 <details>
   <summary><h3>시험보기</h3></summary>
   <img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/14213350-ac65-425a-93ce-a5eeb23139a5" alt="my voca test demo" />
 </details>
 
 ## Demo (v1.2 기준)
+
 <details>
   <summary><h3>홈 화면 (MWEB & PC)</h3></summary>
   <h4>MWEB</h4>
@@ -126,6 +137,7 @@
   <h4>PC</h4>
   <img width="768" alt="PC Home" src="https://github.com/akffkdahffkdgo77/my-voca/assets/52883505/ee7bb80f-dda6-44e5-a114-0ee2455a7fa8">
 </details>
+
 <details>
   <summary><h3>리스트 & 상세 화면 (MWEB & PC)</h3></summary>
   <h4>MWEB</h4>
@@ -133,9 +145,11 @@
   <h4>PC</h4>
   <img src="https://github.com/akffkdahffkdgo77/my-voca/assets/52883505/e5d5e9ef-8167-4df9-8cc2-ec61e5978d4d" alt="PC List" />
 </details>
+
 <details>
   <summary><h3>단어장 삭제</h3></summary>
 </details>
+
 <details>
   <summary><h3>기타</h3></summary>
   <h4>다중 업로드 안내</h4>
