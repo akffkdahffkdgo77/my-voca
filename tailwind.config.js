@@ -5,19 +5,35 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                nanumpenscript: ['Nanum Pen Script', 'cursive']
+                sans: ['Noto Sans KR', 'sans-serif']
             },
             fontSize: {
-                h1: ['48px', { lineHeight: '52px', fontWeight: 700, letterSpacing: '-0.96px' }],
-                h2: ['42px', { lineHeight: '46px', fontWeight: 700, letterSpacing: '-0.84px' }],
-                h3: ['36px', { lineHeight: '42px', fontWeight: 700, letterSpacing: '-0.72px' }],
-                h4: ['30px', { lineHeight: '36px', fontWeight: 700, letterSpacing: '-0.60px' }],
-                h5: ['24px', { lineHeight: '30px', fontWeight: 700, letterSpacing: '-0.48px' }],
-                h6: ['18px', { lineHeight: '24px', fontWeight: 700, letterSpacing: '-0.36px' }],
-                'b24-m': ['24px', { lineHeight: '28px', fontWeight: 500, letterSpacing: '-0.48px' }],
-                'b24-r': ['24px', { lineHeight: '28px', fontWeight: 400, letterSpacing: '-0.48px' }]
+                h1: ['48px', { lineHeight: 'normal', fontWeight: 700, letterSpacing: '-0.96px' }],
+                h2: ['42px', { lineHeight: 'normal', fontWeight: 700, letterSpacing: '-0.84px' }],
+                h3: ['36px', { lineHeight: 'normal', fontWeight: 700, letterSpacing: '-0.72px' }],
+                h4: ['30px', { lineHeight: 'normal', fontWeight: 700, letterSpacing: '-0.60px' }],
+                h5: ['24px', { lineHeight: 'normal', fontWeight: 700, letterSpacing: '-0.48px' }],
+                h6: ['18px', { lineHeight: 'normal', fontWeight: 700, letterSpacing: '-0.36px' }],
+                b24: ['24px', { lineHeight: 'normal', fontWeight: 400, letterSpacing: '-0.48px' }],
+                b18: ['18px', { lineHeight: 'normal', fontWeight: 400, letterSpacing: '-0.36px' }],
+                b16: ['16px', { lineHeight: 'normal', fontWeight: 400, letterSpacing: '-0.32px' }],
+                b14: ['14px', { lineHeight: 'normal', fontWeight: 400, letterSpacing: '-0.24px' }],
+                b12: ['12px', { lineHeight: 'normal', fontWeight: 400, letterSpacing: '-0.22px' }]
             },
             colors: {
+                gray: {
+                    50: '#fafafa',
+                    100: '#efefef',
+                    200: '#dcdcdc',
+                    300: '#bdbdbd',
+                    400: '#989898',
+                    500: '#7c7c7c',
+                    600: '#656565',
+                    700: '#525252',
+                    800: '#464646',
+                    900: '#3d3d3d',
+                    950: '#292929'
+                },
                 rust: {
                     50: '#fff8ec',
                     100: '#ffeed4',

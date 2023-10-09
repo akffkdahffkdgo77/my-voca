@@ -32,6 +32,7 @@
         }
     },
     "rules": {
+        "no-shadow": "off",
         "no-plusplus": "off",
         "no-param-reassign": "off",
         "import/extensions": "off",
