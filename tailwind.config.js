@@ -5,7 +5,8 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Noto Sans KR', 'sans-serif']
+                sans: ['Noto Sans KR', 'sans-serif'],
+                nanumpenscript: ['Nanum Pen Script', 'cursive']
             },
             fontSize: {
                 h1: ['48px', { lineHeight: 'normal', fontWeight: 700, letterSpacing: '-0.96px' }],
@@ -18,7 +19,9 @@ module.exports = {
                 b18: ['18px', { lineHeight: 'normal', fontWeight: 400, letterSpacing: '-0.36px' }],
                 b16: ['16px', { lineHeight: 'normal', fontWeight: 400, letterSpacing: '-0.32px' }],
                 b14: ['14px', { lineHeight: 'normal', fontWeight: 400, letterSpacing: '-0.24px' }],
-                b12: ['12px', { lineHeight: 'normal', fontWeight: 400, letterSpacing: '-0.22px' }]
+                b12: ['12px', { lineHeight: 'normal', fontWeight: 400, letterSpacing: '-0.22px' }],
+                c11: ['11px', { lineHeight: 'normal', fontWeight: 400, letterSpacing: '-0.18px' }],
+                c8: ['8px', { lineHeight: 'normal', fontWeight: 400, letterSpacing: '-0.14px' }]
             },
             colors: {
                 gray: {
