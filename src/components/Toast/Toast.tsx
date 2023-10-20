@@ -35,7 +35,7 @@ export default function Toast({ children, options, onClose }: ToastType) {
     }, [onClose]);
 
     return (
-        <div className={`${getVariant(options?.variant)} min-h-48pxr min-w-280pxr py-9pxr flex h-full w-full animate-fade-in-out items-center justify-between rounded-xl px-3`}>
+        <div className={`${getVariant(options?.variant)} flex h-full min-h-48pxr w-full min-w-280pxr animate-fade-in-out items-center justify-between rounded-xl px-3 py-9pxr`}>
             <p className="whitespace-pre-wrap break-all text-sm">{children}</p>
             <div className="flex items-center">
                 <div className={`mx-2.5 h-5 w-px ${options?.variant === 'warning' ? 'bg-black' : 'bg-gray-50/50'}`} />

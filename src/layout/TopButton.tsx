@@ -27,7 +27,7 @@ export default function TopButton() {
             ref={buttonRef}
             type="button"
             onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
-            className="h-50pxr w-50pxr invisible fixed bottom-5 right-5 rounded-full bg-black"
+            className="invisible fixed bottom-5 right-5 h-50pxr w-50pxr rounded-full bg-black"
         >
             <ArrowUpIcon className="mx-auto h-5 w-5 text-white" />
         </button>

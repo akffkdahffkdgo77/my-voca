@@ -78,7 +78,7 @@ export function ModalProvider({ children }: ModalProviderType) {
                         </h3>
                         <div className="bg-slate-50 dark:bg-slate-300">
                             <div className="mb-2.5 h-px w-full border-b border-slate-900" />
-                            <p className="min-h-100pxr min-w-350pxr flex items-center justify-center whitespace-pre-wrap text-center text-b16 font-semibold">{options?.message}</p>
+                            <p className="flex min-h-100pxr min-w-350pxr items-center justify-center whitespace-pre-wrap text-center text-b16 font-semibold">{options?.message}</p>
                             <div className="mt-2.5 flex items-center justify-center gap-5 p-2.5">
                                 {options?.messageType === 'confirm' && (
                                     <button
