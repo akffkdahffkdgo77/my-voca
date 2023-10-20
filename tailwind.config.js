@@ -1,4 +1,10 @@
 /** @type {import('tailwindcss').Config} */
+
+const plugin = require('tailwindcss/plugin');
+
+const px100 = Array.from({ length: 1000 }).map((_, index) => index + 1);
+const pxToRem = (px, base = 16) => `${px / base}rem`;
+
 module.exports = {
     darkMode: 'class',
     content: ['./src/**/*.{js,ts,jsx,tsx}'],
@@ -9,19 +15,19 @@ module.exports = {
                 nanumpenscript: ['Nanum Pen Script', 'cursive']
             },
             fontSize: {
-                h1: ['48px', { lineHeight: 'normal', fontWeight: 700, letterSpacing: '-0.96px' }],
-                h2: ['42px', { lineHeight: 'normal', fontWeight: 700, letterSpacing: '-0.84px' }],
-                h3: ['36px', { lineHeight: 'normal', fontWeight: 700, letterSpacing: '-0.72px' }],
-                h4: ['30px', { lineHeight: 'normal', fontWeight: 700, letterSpacing: '-0.60px' }],
-                h5: ['24px', { lineHeight: 'normal', fontWeight: 700, letterSpacing: '-0.48px' }],
-                h6: ['18px', { lineHeight: 'normal', fontWeight: 700, letterSpacing: '-0.36px' }],
-                b24: ['24px', { lineHeight: 'normal', fontWeight: 400, letterSpacing: '-0.48px' }],
-                b18: ['18px', { lineHeight: 'normal', fontWeight: 400, letterSpacing: '-0.36px' }],
-                b16: ['16px', { lineHeight: 'normal', fontWeight: 400, letterSpacing: '-0.32px' }],
-                b14: ['14px', { lineHeight: 'normal', fontWeight: 400, letterSpacing: '-0.24px' }],
-                b12: ['12px', { lineHeight: 'normal', fontWeight: 400, letterSpacing: '-0.22px' }],
-                c11: ['11px', { lineHeight: 'normal', fontWeight: 400, letterSpacing: '-0.18px' }],
-                c8: ['8px', { lineHeight: 'normal', fontWeight: 400, letterSpacing: '-0.14px' }]
+                h1: ['3rem', { lineHeight: 'normal', fontWeight: 700, letterSpacing: 'normal' }],
+                h2: ['2.625rem', { lineHeight: 'normal', fontWeight: 700, letterSpacing: 'normal' }],
+                h3: ['2.25rem', { lineHeight: 'normal', fontWeight: 700, letterSpacing: 'normal' }],
+                h4: ['1.875rem', { lineHeight: 'normal', fontWeight: 700, letterSpacing: 'normal' }],
+                h5: ['1.5rem', { lineHeight: 'normal', fontWeight: 700, letterSpacing: 'normal' }],
+                h6: ['1.125rem', { lineHeight: 'normal', fontWeight: 700, letterSpacing: 'normal' }],
+                b24: ['1.5rem', { lineHeight: 'normal', fontWeight: 400, letterSpacing: 'normal' }],
+                b18: ['1.125rem', { lineHeight: 'normal', fontWeight: 400, letterSpacing: 'normal' }],
+                b16: ['1rem', { lineHeight: 'normal', fontWeight: 400, letterSpacing: 'normal' }],
+                b14: ['0.875rem', { lineHeight: 'normal', fontWeight: 400, letterSpacing: 'normal' }],
+                b12: ['0.75rem', { lineHeight: 'normal', fontWeight: 400, letterSpacing: 'normal' }],
+                c11: ['0.688rem', { lineHeight: 'normal', fontWeight: 400, letterSpacing: 'normal' }],
+                c8: ['0.5rem', { lineHeight: 'normal', fontWeight: 400, letterSpacing: 'normal' }]
             },
             colors: {
                 gray: {
@@ -116,6 +122,64 @@ module.exports = {
                     950: '#55022f'
                 }
             },
+            screens: {
+                mobile: '360px',
+                tablet: '768px',
+                desktop: '1280px',
+                '4k': '1920px',
+                'under-mobile': {
+                    maxWidth: '360px'
+                },
+                'under-tablet': {
+                    maxWidth: '768px'
+                },
+                'under-desktop': {
+                    maxWidth: '1280px'
+                },
+                'under-4k': {
+                    maxWidth: '1920px'
+                }
+            },
+            spacing: {
+                ...px100.reduce((acc, px) => {
+                    acc[`${px}pxr`] = pxToRem(px);
+                    return acc;
+                }, {})
+            },
+            minHeight: {
+                inherit: 'inherit',
+                ...px100.reduce((acc, px) => {
+                    acc[`${px}pxr`] = pxToRem(px);
+                    return acc;
+                }, {})
+            },
+            minWidth: {
+                inherit: 'inherit',
+                ...px100.reduce((acc, px) => {
+                    acc[`${px}pxr`] = pxToRem(px);
+                    return acc;
+                }, {})
+            },
+            lineHeight: {
+                ...px100.reduce((acc, px) => {
+                    acc[`${px}pxr`] = pxToRem(px);
+                    return acc;
+                }, {})
+            },
+            borderRadius: {
+                '2.5xl': '1.25rem'
+            },
+            zIndex: {
+                ...px100
+            },
+            gridTemplateColumns: {
+                single: '0.8fr 2fr',
+                double: '0.7fr 1fr 0.7fr 1fr'
+            },
+            strokeWidth: {
+                3: '3px',
+                4: '4px'
+            },
             keyframes: {
                 fadeIn: {
                     '0%': {
@@ -143,5 +207,15 @@ module.exports = {
             }
         }
     },
-    plugins: []
+    plugins: [
+        plugin(function ({ addUtilities }) {
+            addUtilities({
+                '.grid': {
+                    'background-position': 'center',
+                    'background-size': '20px 20px',
+                    'background-image': 'linear-gradient(to right, #eee 1px, transparent 1px), linear-gradient(to bottom, #eee 1px, transparent 1px)'
+                }
+            });
+        })
+    ]
 };
