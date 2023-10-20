@@ -3,30 +3,30 @@ import { createPortal } from 'react-dom';
 
 import { v4 as uuidv4 } from 'uuid';
 
-import Snackbar from './snackbar';
+import Toast from './Toast';
 
 export type OptionsType = {
     variant?: 'info' | 'error' | 'warning' | 'success' | 'default';
 };
 
-type SnackbarContextType = {
+type ToastContextType = {
     setMessage: (content: string, options?: OptionsType) => void;
 };
 
-type SnackbarProviderType = {
+type ToastProviderType = {
     children: React.ReactNode;
     position?: 'top-right' | 'top-center' | 'top-left' | 'bottom-right' | 'bottom-center' | 'bottom-left';
 };
 
 type MessageType = { id: string; content: string; options?: OptionsType };
 
-const SnackbarContext = createContext<SnackbarContextType | undefined>(undefined);
+const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
-export const useSnackbar = () => {
-    const context = useContext(SnackbarContext);
+export const useToast = () => {
+    const context = useContext(ToastContext);
 
     if (!context) {
-        throw new Error('should use Snackbar within Snackbar Provider');
+        throw new Error('should use Toast within Toast Provider');
     }
 
     return context;
@@ -49,7 +49,7 @@ function getPosition(position?: string) {
     }
 }
 
-export function SnackbarProvider({ children, position }: SnackbarProviderType) {
+export function ToastProvider({ children, position }: ToastProviderType) {
     const [modalElement, setModalElement] = useState<HTMLElement>();
     const [messages, setMessages] = useState<MessageType[]>([]);
 
@@ -67,7 +67,7 @@ export function SnackbarProvider({ children, position }: SnackbarProviderType) {
 
     const handleClose = useCallback((id: string) => setMessages((prev) => prev.filter((message) => message.id !== id)), []);
 
-    const context: SnackbarContextType = useMemo(() => ({ setMessage: handleOpen }), [handleOpen]);
+    const context: ToastContextType = useMemo(() => ({ setMessage: handleOpen }), [handleOpen]);
 
     useEffect(() => {
         if (messages.length > 0) {
@@ -78,20 +78,20 @@ export function SnackbarProvider({ children, position }: SnackbarProviderType) {
     }, [messages]);
 
     return (
-        <SnackbarContext.Provider value={context}>
+        <ToastContext.Provider value={context}>
             {children}
             {modalElement
                 ? createPortal(
-                      <div className={`${getPosition(position)} absolute z-[1000] flex flex-col gap-2.5`}>
+                      <div className={`${getPosition(position)} z-1000 absolute flex flex-col gap-2.5`}>
                           {messages.map((message) => (
-                              <Snackbar key={message.id} options={message.options} onClose={() => handleClose(message.id)}>
+                              <Toast key={message.id} options={message.options} onClose={() => handleClose(message.id)}>
                                   {message.content}
-                              </Snackbar>
+                              </Toast>
                           ))}
                       </div>,
                       modalElement as HTMLElement
                   )
                 : null}
-        </SnackbarContext.Provider>
+        </ToastContext.Provider>
     );
 }

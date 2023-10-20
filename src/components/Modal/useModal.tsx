@@ -78,11 +78,11 @@ export function ModalProvider({ children }: ModalProviderType) {
                         </h3>
                         <div className="bg-slate-50 dark:bg-slate-300">
                             <div className="mb-2.5 h-px w-full border-b border-slate-900" />
-                            <p className="flex min-h-[100px] min-w-[350px] items-center justify-center whitespace-pre-wrap text-center text-[16px] font-semibold">{options?.message}</p>
+                            <p className="min-h-100pxr min-w-350pxr flex items-center justify-center whitespace-pre-wrap text-center text-b16 font-semibold">{options?.message}</p>
                             <div className="mt-2.5 flex items-center justify-center gap-5 p-2.5">
                                 {options?.messageType === 'confirm' && (
                                     <button
-                                        className="min-h-[40px] min-w-[80px] rounded-md text-sm font-medium text-slate-900 hover:animate-pulse dark:bg-slate-500 dark:text-slate-50"
+                                        className="min-h-10pxr min-w-80pxr rounded-md text-sm font-medium text-slate-900 hover:animate-pulse dark:bg-slate-500 dark:text-slate-50"
                                         type="button"
                                         onClick={(e) => {
                                             e.stopPropagation();
@@ -93,7 +93,7 @@ export function ModalProvider({ children }: ModalProviderType) {
                                     </button>
                                 )}
                                 <button
-                                    className="min-h-[40px] min-w-[80px] rounded-md bg-slate-900 text-sm font-medium text-slate-50 hover:animate-pulse"
+                                    className="min-h-40pxr min-w-80pxr rounded-md bg-slate-900 text-sm font-medium text-slate-50 hover:animate-pulse"
                                     type="button"
                                     onClick={(e) => {
                                         e.stopPropagation();

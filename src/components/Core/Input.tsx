@@ -1,10 +1,9 @@
-import { InputHTMLAttributes, useMemo } from 'react';
+import { InputHTMLAttributes, useId } from 'react';
 
 import styled from '@emotion/styled';
 import tw, { TwStyle } from 'twin.macro';
-import { v4 as uuidv4 } from 'uuid';
 
-import CustomizedTypography from './CustomizedTypography';
+import CustomizedTypography from './Typography';
 
 import { StyleThemes, getBackgroundColor, getBorderColor, getTextColor } from 'utils/theme';
 
@@ -13,34 +12,28 @@ type StylesType = {
     variant?: 'contained' | 'outlined' | 'text';
     containerStyle?: TwStyle;
     twStyle?: TwStyle;
+    hiddenText?: string;
 };
 
-type CustomizedInputType = InputHTMLAttributes<HTMLInputElement> &
-    StylesType & {
-        labelText?: string;
-        helperText?: string;
-    };
+type InputType = InputHTMLAttributes<HTMLInputElement> & StylesType & { labelText?: string; helperText?: string };
 
 const TwContainer = styled.div(({ containerStyle }: StylesType) => [tw`w-full`, containerStyle && containerStyle]);
 
 const TwInput = styled.input(({ theme, variant, twStyle }: StylesType) => [
-    tw`h-10 text-b14 font-semibold outline-none ring-0 focus:ring-0 w-full px-3`,
+    [tw`h-12 text-b16 outline-none ring-0 focus:ring-0 w-full px-3`, tw`font-semibold`],
     theme && variant === 'contained' && getBackgroundColor(theme),
     theme && variant === 'text' && getTextColor(theme),
-    theme && variant === 'outlined' && tw`border`,
-    theme && variant === 'outlined' && getBorderColor(theme),
+    theme && variant === 'outlined' && [tw`border`, getBorderColor(theme)],
     twStyle && twStyle
 ]);
 
-function CustomizedInput({ theme = StyleThemes.BlueChill, containerStyle, labelText, helperText, type, maxLength, min, max, ...props }: CustomizedInputType) {
-    const id = useMemo(() => uuidv4(), []);
+function Input({ theme = StyleThemes.BlueChill, containerStyle, hiddenText, labelText, helperText, type, maxLength, min, max, ...props }: InputType) {
+    const id = useId();
     return (
         <TwContainer containerStyle={containerStyle}>
-            {labelText && (
-                <CustomizedTypography htmlFor={id} component="label" variant="b12" fontWeight="500" gutterBottom={4} twStyle={tw`flex items-center`}>
-                    {labelText}
-                </CustomizedTypography>
-            )}
+            <CustomizedTypography htmlFor={id} component="label" variant="b12" fontWeight="500" gutterBottom={4} className={!labelText ? '!sr-only' : ''} twStyle={tw`flex items-center`}>
+                {hiddenText || labelText}
+            </CustomizedTypography>
             <TwInput
                 {...props}
                 theme={theme}
@@ -84,4 +77,4 @@ function CustomizedInput({ theme = StyleThemes.BlueChill, containerStyle, labelT
     );
 }
 
-export default CustomizedInput;
+export default Input;

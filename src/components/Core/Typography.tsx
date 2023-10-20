@@ -21,12 +21,12 @@ type StylesType = {
 
 type TypographyType = Props & StylesType;
 
-function CustomizedTypography({ component = 'p', children, ...rest }: TypographyType) {
+function Typography({ component = 'p', children, ...rest }: TypographyType) {
     return React.createElement(component, { ...rest }, children);
 }
 
-const TwCustomizedTypography = styled(CustomizedTypography, {
-    shouldForwardProp: (prop) => prop !== 'twStyle'
+const TwTypography = styled(Typography, {
+    shouldForwardProp: (prop) => prop !== 'twStyle' && prop !== 'gutterBottom'
 })(({ variant, color, align, gutterBottom, fontWeight, fontSize, twStyle }: StylesType) => [
     tw`text-gray-950 text-b16 w-full h-full`,
     variant && typographyVariants[variant],
@@ -38,4 +38,4 @@ const TwCustomizedTypography = styled(CustomizedTypography, {
     twStyle && twStyle
 ]);
 
-export default TwCustomizedTypography;
+export default TwTypography;
