@@ -210,7 +210,7 @@ module.exports = {
     plugins: [
         plugin(function ({ addUtilities }) {
             addUtilities({
-                '.grid': {
+                '.bg-grid': {
                     'background-position': 'center',
                     'background-size': '20px 20px',
                     'background-image': 'linear-gradient(to right, #eee 1px, transparent 1px), linear-gradient(to bottom, #eee 1px, transparent 1px)'
