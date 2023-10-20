@@ -1,17 +1,17 @@
 import { Outlet } from 'react-router-dom';
 
 import { ModalProvider } from 'components/Modal';
-import { SnackbarProvider } from 'components/Snackbar';
+import { ToastProvider } from 'components/Toast';
 
 export default function Layout() {
     return (
         <ModalProvider>
-            <SnackbarProvider position="bottom-center">
-                <main className="mx-auto min-h-screen w-full">
+            <ToastProvider position="bottom-center">
+                <main className="relative mx-auto w-full overflow-hidden">
                     <Outlet />
                 </main>
                 <div id="portal" />
-            </SnackbarProvider>
+            </ToastProvider>
         </ModalProvider>
     );
 }
