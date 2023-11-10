@@ -1,9 +1,9 @@
 import { InputHTMLAttributes, useId } from 'react';
 
 import styled from '@emotion/styled';
-import tw, { TwStyle } from 'twin.macro';
+import tw, { TwStyle, theme as TwinTheme } from 'twin.macro';
 
-import CustomizedTypography from './Typography';
+import Typography from './Typography';
 
 import { StyleThemes, getBackgroundColor, getBorderColor, getTextColor } from 'utils/theme';
 
@@ -15,25 +15,30 @@ type StylesType = {
     hiddenText?: string;
 };
 
-type InputType = InputHTMLAttributes<HTMLInputElement> & StylesType & { labelText?: string; helperText?: string };
+type InputType = InputHTMLAttributes<HTMLInputElement> &
+    StylesType & {
+        isError?: boolean;
+        labelText?: string;
+        helperText?: string;
+    };
 
 const TwContainer = styled.div(({ containerStyle }: StylesType) => [tw`w-full`, containerStyle && containerStyle]);
 
 const TwInput = styled.input(({ theme, variant, twStyle }: StylesType) => [
-    [tw`h-12 text-b16 outline-none ring-0 focus:ring-0 w-full px-3`, tw`font-semibold`],
+    [tw`h-12 text-b16 outline-none rounded-lg ring-0 focus:ring-0 w-full px-3`, tw`font-semibold`],
     theme && variant === 'contained' && getBackgroundColor(theme),
-    theme && variant === 'text' && getTextColor(theme),
+    theme && variant === 'text' && [getTextColor(theme), tw`rounded-none`],
     theme && variant === 'outlined' && [tw`border`, getBorderColor(theme)],
     twStyle && twStyle
 ]);
 
-function Input({ theme = StyleThemes.BlueChill, containerStyle, hiddenText, labelText, helperText, type, maxLength, min, max, ...props }: InputType) {
+function Input({ theme = StyleThemes.BlueChill, containerStyle, isError, hiddenText, labelText, helperText, type, maxLength, min, max, ...props }: InputType) {
     const id = useId();
     return (
         <TwContainer containerStyle={containerStyle}>
-            <CustomizedTypography htmlFor={id} component="label" variant="b12" fontWeight="500" gutterBottom={4} className={!labelText ? '!sr-only' : ''} twStyle={tw`flex items-center`}>
+            <Typography htmlFor={id} component="label" variant="b12" fontWeight="500" gutterBottom={4} className={!labelText ? '!sr-only' : ''} twStyle={tw`flex items-center`}>
                 {hiddenText || labelText}
-            </CustomizedTypography>
+            </Typography>
             <TwInput
                 {...props}
                 theme={theme}
@@ -69,9 +74,9 @@ function Input({ theme = StyleThemes.BlueChill, containerStyle, hiddenText, labe
                 }}
             />
             {helperText && (
-                <CustomizedTypography variant="b12" fontWeight="600" twStyle={tw`ml-2`}>
+                <Typography variant="b12" fontWeight="600" color={isError ? TwinTheme`colors.red.600` : ''} twStyle={tw`ml-2`}>
                     {helperText}
-                </CustomizedTypography>
+                </Typography>
             )}
         </TwContainer>
     );
