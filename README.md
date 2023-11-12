@@ -93,64 +93,70 @@
        
 ### 🎃 v1.3 (10월 ~ 11월 업데이트)
 
--   [ ] UI 업데이트
-    -   [ ] 등록 + 상세 + 테스트 화면 합치기
-    -   [ ] 테마 추가
--   [ ] 기타
+-   [x] UI 업데이트
+    -   [x] 등록 + 상세 + 테스트 화면 합치기
+    -   [x] 테마 추가
+-   [x] 기타
     -   [x] 리액트로 변경
-    -   [ ] 공통 컴포넌트 분리
+    -   [x] 공통 컴포넌트 분리
        
 </details>
 
-## Demo (v1.0 기준)
-
 <details>
-  <summary><h3>홈 화면</h3></summary>
-  <img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/fb51a3d0-5544-4275-9923-f4451d1d7111" alt="my voca home demo" />
-</details>
-
-<details>
-  <summary><h3>단어 추가하기</h3></summary>
-  <img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/2c9e61b8-4729-47d8-abe4-178ebe6ffe9f" alt="my voca add demo" />
-</details>
-
-<details>
-  <summary><h3>단어 외우기</h3></summary>
-  <img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/f1dbbc49-9964-4a1d-9d28-a378cc957366" alt="my voca flip demo" />
-  <br/>
-  <img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/b9f65da7-0be4-4fa5-9026-7bc03699494c" alt="my voca change word demo" />
-  <br/>
-  <img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/1667ec2e-ba00-4a23-a1ce-87465b3bb3a7" alt="my voca page move demo" />
-</details>
-
-<details>
-  <summary><h3>시험보기</h3></summary>
-  <img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/14213350-ac65-425a-93ce-a5eeb23139a5" alt="my voca test demo" />
-</details>
-
-## Demo (v1.2 기준)
-
-<details>
-  <summary><h3>홈 화면 (MWEB & PC)</h3></summary>
-  <h4>MWEB</h4>
-  <img width="360" alt="MWEB Home" src="https://github.com/akffkdahffkdgo77/my-voca/assets/52883505/2c36d331-da11-4ec6-95f4-a8dafca504d0" />
-  <h4>PC</h4>
-  <img width="768" alt="PC Home" src="https://github.com/akffkdahffkdgo77/my-voca/assets/52883505/ee7bb80f-dda6-44e5-a114-0ee2455a7fa8">
-</details>
-
-<details>
-  <summary><h3>리스트 & 상세 화면 (MWEB & PC)</h3></summary>
-  <h4>MWEB</h4>
-  <img src="https://github.com/akffkdahffkdgo77/my-voca/assets/52883505/a4341254-ef70-4930-be98-1ce77d7a5cc5" alt="MWEB List" />
-  <h4>PC</h4>
-  <img src="https://github.com/akffkdahffkdgo77/my-voca/assets/52883505/e5d5e9ef-8167-4df9-8cc2-ec61e5978d4d" alt="PC List" />
-</details>
-
-<details>
-  <summary><h3>단어장 삭제</h3></summary>
-</details>
-
-<details>
-  <summary><h3>기타</h3></summary>
-  <h4>다중 업로드 안내</h4>
+  <summary><h2>Demo v1.0 ~ v1.2</h2></summary>
+    
+  <h2>Demo (v1.0 기준)</h2>
+  <details>
+    <summary><h3>홈 화면</h3></summary>
+    <img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/fb51a3d0-5544-4275-9923-f4451d1d7111" alt="my voca home demo" />
+  </details>
+  
+  <details>
+    <summary><h3>단어 추가하기</h3></summary>
+    <img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/2c9e61b8-4729-47d8-abe4-178ebe6ffe9f" alt="my voca add demo" />
+  </details>
+  
+  <details>
+    <summary><h3>단어 외우기</h3></summary>
+    <img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/f1dbbc49-9964-4a1d-9d28-a378cc957366" alt="my voca flip demo" />
+    <br/>
+    <img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/b9f65da7-0be4-4fa5-9026-7bc03699494c" alt="my voca change word demo" />
+    <br/>
+    <img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/1667ec2e-ba00-4a23-a1ce-87465b3bb3a7" alt="my voca page move demo" />
+  </details>
+  
+  <details>
+    <summary><h3>시험보기</h3></summary>
+    <img width="700" src="https://github.com/akffkdahffkdgo77/weekly-clone-coding/assets/52883505/14213350-ac65-425a-93ce-a5eeb23139a5" alt="my voca test demo" />
+  </details>
+  
+  <h2>Demo (v1.2 기준)</h2>
+  <details>
+    <summary><h3>홈 화면 (MWEB & PC)</h3></summary>
+    <h4>MWEB</h4>
+    <img width="360" alt="MWEB Home" src="https://github.com/akffkdahffkdgo77/my-voca/assets/52883505/2c36d331-da11-4ec6-95f4-a8dafca504d0" />
+    <h4>PC</h4>
+    <img width="768" alt="PC Home" src="https://github.com/akffkdahffkdgo77/my-voca/assets/52883505/ee7bb80f-dda6-44e5-a114-0ee2455a7fa8">
+  </details>
+  
+  <details>
+    <summary><h3>리스트 & 상세 화면 (MWEB & PC)</h3></summary>
+    <h4>MWEB</h4>
+    <img width="360" src="https://github.com/akffkdahffkdgo77/my-voca/assets/52883505/a4341254-ef70-4930-be98-1ce77d7a5cc5" alt="MWEB List" />
+    <h4>PC</h4>
+    <img width="768" src="https://github.com/akffkdahffkdgo77/my-voca/assets/52883505/e5d5e9ef-8167-4df9-8cc2-ec61e5978d4d" alt="PC List" />
+  </details>
+  
+  <details>
+    <summary><h3>단어장 삭제</h3></summary>
+    <img width="360" src="https://github.com/akffkdahffkdgo77/my-voca/assets/52883505/fe0f0e88-2a89-44a8-8bc7-24edc7def355" alt="Delete" />
+  </details>
+  
+  <details>
+    <summary><h3>기타</h3></summary>
+    <h4>다중 업로드 안내</h4>
+    <img width="360" src="https://github.com/akffkdahffkdgo77/my-voca/assets/52883505/f8702cc6-83ef-47fc-8e8c-670dc9a50c86" alt="notice" />
+    <h4>다크모드/라이트모드</h4>
+    <img width="360" src="https://github.com/akffkdahffkdgo77/my-voca/assets/52883505/890b8fce-9382-4690-8641-19da256a86ee" alt="mode change" />
+  </details>
 </details>
