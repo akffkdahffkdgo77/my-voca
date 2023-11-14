@@ -56,7 +56,7 @@
                         "position": "before"
                     },
                     {
-                        "pattern": "{components*,components/**,layout/**,styles/**,@heroicons/**,*.+(css|scss)}",
+                        "pattern": "{@emotion/*,twin.macro,components*,components/**,layout/**,styles/**,@heroicons/**,*.+(css|scss)}",
                         "group": "external",
                         "position": "before"
                     },
