@@ -158,7 +158,8 @@ module.exports = {
                 ...px100.reduce((acc, px) => {
                     acc[`${px}pxr`] = pxToRem(px);
                     return acc;
-                }, {})
+                }, {}),
+                '1512pxr': pxToRem(1512)
             },
             lineHeight: {
                 ...px100.reduce((acc, px) => {

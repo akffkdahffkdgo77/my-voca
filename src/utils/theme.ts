@@ -59,6 +59,10 @@ export enum StyleThemes {
     'Gray' = 'gray'
 }
 
+export type OptionalThemeType = {
+    theme?: StyleThemes;
+};
+
 export type ThemeType = {
     theme: StyleThemes;
 };
