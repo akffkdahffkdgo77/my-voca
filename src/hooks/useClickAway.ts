@@ -6,17 +6,16 @@ interface IClickAway<T> {
 }
 
 const useClickAway = <T>({ ref, onClickOutside }: IClickAway<T>) => {
+    const handleClickOutside = (event: BaseSyntheticEvent | MouseEvent) => {
+        const element = ref.current as HTMLElement;
+        if (element && !element.contains(event.target)) {
+            onClickOutside();
+        }
+    };
+
     useEffect(() => {
-        const handleClickOutside = (event: BaseSyntheticEvent | MouseEvent) => {
-            const element = ref.current as HTMLElement;
-            if (element && !element.contains(event.target)) {
-                onClickOutside();
-            }
-        };
         window.addEventListener('click', handleClickOutside);
-        return () => {
-            window.removeEventListener('click', handleClickOutside);
-        };
+        return () => window.removeEventListener('click', handleClickOutside);
     }, [ref, onClickOutside]);
 };
 

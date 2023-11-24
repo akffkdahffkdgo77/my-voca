@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
+// Mock API
+
 const useFetch = <T>(getData: () => Promise<T>) => {
     const [data, setData] = useState<T>();
     const [isLoading, setIsLoading] = useState(false);
@@ -12,7 +14,6 @@ const useFetch = <T>(getData: () => Promise<T>) => {
         });
     }, [getData]);
 
-    // Mock API
     useEffect(() => {
         handleFetch();
     }, [handleFetch]);
