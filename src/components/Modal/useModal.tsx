@@ -1,6 +1,7 @@
-import { createContext, useCallback, useContext, useMemo, useRef, useState } from 'react';
+import React, { createContext, useCallback, useContext, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 
-import { InformationCircleIcon } from '@heroicons/react/24/outline';
+import Modal from './Modal';
 
 export type ModalProviderType = {
     children: React.ReactNode;
@@ -8,7 +9,6 @@ export type ModalProviderType = {
 
 export type ModalOptionsType = {
     messageType?: string;
-    title?: string;
     message?: string;
     confirmText?: string;
     cancelText?: string;
@@ -30,7 +30,6 @@ export const useModal = () => {
     return context.handleModal;
 };
 
-// TODO: Portal
 export function ModalProvider({ children }: ModalProviderType) {
     const promiseInfo = useRef<(value: boolean | PromiseLike<boolean>) => void>(() => null);
 
@@ -45,68 +44,26 @@ export function ModalProvider({ children }: ModalProviderType) {
         });
     }, []);
 
-    const handleConfirm = () => {
+    const handleBackdropClick = useCallback(() => setOpen((prev) => !prev), []);
+
+    const handleConfirm = useCallback(() => {
         setOpen(false);
         promiseInfo.current(true);
         promiseInfo.current = () => null;
-    };
+    }, []);
 
-    const handleClose = () => {
+    const handleClose = useCallback(() => {
         setOpen(false);
         promiseInfo.current(false);
         promiseInfo.current = () => null;
-    };
+    }, []);
 
     const value: ModalContextType = useMemo(() => ({ handleModal }), [handleModal]);
 
     return (
         <ModalContext.Provider value={value}>
             {children}
-            {open && (
-                <div
-                    role="presentation"
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        setOpen((prev) => !prev);
-                    }}
-                    className="fixed bottom-0 left-0 right-0 top-0 z-50 flex items-center justify-center bg-black/70"
-                >
-                    <div className="overflow-hidden rounded bg-slate-50">
-                        <h3 className="flex items-center justify-start gap-2.5 bg-slate-900 p-3 text-lg font-bold text-slate-50 dark:bg-slate-500 dark:text-slate-50">
-                            <InformationCircleIcon className="h-7 w-7 animate-pulse" />
-                            {options?.title}
-                        </h3>
-                        <div className="bg-slate-50 dark:bg-slate-300">
-                            <div className="mb-2.5 h-px w-full border-b border-slate-900" />
-                            <p className="flex min-h-100pxr min-w-350pxr items-center justify-center whitespace-pre-wrap text-center text-b16 font-semibold">{options?.message}</p>
-                            <div className="mt-2.5 flex items-center justify-center gap-5 p-2.5">
-                                {options?.messageType === 'confirm' && (
-                                    <button
-                                        className="min-h-10pxr min-w-80pxr rounded-md text-sm font-medium text-slate-900 hover:animate-pulse dark:bg-slate-500 dark:text-slate-50"
-                                        type="button"
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            handleClose();
-                                        }}
-                                    >
-                                        {options?.cancelText}
-                                    </button>
-                                )}
-                                <button
-                                    className="min-h-40pxr min-w-80pxr rounded-md bg-slate-900 text-sm font-medium text-slate-50 hover:animate-pulse"
-                                    type="button"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        handleConfirm();
-                                    }}
-                                >
-                                    {options?.confirmText || '확인'}
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
+            {open && createPortal(<Modal options={options} onClick={handleBackdropClick} onConfirm={handleConfirm} onClose={handleClose} />, document.getElementById('portal') as HTMLElement)}
         </ModalContext.Provider>
     );
 }

@@ -27,11 +27,8 @@ function getVariant(variant = 'default') {
 
 export default function Toast({ children, options, onClose }: ToastType) {
     useEffect(() => {
-        const timerId = setTimeout(() => onClose(), 5000);
-
-        return () => {
-            clearTimeout(timerId);
-        };
+        const timerId = setTimeout(onClose, 5000);
+        return () => clearTimeout(timerId);
     }, [onClose]);
 
     return (
