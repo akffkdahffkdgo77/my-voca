@@ -5,14 +5,13 @@ import tw, { TwStyle, theme as TwinTheme } from 'twin.macro';
 
 import Typography from './Typography';
 
-import { StyleThemes, getBackgroundColor, getBorderColor, getTextColor } from 'utils/theme';
+import { StyleThemes, getBackgroundColor, getBorderColor } from 'utils/theme';
 
 type StylesType = {
     theme?: StyleThemes;
     variant?: 'contained' | 'outlined' | 'text';
     containerStyle?: TwStyle;
     twStyle?: TwStyle;
-    hiddenText?: string;
 };
 
 type InputType = InputHTMLAttributes<HTMLInputElement> &
@@ -20,19 +19,20 @@ type InputType = InputHTMLAttributes<HTMLInputElement> &
         isError?: boolean;
         labelText?: string;
         helperText?: string;
+        hiddenText?: string;
     };
 
 const TwContainer = styled.div(({ containerStyle }: StylesType) => [tw`w-full`, containerStyle && containerStyle]);
 
 const TwInput = styled.input(({ theme, variant, twStyle }: StylesType) => [
-    [tw`h-12 text-b16 outline-none rounded-lg ring-0 focus:ring-0 w-full px-3`, tw`font-semibold`],
+    [tw`h-12 text-b16 placeholder:text-gray-400 outline-none bg-inherit text-ellipsis rounded-lg ring-0 focus:ring-0 w-full px-3`],
     theme && variant === 'contained' && getBackgroundColor(theme),
-    theme && variant === 'text' && [getTextColor(theme), tw`rounded-none`],
+    theme && variant === 'text' && tw`rounded-none text-gray-950`,
     theme && variant === 'outlined' && [tw`border`, getBorderColor(theme)],
     twStyle && twStyle
 ]);
 
-function Input({ theme = StyleThemes.BlueChill, containerStyle, isError, hiddenText, labelText, helperText, type, maxLength, min, max, ...props }: InputType) {
+function Input({ theme = StyleThemes.Gray, containerStyle, isError, hiddenText, labelText, helperText, type, maxLength, min, max, ...props }: InputType) {
     const id = useId();
     return (
         <TwContainer containerStyle={containerStyle}>

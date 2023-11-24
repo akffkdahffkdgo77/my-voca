@@ -1,28 +1,54 @@
-type ButtonType = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-    children: React.ReactNode;
+import styled from '@emotion/styled';
+import tw, { TwStyle } from 'twin.macro';
+
+import { ButtonShapeType, ButtonSizeType, ButtonVariantType, StyleThemes, buttonShape, buttonSize, getBackgroundColor, getBorderColor } from 'utils/theme';
+
+type StylesType = {
+    theme?: StyleThemes;
+    variant?: ButtonVariantType;
+    shape?: ButtonShapeType;
+    size?: ButtonSizeType;
+    width?: string | number;
+    height?: string | number;
+    borderRadius?: string;
+    twStyle?: TwStyle;
 };
+
+type ButtonType = React.ButtonHTMLAttributes<HTMLButtonElement> &
+    StylesType & {
+        children: React.ReactNode;
+    };
+
+const TwButton = styled.button(({ variant, shape, size, theme, width, height, borderRadius, twStyle }: StylesType) => [
+    tw`bg-inherit`,
+    shape && buttonShape[shape],
+    variant !== 'icon' && size && buttonSize[size],
+    theme && variant === 'icon' && [getBackgroundColor(theme), tw`w-6 h-6`],
+    theme && variant === 'outlined' && [tw`border`, getBorderColor(theme)],
+    theme && variant === 'contained' && [getBackgroundColor(theme), theme === StyleThemes.Gray && tw`bg-gray-950 text-white`],
+    width && { width },
+    height && { height },
+    borderRadius && { borderRadius },
+    twStyle && twStyle
+]);
 
 /**
  *  TODO LIST
- *  - shape : rounded, square
- *  - variant : outlined, contained, text
- *  - size : mini, small, medium, large
- *  - theme : rust, buttered-rum, christi, blue-chill, blue-gem, jazzberry-jam
- *  - customizable properties:
- *      - border-radius
- *      - background-color
- *      - dimension (width & height)
  *  - state:
  *      - disabled
  *      - focus
  *      - hover
  *      - active
  */
-export default function CustomizedButton({ children, type = 'button', onClick, ...props }: ButtonType) {
+export default function CustomizedButton(props: ButtonType) {
+    const { children, theme = StyleThemes.Gray, type = 'button', variant = 'outlined', shape = 'rounded', size = 'medium', onClick, ...rest } = props;
     return (
-        <button
-            {...props}
-            // eslint-disable-next-line react/button-has-type
+        <TwButton
+            {...rest}
+            theme={theme}
+            variant={variant}
+            shape={shape}
+            size={size}
             type={type}
             onClick={(e) => {
                 e.stopPropagation();
@@ -32,6 +58,6 @@ export default function CustomizedButton({ children, type = 'button', onClick, .
             }}
         >
             {children}
-        </button>
+        </TwButton>
     );
 }

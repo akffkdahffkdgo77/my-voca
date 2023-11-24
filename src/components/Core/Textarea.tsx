@@ -8,8 +8,6 @@ import Typography from './Typography';
 import useForwardRef from 'hooks/useForwardRef';
 
 type StylesType = {
-    labelText?: string;
-    hiddenText?: string;
     width?: number;
     height?: number;
     isAutoHeight?: boolean;
@@ -23,7 +21,11 @@ type StylesType = {
     twStyle?: TwStyle;
 };
 
-type TextareaType = TextareaHTMLAttributes<HTMLTextAreaElement> & StylesType;
+type TextareaType = TextareaHTMLAttributes<HTMLTextAreaElement> &
+    StylesType & {
+        labelText?: string;
+        hiddenText?: string;
+    };
 
 const TwTextareaContainer = styled.div(({ width, height, isAutoHeight, containerStyle }: StylesType) => [
     tw`pl-3 pr-1 py-2 w-full bg-white h-200pxr`,

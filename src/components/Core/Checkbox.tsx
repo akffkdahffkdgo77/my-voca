@@ -1,8 +1,7 @@
 import { InputHTMLAttributes, useEffect, useId, useState } from 'react';
 
-import { CheckIcon } from '@heroicons/react/24/outline';
-
 import styled from '@emotion/styled';
+import { CheckIcon } from '@heroicons/react/24/outline';
 import tw, { TwStyle } from 'twin.macro';
 
 import { StyleThemes, getTextColor } from 'utils/theme';
@@ -13,22 +12,26 @@ const TwLabel = styled.label(({ theme, twStyle }: { theme: StyleThemes; twStyle?
     twStyle && twStyle
 ]);
 
-type CheckboxType = InputHTMLAttributes<HTMLInputElement> & {
-    theme: StyleThemes;
+type StylesType = {
+    theme?: StyleThemes;
     twStyle?: TwStyle;
-    checked?: string;
-    hiddenText?: string;
 };
 
-function Checkbox({ theme, twStyle, checked, hiddenText, ...props }: CheckboxType) {
+type CheckboxType = InputHTMLAttributes<HTMLInputElement> &
+    StylesType & {
+        isChecked?: boolean;
+        hiddenText?: string;
+    };
+
+function Checkbox({ theme = StyleThemes.Gray, twStyle, isChecked, hiddenText, ...props }: CheckboxType) {
     const id = useId();
     const [selected, setSelected] = useState('');
 
     useEffect(() => {
-        if (checked) {
+        if (isChecked) {
             setSelected(id);
         }
-    }, [checked]);
+    }, [isChecked]);
 
     return (
         <TwLabel htmlFor={id} theme={theme} twStyle={twStyle}>
