@@ -182,6 +182,14 @@ module.exports = {
                 4: '4px'
             },
             keyframes: {
+                rotate: {
+                    '0%': {
+                        transform: 'rotate(0deg)'
+                    },
+                    '100%': {
+                        transform: 'rotate(360deg)'
+                    }
+                },
                 fadeIn: {
                     '0%': {
                         bottom: 0,
@@ -204,7 +212,8 @@ module.exports = {
                 }
             },
             animation: {
-                'fade-in-out': 'fadeIn 0.5s, fadeOut 0.5s 4.5s'
+                'fade-in-out': 'fadeIn 0.5s, fadeOut 0.5s 4.5s',
+                rotate: 'rotate 1s infinite linear'
             }
         }
     },
