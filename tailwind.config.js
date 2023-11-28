@@ -6,7 +6,7 @@ const px100 = Array.from({ length: 1000 }).map((_, index) => index + 1);
 const pxToRem = (px, base = 16) => `${px / base}rem`;
 
 module.exports = {
-    darkMode: 'class',
+    darkMode: ['class', '[data-mode="dark"]'],
     content: ['./src/**/*.{js,ts,jsx,tsx}'],
     theme: {
         extend: {
