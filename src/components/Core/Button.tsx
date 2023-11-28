@@ -39,6 +39,7 @@ const TwButton = styled.button(({ variant, shape, size, theme, width, height, bo
  *      - focus
  *      - hover
  *      - active
+ *  - variant - circle일 경우 width, height
  */
 export default function CustomizedButton(props: ButtonType) {
     const { children, theme = StyleThemes.Gray, type = 'button', variant = 'outlined', shape = 'rounded', size = 'medium', onClick, ...rest } = props;

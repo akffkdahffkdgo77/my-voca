@@ -45,7 +45,7 @@ export const buttonShape: Record<ButtonShapeType, TwStyle> = {
 export const buttonSize: Record<ButtonSizeType, TwStyle> = {
     small: tw`min-w-48pxr px-2 h-7 text-b12`,
     medium: tw`min-w-56pxr px-2 h-8 text-b12`,
-    large: tw`h-10 min-w-80pxr  px-3 py-2 text-b14`,
+    large: tw`h-10 min-w-80pxr px-3 py-2 text-b14`,
     extraLarge: tw`h-12 min-w-120pxr px-3 py-2 text-b14`
 };
 

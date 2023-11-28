@@ -20,6 +20,13 @@ const preview: Preview = {
                 color: /(background|color)$/i,
                 date: /Date$/i
             }
+        },
+        options: {
+            storySort: {
+                method: 'alphabetical',
+                includeNames: true,
+                order: ['Introduction', 'Examples']
+            }
         }
     }
 };
