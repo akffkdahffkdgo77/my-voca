@@ -1,9 +1,16 @@
-import { QueryKey, useSuspenseQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 
-const useFetch = <T>(key: QueryKey, getData: () => Promise<T>) => {
-    const { isLoading, data, refetch } = useSuspenseQuery({ queryKey: key, queryFn: getData });
+import { getWord, getWordList } from 'lib/api/word';
+import { wordKeys } from 'utils/queryKeys';
+
+export const useGetList = () => {
+    const { isLoading, data, refetch } = useSuspenseQuery({ queryKey: wordKeys.all, queryFn: getWordList });
 
     return { isLoading, data, refetch };
 };
 
-export default useFetch;
+export const useGetOne = (id: string) => {
+    const { isLoading, data, refetch } = useSuspenseQuery({ queryKey: wordKeys.detail(id), queryFn: ({ queryKey }) => getWord(queryKey[2]) });
+
+    return { isLoading, data, refetch };
+};
