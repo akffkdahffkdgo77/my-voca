@@ -1,24 +1,9 @@
-import { useCallback, useEffect, useState } from 'react';
+import { QueryKey, useSuspenseQuery } from '@tanstack/react-query';
 
-// Mock API
+const useFetch = <T>(key: QueryKey, getData: () => Promise<T>) => {
+    const { isLoading, data, refetch } = useSuspenseQuery({ queryKey: key, queryFn: getData });
 
-const useFetch = <T>(getData: () => Promise<T>) => {
-    const [data, setData] = useState<T>();
-    const [isLoading, setIsLoading] = useState(false);
-
-    const handleFetch = useCallback(() => {
-        setIsLoading(true);
-        getData().then((response) => {
-            setData(response);
-            setIsLoading(false);
-        });
-    }, [getData]);
-
-    useEffect(() => {
-        handleFetch();
-    }, [handleFetch]);
-
-    return { isLoading, data, refetch: handleFetch };
+    return { isLoading, data, refetch };
 };
 
 export default useFetch;
