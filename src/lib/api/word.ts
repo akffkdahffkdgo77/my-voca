@@ -9,7 +9,7 @@ export const getWordList = async (): Promise<WordList[]> => {
 };
 
 export const getWord = async (id: string): Promise<WordList> => {
-    const { data } = await axios.get(`/${id}`);
+    const { data } = await axios.get(`/word/${id}`);
 
     return data;
 };

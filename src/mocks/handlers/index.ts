@@ -10,13 +10,13 @@ export const handlers = [
         return HttpResponse.json(wordList, { status: 200 });
     }),
     // NOTES: 상세 조회
-    http.get('/:id', async ({ params: { id } }) => {
+    http.get('/word/:id', async ({ params: { id } }) => {
         await delay();
         const word = wordList.find((val) => val.wordListIdx === id);
         return HttpResponse.json(word, { status: 200 });
     }),
     // NOTES: 수정
-    http.put('/:id', async () => {
+    http.put('/word/:id', async () => {
         await delay();
         // TODO: update
         return HttpResponse.json(null, { status: 200 });
