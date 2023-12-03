@@ -62,7 +62,7 @@
                         "position": "before"
                     },
                     {
-                        "pattern": "{hooks/**,hooks*,lib/zustand/**,lib/api/**,utils/**,}",
+                        "pattern": "{hooks/**,hooks*,mocks/**,lib/zustand/**,lib/api/**,utils/**,}",
                         "patternOptions": {
                             "dot": true,
                             "nocomment": true,
