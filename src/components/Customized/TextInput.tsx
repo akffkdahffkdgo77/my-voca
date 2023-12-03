@@ -1,3 +1,5 @@
+import { ChangeEvent } from 'react';
+
 import styled from '@emotion/styled';
 import { Input, Checkbox } from 'components';
 import tw from 'twin.macro';
@@ -5,6 +7,11 @@ import tw from 'twin.macro';
 import { OptionalThemeType, StyleThemes, getBorderColor } from 'utils/theme';
 
 type CustomizedTextInputType = OptionalThemeType & {
+    count?: number;
+    word?: string;
+    definition?: string[];
+    onClick?: (e: ChangeEvent<HTMLInputElement>) => void;
+    onChange?: (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
     isDouble?: boolean;
     isDisabled?: boolean;
 };
@@ -17,39 +24,61 @@ const TwInputContainer = styled.div(({ isDouble, theme }: Omit<CustomizedTextInp
     theme && [getBorderColor(theme), tw`divide-x divide-[inherit]`]
 ]);
 
-function SingleInput({ theme, isDisabled }: Omit<CustomizedTextInputType, 'isDouble'>) {
+function SingleInput({ theme, isDisabled, count, word, definition, onChange, onClick }: Omit<CustomizedTextInputType, 'isDouble'>) {
     return (
         <>
             <div className="relative h-full">
                 <div className="absolute bottom-0 left-2 top-0 flex w-5 flex-col items-center justify-evenly">
-                    <Checkbox hiddenText="테스트 1회" theme={theme} />
-                    <Checkbox hiddenText="테스트 2회" theme={theme} />
-                    <Checkbox hiddenText="테스트 3회" theme={theme} />
+                    <Checkbox hiddenText="테스트 1회" theme={theme} checked={count === 1} onChange={onClick} />
+                    <Checkbox hiddenText="테스트 2회" theme={theme} checked={count === 2} onChange={onClick} />
+                    <Checkbox hiddenText="테스트 3회" theme={theme} checked={count === 3} onChange={onClick} />
                 </div>
-                <Input disabled={isDisabled} hiddenText="단어" placeholder="word" maxLength={30} theme={theme} variant="text" containerStyle={tw`h-full`} twStyle={titleStyle} />
+                <Input
+                    value={word}
+                    onChange={onChange}
+                    disabled={isDisabled}
+                    hiddenText="단어"
+                    placeholder="word"
+                    maxLength={30}
+                    theme={theme}
+                    variant="text"
+                    containerStyle={tw`h-full`}
+                    twStyle={titleStyle}
+                />
             </div>
             <div className="divide-y-2 divide-[inherit] bg-grid">
-                <Input disabled={isDisabled} hiddenText="뜻" placeholder="단어, 낱말" maxLength={100} theme={theme} variant="text" />
-                <Input disabled={isDisabled} hiddenText="뜻" placeholder="이야기, 말" maxLength={100} theme={theme} variant="text" />
+                {definition?.map((val, index) => (
+                    <Input
+                        key={index}
+                        value={val}
+                        onChange={onChange}
+                        disabled={isDisabled}
+                        hiddenText="뜻"
+                        placeholder={index % 2 === 0 ? '단어, 낱말' : '이야기, 말'}
+                        maxLength={100}
+                        theme={theme}
+                        variant="text"
+                    />
+                ))}
             </div>
         </>
     );
 }
 
-function DoubleInput({ theme, isDisabled }: Omit<CustomizedTextInputType, 'isDouble'>) {
+function DoubleInput({ theme, isDisabled, ...rest }: Omit<CustomizedTextInputType, 'isDouble'>) {
     return (
         <>
             {Array.from({ length: 2 }).map((_, index) => (
-                <SingleInput key={index} theme={theme} isDisabled={isDisabled} />
+                <SingleInput key={index} theme={theme} isDisabled={isDisabled} {...rest} />
             ))}
         </>
     );
 }
 
-export default function CustomizedTextInput({ theme = StyleThemes.Gray, isDouble, isDisabled }: CustomizedTextInputType) {
+export default function CustomizedTextInput({ theme = StyleThemes.Gray, isDouble, ...rest }: CustomizedTextInputType) {
     return (
         <TwInputContainer isDouble={isDouble} theme={theme}>
-            {isDouble ? <DoubleInput theme={theme} isDisabled={isDisabled} /> : <SingleInput theme={theme} isDisabled={isDisabled} />}
+            {isDouble ? <DoubleInput theme={theme} {...rest} /> : <SingleInput theme={theme} {...rest} />}
         </TwInputContainer>
     );
 }
