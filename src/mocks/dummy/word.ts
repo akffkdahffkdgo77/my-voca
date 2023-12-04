@@ -57,7 +57,7 @@ export const wordList = [
         wordListIdx: 'ba7b6df5-998f-48d5-a30a-467a2eca31f3',
         wordListName: `단어장#${formatDate(new Date(CURRENT_DATE).setDate(CURRENT_DATE.getDate() - 1), 'YYMMDDHHmmss')}`,
         wordListDate: CURRENT_DATE.getTime(),
-        status: STATUS.TODO,
+        status: STATUS.DONE,
         category: '영어 단어',
         words: [
             {
@@ -82,7 +82,7 @@ export const wordList = [
         wordListIdx: '13b4e3df-4088-4298-b16e-9ee37ebe6442',
         wordListName: `단어장#${formatDate(new Date(CURRENT_DATE).setDate(CURRENT_DATE.getDate() - 2), 'YYMMDDHHmmss')}`,
         wordListDate: CURRENT_DATE.getTime(),
-        status: STATUS.TODO,
+        status: STATUS.PROGRESS,
         category: '영어 단어',
         words: [
             {
