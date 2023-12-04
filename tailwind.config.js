@@ -167,6 +167,9 @@ module.exports = {
                     return acc;
                 }, {})
             },
+            borderWidth: {
+                20: '1.25rem'
+            },
             borderRadius: {
                 '2.5xl': '1.25rem'
             },

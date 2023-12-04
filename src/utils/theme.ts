@@ -11,7 +11,7 @@ export const typographyFontFamily: Record<TypographyFontFamily, TwStyle> = {
 
 export const typographyAligns: Record<TypographyAlignType, TwStyle> = {
     left: tw`text-left`,
-    right: tw`text-left`,
+    right: tw`text-right`,
     center: tw`text-center`,
     justify: tw`text-justify`
 };
