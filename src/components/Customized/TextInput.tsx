@@ -24,14 +24,14 @@ const TwInputContainer = styled.div(({ isDouble, theme }: Omit<CustomizedTextInp
     theme && [getBorderColor(theme), tw`divide-x divide-[inherit]`]
 ]);
 
-function SingleInput({ theme, isDisabled, count, word, definition, onChange, onClick }: Omit<CustomizedTextInputType, 'isDouble'>) {
+function SingleInput({ theme, isDisabled, count = 0, word, definition, onChange, onClick }: Omit<CustomizedTextInputType, 'isDouble'>) {
     return (
         <>
             <div className="relative h-full">
                 <div className="absolute bottom-0 left-2 top-0 flex w-5 flex-col items-center justify-evenly">
-                    <Checkbox hiddenText="테스트 1회" theme={theme} checked={count === 1} onChange={onClick} />
-                    <Checkbox hiddenText="테스트 2회" theme={theme} checked={count === 2} onChange={onClick} />
-                    <Checkbox hiddenText="테스트 3회" theme={theme} checked={count === 3} onChange={onClick} />
+                    <Checkbox hiddenText="테스트 1회" theme={theme} isChecked={count >= 1} onChange={onClick} />
+                    <Checkbox hiddenText="테스트 2회" theme={theme} isChecked={count >= 2} onChange={onClick} />
+                    <Checkbox hiddenText="테스트 3회" theme={theme} isChecked={count >= 3} onChange={onClick} />
                 </div>
                 <Input
                     value={word}
