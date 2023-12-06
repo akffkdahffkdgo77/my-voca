@@ -18,6 +18,8 @@ const STATUS_OPTIONS = [
     { label: 'DONE', value: STATUS.DONE }
 ];
 
+// TODO: 실시간 업데이트!
+// TODO: debounce 구현
 export default function Editor() {
     const { id } = useParams();
     const wordListIdx = id!;

@@ -13,3 +13,11 @@ export const getWord = async (id: string): Promise<WordList> => {
 
     return data;
 };
+
+// TODO: success 메시지
+// TODO: 데이터 저장
+export const updateInfo = async (id: string, body: WordList) => {
+    const { data } = await axios.put(`/word/${id}`, { body });
+
+    return data;
+};
