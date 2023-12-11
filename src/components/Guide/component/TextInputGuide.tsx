@@ -28,21 +28,21 @@ export default function TextInputGuide() {
                 <Typography variant="b24" fontWeight="700" component="h3">
                     Single TextInput
                 </Typography>
-                <div>
-                    <CustomizedTextInput theme={theme} />
-                    <CustomizedTextInput theme={theme} />
+                <div className="h-full w-full">
+                    <CustomizedTextInput count={1} theme={theme} word="단어" definition={['뜻', '뜻2']} />
+                    <CustomizedTextInput count={2} theme={theme} word="단어" definition={['뜻', '뜻2']} />
                 </div>
                 <Typography variant="b24" fontWeight="700" component="h3">
                     Double TextInput
                 </Typography>
-                <div>
-                    <CustomizedTextInput isDouble theme={theme} />
-                    <CustomizedTextInput isDouble theme={theme} />
+                <div className="h-full w-full">
+                    <CustomizedTextInput count={1} isDouble theme={theme} word="단어" definition={['뜻', '뜻2']} />
+                    <CustomizedTextInput count={2} isDouble theme={theme} word="단어" definition={['뜻', '뜻2']} />
                 </div>
                 <Typography variant="b24" fontWeight="700" component="h3">
                     Mobile TextInput
                 </Typography>
-                <CustomizedMobileTextInput theme={theme} />
+                <CustomizedMobileTextInput count={3} theme={theme} word="단어" definition={['뜻', '뜻2'].join('\n')} />
             </div>
         </div>
     );

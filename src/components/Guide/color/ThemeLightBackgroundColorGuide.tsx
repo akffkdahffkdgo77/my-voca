@@ -13,6 +13,19 @@ export default function ThemeLightBackgroundColorGuide() {
                 <div className="flex items-center gap-x-5">
                     <div className="space-y-1">
                         <Typography variant="b12" fontWeight="700" component="small" twStyle={tw`capitalize`}>
+                            red
+                        </Typography>
+                        <div>
+                            <div className="h-14 w-28 border border-gray-950 bg-red-50/20" />
+                            <Typography variant="b18" fontFamily="nanumpenscript">
+                                <small className="font-[inherit]">50/20</small>
+                                <br />
+                                {colors.red['50']}, opacity 20
+                            </Typography>
+                        </div>
+                    </div>
+                    <div className="space-y-1">
+                        <Typography variant="b12" fontWeight="700" component="small" twStyle={tw`capitalize`}>
                             rust
                         </Typography>
                         <div>

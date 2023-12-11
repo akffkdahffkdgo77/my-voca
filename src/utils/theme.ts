@@ -11,7 +11,7 @@ export const typographyFontFamily: Record<TypographyFontFamily, TwStyle> = {
 
 export const typographyAligns: Record<TypographyAlignType, TwStyle> = {
     left: tw`text-left`,
-    right: tw`text-left`,
+    right: tw`text-right`,
     center: tw`text-center`,
     justify: tw`text-justify`
 };
@@ -50,6 +50,7 @@ export const buttonSize: Record<ButtonSizeType, TwStyle> = {
 };
 
 export enum StyleThemes {
+    'Red' = 'red',
     'Rust' = 'rust',
     'ButteredRum' = 'buttered-rum',
     'Christi' = 'christi',
@@ -69,6 +70,8 @@ export type ThemeType = {
 
 export const getBackgroundColor = (theme: StyleThemes) => {
     switch (theme) {
+        case StyleThemes.Red:
+            return tw`bg-red-100`;
         case StyleThemes.Rust:
             return tw`bg-rust-100`;
         case StyleThemes.ButteredRum:
@@ -88,6 +91,8 @@ export const getBackgroundColor = (theme: StyleThemes) => {
 
 export const getLightBackgroundColor = (theme: StyleThemes) => {
     switch (theme) {
+        case StyleThemes.Red:
+            return tw`bg-red-50/20`;
         case StyleThemes.Rust:
             return tw`bg-rust-50/20`;
         case StyleThemes.ButteredRum:
@@ -107,6 +112,8 @@ export const getLightBackgroundColor = (theme: StyleThemes) => {
 
 export const getBorderColor = (theme: StyleThemes) => {
     switch (theme) {
+        case StyleThemes.Red:
+            return tw`border-red-300`;
         case StyleThemes.Rust:
             return tw`border-rust-300`;
         case StyleThemes.ButteredRum:
@@ -126,6 +133,8 @@ export const getBorderColor = (theme: StyleThemes) => {
 
 export const getTextColor = (theme: StyleThemes) => {
     switch (theme) {
+        case StyleThemes.Red:
+            return tw`text-red-500`;
         case StyleThemes.Rust:
             return tw`text-rust-500`;
         case StyleThemes.ButteredRum:
@@ -145,6 +154,8 @@ export const getTextColor = (theme: StyleThemes) => {
 
 export const getDarkTextColor = (theme: StyleThemes) => {
     switch (theme) {
+        case StyleThemes.Red:
+            return tw`text-red-900`;
         case StyleThemes.Rust:
             return tw`text-rust-900`;
         case StyleThemes.ButteredRum:
@@ -163,6 +174,19 @@ export const getDarkTextColor = (theme: StyleThemes) => {
 };
 
 export const colors: Record<string, Record<number, string>> = {
+    red: {
+        50: '#fff0f0',
+        100: '#ffdede',
+        200: '#ffc3c3',
+        300: '#ff9a9a',
+        400: '#ff6060',
+        500: '#ff2f2f',
+        600: '#ed0c0c',
+        700: '#cd0808',
+        800: '#a90b0b',
+        900: '#8b1111',
+        950: '#4c0303'
+    },
     rust: {
         50: '#fff8ec',
         100: '#ffeed4',
