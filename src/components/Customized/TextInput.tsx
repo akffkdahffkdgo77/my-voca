@@ -24,7 +24,7 @@ const TwInputContainer = styled.div(({ isDouble, theme }: Omit<CustomizedTextInp
     theme && [getBorderColor(theme), tw`divide-x divide-[inherit]`]
 ]);
 
-function SingleInput({ theme, isDisabled, count = 0, word, definition, onChange, onClick }: Omit<CustomizedTextInputType, 'isDouble'>) {
+function SingleInput({ theme, isDisabled, count = 0, word, definition = ['', ''], onChange, onClick }: Omit<CustomizedTextInputType, 'isDouble'>) {
     return (
         <>
             <div className="relative h-full">

@@ -8,6 +8,12 @@ export enum STATUS {
     DONE = 'done'
 }
 
+export const STATUS_OPTIONS = [
+    { label: 'TODO', value: STATUS.TODO },
+    { label: 'PROGRESS', value: STATUS.PROGRESS },
+    { label: 'DONE', value: STATUS.DONE }
+];
+
 export type WordList = {
     wordListIdx: string;
     wordListName: string;

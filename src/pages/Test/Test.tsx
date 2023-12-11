@@ -1,35 +1,20 @@
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
 
 import styled from '@emotion/styled';
 import { Button, CustomizedColorPicker, CustomizedDatePicker, CustomizedLabelButton, CustomizedMobileTextInput, CustomizedSelect, CustomizedTextInput, Input } from 'components';
 import tw from 'twin.macro';
 
+import { STATUS, STATUS_OPTIONS } from 'dummy/word';
 import { useMobile, useTheme } from 'hooks';
-import { useGetOne } from 'hooks/useFetch';
-import { STATUS } from 'mocks/dummy/word';
 import { StyleThemes, ThemeType, getLightBackgroundColor } from 'utils/theme';
 
 const TwContainer = styled.div(({ theme }: ThemeType) => [tw`min-h-[calc(100vh-128px)] overflow-y-auto w-full py-10`, theme && getLightBackgroundColor(theme)]);
 
-const STATUS_OPTIONS = [
-    { label: 'TODO', value: STATUS.TODO },
-    { label: 'PROGRESS', value: STATUS.PROGRESS },
-    { label: 'DONE', value: STATUS.DONE }
-];
-
-// TODO: 실시간 업데이트!
-// TODO: debounce 구현
-export default function Editor() {
-    const { id } = useParams();
-    const wordListIdx = id!;
-
+export default function Test() {
     const { theme, handleClick } = useTheme();
     const isMobile = useMobile();
     const [isDouble, setIsDouble] = useState(false);
     const [isDisabled, setIsDisabled] = useState(true);
-
-    const { data } = useGetOne(wordListIdx);
 
     return (
         <>
@@ -49,7 +34,6 @@ export default function Editor() {
                 <div className="mx-auto max-w-5xl px-5 pt-6">
                     <div className="mb-5 flex items-center justify-center">
                         <Input
-                            value={data.wordListName}
                             disabled={isDisabled}
                             hiddenText="단어장 이름"
                             type="text"
@@ -63,13 +47,13 @@ export default function Editor() {
                     </div>
                     <div className="mb-5 flex items-end gap-2.5">
                         {!isMobile && <CustomizedLabelButton theme={theme} buttonText={isDouble ? '2x' : '1x'} onClick={() => setIsDouble((prev) => !prev)} />}
-                        <CustomizedSelect caption="Status" theme={theme} value={data.status} options={STATUS_OPTIONS} />
+                        <CustomizedSelect caption="Status" theme={theme} value={STATUS.TODO} options={STATUS_OPTIONS} />
                     </div>
-                    {data.words.map((word) =>
+                    {[...Array.from({ length: 10 }).keys()].map((key) =>
                         isMobile ? (
-                            <CustomizedMobileTextInput key={word.wordIdx} count={word.count} word={word.word} definition={word.definition.join('\n')} isDisabled={isDisabled} theme={theme} />
+                            <CustomizedMobileTextInput key={key} isDisabled={isDisabled} theme={theme} />
                         ) : (
-                            <CustomizedTextInput key={word.wordIdx} count={word.count} word={word.word} definition={word.definition} isDisabled={isDisabled} isDouble={isDouble} theme={theme} />
+                            <CustomizedTextInput key={key} isDisabled={isDisabled} isDouble={isDouble} theme={theme} />
                         )
                     )}
                 </div>

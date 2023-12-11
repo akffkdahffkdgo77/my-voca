@@ -1,16 +1,23 @@
-import { useSuspenseQuery } from '@tanstack/react-query';
+import { useCallback, useEffect, useState } from 'react';
 
-import { getWord, getWordList } from 'lib/api/word';
-import { wordKeys } from 'utils/queryKeys';
+// Mock API
+const useFetch = <T>(getData: () => Promise<T>) => {
+    const [data, setData] = useState<T>();
+    const [isLoading, setIsLoading] = useState(false);
 
-export const useGetList = () => {
-    const { isLoading, data, refetch } = useSuspenseQuery({ queryKey: wordKeys.all, queryFn: getWordList });
+    const handleFetch = useCallback(() => {
+        setIsLoading(true);
+        getData().then((response) => {
+            setData(response);
+            setIsLoading(false);
+        });
+    }, [getData]);
 
-    return { isLoading, data, refetch };
+    useEffect(() => {
+        handleFetch();
+    }, [handleFetch]);
+
+    return { isLoading, data, refetch: handleFetch };
 };
 
-export const useGetOne = (id: string) => {
-    const { isLoading, data, refetch } = useSuspenseQuery({ queryKey: wordKeys.detail(id), queryFn: ({ queryKey }) => getWord(queryKey[2]) });
-
-    return { isLoading, data, refetch };
-};
+export default useFetch;

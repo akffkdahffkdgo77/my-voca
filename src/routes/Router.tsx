@@ -2,9 +2,9 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import RootBoundary from 'app/RootBoundary';
 import { Layout } from 'layout';
-import Editor from 'pages/Editor';
 import Guide from 'pages/Guide';
-import List from 'pages/List';
+import Home from 'pages/Home';
+import Test from 'pages/Test';
 
 const router = createBrowserRouter([
     {
@@ -14,11 +14,15 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '',
-                element: <List />
+                element: <Home />
             },
             {
-                path: ':id',
-                element: <Editor />
+                path: 'register',
+                element: <Home />
+            },
+            {
+                path: 'test',
+                element: <Test />
             },
             {
                 path: 'guide',
