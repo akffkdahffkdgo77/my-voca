@@ -43,6 +43,19 @@ module.exports = {
                     900: '#3d3d3d',
                     950: '#292929'
                 },
+                red: {
+                    50: '#fff0f0',
+                    100: '#ffdede',
+                    200: '#ffc3c3',
+                    300: '#ff9a9a',
+                    400: '#ff6060',
+                    500: '#ff2f2f',
+                    600: '#ed0c0c',
+                    700: '#cd0808',
+                    800: '#a90b0b',
+                    900: '#8b1111',
+                    950: '#4c0303'
+                },
                 rust: {
                     50: '#fff8ec',
                     100: '#ffeed4',
@@ -167,6 +180,9 @@ module.exports = {
                     return acc;
                 }, {})
             },
+            borderWidth: {
+                20: '1.25rem'
+            },
             borderRadius: {
                 '2.5xl': '1.25rem'
             },
@@ -182,6 +198,14 @@ module.exports = {
                 4: '4px'
             },
             keyframes: {
+                rotate: {
+                    '0%': {
+                        transform: 'rotate(0deg)'
+                    },
+                    '100%': {
+                        transform: 'rotate(360deg)'
+                    }
+                },
                 fadeIn: {
                     '0%': {
                         bottom: 0,
@@ -204,7 +228,8 @@ module.exports = {
                 }
             },
             animation: {
-                'fade-in-out': 'fadeIn 0.5s, fadeOut 0.5s 4.5s'
+                'fade-in-out': 'fadeIn 0.5s, fadeOut 0.5s 4.5s',
+                rotate: 'rotate 1s infinite linear'
             }
         }
     },

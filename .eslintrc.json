@@ -35,6 +35,7 @@
         "prettier/prettier": "off",
         "no-shadow": "off",
         "no-plusplus": "off",
+        "no-nested-ternary": "off",
         "no-param-reassign": "off",
         "import/extensions": "off",
         "consistent-return": "off",
@@ -61,7 +62,7 @@
                         "position": "before"
                     },
                     {
-                        "pattern": "{hooks/**,hooks*,lib/zustand/**,lib/api/**,utils/**,}",
+                        "pattern": "{hooks/**,hooks*,dummy/**,lib/zustand/**,utils/**,}",
                         "patternOptions": {
                             "dot": true,
                             "nocomment": true,

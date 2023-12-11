@@ -4,7 +4,7 @@ const HEADER_HEIGHT = 64;
 const OFFSET = 100; // 너무 빨리 노출/미노출되지 않도록
 
 const useScroll = () => {
-    const [isVisible, setIsVisible] = useState(true);
+    const [isVisible, setIsVisible] = useState(false);
     const previousScroll = useRef(0);
 
     const handleScroll = () => {

@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState } from 'react';
+import { MouseEvent, useEffect, useId, useRef, useState } from 'react';
 
 import styled from '@emotion/styled';
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
@@ -40,7 +40,8 @@ export default function CustomizedSelect({ theme = StyleThemes.Gray, options = [
         setIsOpen(false);
     };
 
-    const handleClick = () => {
+    const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation();
         setIsOpen((prev) => !prev);
     };
 

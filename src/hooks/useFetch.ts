@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
 // Mock API
-
 const useFetch = <T>(getData: () => Promise<T>) => {
     const [data, setData] = useState<T>();
     const [isLoading, setIsLoading] = useState(false);

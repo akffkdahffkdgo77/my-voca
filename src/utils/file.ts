@@ -16,7 +16,7 @@ export function exportFile(data: string, name: string) {
 
 function createList(list: string[]) {
     const curTime = new Date().getTime();
-    const newWordList: DataType = { idx: curTime, title: `단어장 ${formatDate(curTime)}`, createdAt: curTime, words: [] };
+    const newWordList: DataType = { idx: curTime, title: `단어장 ${formatDate(curTime, 'YYYY.MM.DD')}`, createdAt: curTime, words: [] };
     for (let i = 0; i < list.length; i++) {
         const [word, definition] = list[i].split(':');
         newWordList.words[i] = {
