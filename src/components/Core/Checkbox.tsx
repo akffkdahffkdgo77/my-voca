@@ -30,6 +30,8 @@ function Checkbox({ theme = StyleThemes.Gray, twStyle, isChecked, hiddenText, ..
     useEffect(() => {
         if (isChecked) {
             setSelected(id);
+        } else if (!isChecked && id) {
+            setSelected('');
         }
     }, [isChecked]);
 
