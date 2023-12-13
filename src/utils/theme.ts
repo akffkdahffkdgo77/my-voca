@@ -49,6 +49,8 @@ export const buttonSize: Record<ButtonSizeType, TwStyle> = {
     extraLarge: tw`h-12 min-w-120pxr px-3 py-2 text-b14`
 };
 
+export type InputVariantType = 'contained' | 'outlined' | 'text';
+
 export enum StyleThemes {
     'Red' = 'red',
     'Rust' = 'rust',

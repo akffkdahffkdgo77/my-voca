@@ -5,11 +5,11 @@ import tw, { TwStyle, theme as TwinTheme } from 'twin.macro';
 
 import Typography from './Typography';
 
-import { StyleThemes, getBackgroundColor, getBorderColor } from 'utils/theme';
+import { InputVariantType, StyleThemes, getBackgroundColor, getBorderColor } from 'utils/theme';
 
 type StylesType = {
     theme?: StyleThemes;
-    variant?: 'contained' | 'outlined' | 'text';
+    variant?: InputVariantType;
     containerStyle?: TwStyle;
     twStyle?: TwStyle;
 };
