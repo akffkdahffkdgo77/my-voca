@@ -33,7 +33,7 @@ const meta = {
             description: '체크여부',
             table: {
                 category: 'optional',
-                defaultValue: { summary: 'false' },
+                defaultValue: { summary: false },
                 type: { summary: 'true | false' }
             }
         },

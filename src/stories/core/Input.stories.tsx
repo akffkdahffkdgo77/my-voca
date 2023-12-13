@@ -22,7 +22,7 @@ const meta = {
             description: '에러',
             table: {
                 category: 'optional',
-                defaultValue: { summary: 'false' },
+                defaultValue: { summary: false },
                 type: { summary: 'true | false' }
             }
         },
@@ -111,6 +111,7 @@ export const Primary: Story = {
         variant: 'outlined',
         isError: false,
         labelText: '닉네임',
-        helperText: '한글만 입력해 주세요.'
+        helperText: '한글만 입력해 주세요.',
+        hiddenText: ''
     }
 };
