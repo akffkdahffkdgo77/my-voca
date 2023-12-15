@@ -1,4 +1,3 @@
-import { HeartIcon } from '@heroicons/react/24/outline';
 import { Typography } from 'components';
 
 import { StyleThemes, typographyAligns, typographyFontFamily, typographyVariants } from 'utils/theme';
