@@ -28,10 +28,11 @@ function createList(list: string[]) {
     };
     for (let i = 0; i < list.length; i++) {
         const [word, definition] = list[i].split(':');
+        const [definition1, definition2] = definition.split('\n');
         newWordList.words[i] = {
             wordIdx: uuid(),
             word,
-            definition,
+            definition: [definition1, definition2 || ''],
             count: 0,
             isHighlighted: false,
             isMemorized: false

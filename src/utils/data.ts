@@ -3,7 +3,7 @@ import { getLocalStorage, setLocalStorage } from './localStorage';
 export type WordType = {
     wordIdx: string;
     word: string;
-    definition: string;
+    definition: string[];
     count: number;
     isHighlighted: false;
     isMemorized: false;
@@ -20,7 +20,7 @@ export type DataType = {
 
 export type DataListType = DataType[];
 
-export function getWords() {
+export function getWords(): DataListType {
     return getLocalStorage('words') || [];
 }
 
