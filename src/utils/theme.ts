@@ -281,3 +281,7 @@ export const colors: Record<string, Record<number, string>> = {
         950: '#292929'
     }
 };
+
+export const textStyle = {
+    title: tw`bg-inherit text-h1 h-full px-0 font-nanumpenscript`
+};

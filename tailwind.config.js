@@ -181,6 +181,7 @@ module.exports = {
                 }, {})
             },
             borderWidth: {
+                16: '1rem',
                 20: '1.25rem'
             },
             borderRadius: {
@@ -240,6 +241,11 @@ module.exports = {
                     'background-position': 'center',
                     'background-size': '20px 20px',
                     'background-image': 'linear-gradient(to right, #eee 1px, transparent 1px), linear-gradient(to bottom, #eee 1px, transparent 1px)'
+                },
+                '.bg-grid-light': {
+                    'background-position': 'center',
+                    'background-size': '20px 20px',
+                    'background-image': 'linear-gradient(to right, #fafafa 1px, transparent 1px), linear-gradient(to bottom, #fafafa 1px, transparent 1px)'
                 }
             });
         })
