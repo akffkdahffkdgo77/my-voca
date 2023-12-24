@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, useId } from 'react';
+import { InputHTMLAttributes, forwardRef, useId } from 'react';
 
 import styled from '@emotion/styled';
 import tw, { TwStyle, theme as TwinTheme } from 'twin.macro';
@@ -8,6 +8,9 @@ import Typography from './Typography';
 import { InputVariantType, StyleThemes, getBackgroundColor, getBorderColor } from 'utils/theme';
 
 type StylesType = {
+    isError?: boolean;
+    width?: number | string;
+    height?: number | string;
     theme?: StyleThemes;
     variant?: InputVariantType;
     containerStyle?: TwStyle;
@@ -16,7 +19,6 @@ type StylesType = {
 
 type InputType = InputHTMLAttributes<HTMLInputElement> &
     StylesType & {
-        isError?: boolean;
         labelText?: string;
         helperText?: string;
         hiddenText?: string;
@@ -24,15 +26,21 @@ type InputType = InputHTMLAttributes<HTMLInputElement> &
 
 const TwContainer = styled.div(({ containerStyle }: StylesType) => [tw`w-full`, containerStyle && containerStyle]);
 
-const TwInput = styled.input(({ theme, variant, twStyle }: StylesType) => [
+const TwInput = styled.input(({ isError, theme, width, height, variant, twStyle }: StylesType) => [
     [tw`h-12 text-b16 placeholder:text-gray-400 outline-none bg-inherit text-ellipsis rounded-lg ring-0 focus:ring-0 w-full px-3`],
     theme && variant === 'contained' && getBackgroundColor(theme),
     theme && variant === 'text' && tw`rounded-none text-gray-950`,
     theme && variant === 'outlined' && [tw`border`, getBorderColor(theme)],
+    width && { width },
+    height && { height },
+    isError && tw`border border-red-500`,
     twStyle && twStyle
 ]);
 
-function Input({ theme = StyleThemes.Gray, containerStyle, isError, hiddenText, labelText, helperText, type, maxLength, min, max, ...props }: InputType) {
+const Input = forwardRef<HTMLInputElement, InputType>(function useCreateInput(
+    { theme = StyleThemes.Gray, containerStyle, isError, hiddenText, labelText, helperText, type, maxLength, min, max, ...props },
+    ref
+) {
     const id = useId();
     return (
         <TwContainer containerStyle={containerStyle}>
@@ -40,14 +48,19 @@ function Input({ theme = StyleThemes.Gray, containerStyle, isError, hiddenText, 
                 {hiddenText || labelText}
             </Typography>
             <TwInput
+                ref={ref}
                 {...props}
                 theme={theme}
                 id={id}
                 type={type}
                 maxLength={maxLength}
+                isError={isError}
                 onKeyDown={(e) => {
                     if (type === 'number' && ['e', 'E', '+', '-'].includes(e.key)) {
                         e.preventDefault();
+                    }
+                    if (props.onKeyDown) {
+                        props.onKeyDown(e);
                     }
                 }}
                 onChange={(e) => {
@@ -71,6 +84,9 @@ function Input({ theme = StyleThemes.Gray, containerStyle, isError, hiddenText, 
                             }
                         }
                     }
+                    if (props.onChange) {
+                        props.onChange(e);
+                    }
                 }}
             />
             {helperText && (
@@ -80,6 +96,6 @@ function Input({ theme = StyleThemes.Gray, containerStyle, isError, hiddenText, 
             )}
         </TwContainer>
     );
-}
+});
 
 export default Input;
