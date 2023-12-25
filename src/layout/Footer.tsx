@@ -5,7 +5,7 @@ import { Typography } from 'components';
 
 export default function Footer() {
     return (
-        <footer className="flex h-32 w-full items-center bg-gray-950 text-white tablet:min-w-1512pxr under-tablet:px-5">
+        <footer className="flex h-32 w-full items-center bg-gray-950 text-white under-tablet:px-5">
             <div className="mx-auto flex w-full max-w-7xl justify-between">
                 <Link to="/">
                     <Typography variant="h2" component="h1" fontFamily="nanumpenscript" color="inherit">
