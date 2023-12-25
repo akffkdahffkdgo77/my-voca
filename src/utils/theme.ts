@@ -133,6 +133,27 @@ export const getBorderColor = (theme: StyleThemes) => {
     }
 };
 
+export const getLightBorderColor = (theme: StyleThemes) => {
+    switch (theme) {
+        case StyleThemes.Red:
+            return tw`border-red-100`;
+        case StyleThemes.Rust:
+            return tw`border-rust-100`;
+        case StyleThemes.ButteredRum:
+            return tw`border-buttered-rum-100`;
+        case StyleThemes.Christi:
+            return tw`border-christi-100`;
+        case StyleThemes.BlueGem:
+            return tw`border-blue-gem-100`;
+        case StyleThemes.JazzberryJam:
+            return tw`border-jazzberry-jam-100`;
+        case StyleThemes.BlueChill:
+            return tw`border-blue-chill-100`;
+        default:
+            return tw`border-gray-100`;
+    }
+};
+
 export const getTextColor = (theme: StyleThemes) => {
     switch (theme) {
         case StyleThemes.Red:
@@ -283,5 +304,6 @@ export const colors: Record<string, Record<number, string>> = {
 };
 
 export const textStyle = {
-    title: tw`bg-inherit text-h1 h-full px-0 font-nanumpenscript`
+    title: tw`bg-inherit text-h1 h-full px-0 font-nanumpenscript`,
+    modalText: tw`whitespace-pre-wrap break-all`
 };
