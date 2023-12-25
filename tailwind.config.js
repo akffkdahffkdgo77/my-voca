@@ -2,7 +2,7 @@
 
 const plugin = require('tailwindcss/plugin');
 
-const px100 = Array.from({ length: 1000 }).map((_, index) => index + 1);
+const px1000 = [...Array(1000).keys()].map((val) => val + 1);
 const pxToRem = (px, base = 16) => `${px / base}rem`;
 
 module.exports = {
@@ -154,28 +154,29 @@ module.exports = {
                 }
             },
             spacing: {
-                ...px100.reduce((acc, px) => {
+                ...px1000.reduce((acc, px) => {
                     acc[`${px}pxr`] = pxToRem(px);
                     return acc;
                 }, {})
             },
             minHeight: {
                 inherit: 'inherit',
-                ...px100.reduce((acc, px) => {
+                ...px1000.reduce((acc, px) => {
                     acc[`${px}pxr`] = pxToRem(px);
                     return acc;
                 }, {})
             },
             minWidth: {
                 inherit: 'inherit',
-                ...px100.reduce((acc, px) => {
+                ...px1000.reduce((acc, px) => {
                     acc[`${px}pxr`] = pxToRem(px);
                     return acc;
                 }, {}),
-                '1512pxr': pxToRem(1512)
+                '1512pxr': pxToRem(1512),
+                '4/5': 'calc(100% - 20px)'
             },
             lineHeight: {
-                ...px100.reduce((acc, px) => {
+                ...px1000.reduce((acc, px) => {
                     acc[`${px}pxr`] = pxToRem(px);
                     return acc;
                 }, {})
@@ -188,7 +189,7 @@ module.exports = {
                 '2.5xl': '1.25rem'
             },
             zIndex: {
-                ...px100
+                ...px1000
             },
             gridTemplateColumns: {
                 single: '0.8fr 2fr',
