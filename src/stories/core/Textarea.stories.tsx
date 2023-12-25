@@ -67,6 +67,16 @@ const meta = {
                 type: { summary: 'number' }
             }
         },
+        isDisabled: {
+            type: { name: 'boolean', required: false },
+            control: { type: 'boolean' },
+            description: '활성화/비활성화',
+            table: {
+                category: 'optional',
+                defaultValue: { summary: false },
+                type: { summary: 'true | false' }
+            }
+        },
         isAutoHeight: {
             type: { name: 'boolean', required: false },
             control: { type: 'boolean' },
@@ -170,6 +180,7 @@ export const TextareaScrollable: Story = {
         hiddenText: '',
         width: 300,
         height: 100,
+        isDisabled: false,
         isAutoHeight: false,
         backgroundColor: '#ffffff',
         color: '#000000',
@@ -187,6 +198,7 @@ export const TextareaAutoHeight: Story = {
         labelText: '설명',
         hiddenText: '',
         width: 300,
+        isDisabled: false,
         isAutoHeight: true,
         backgroundColor: '#ffffff',
         color: '#000000',

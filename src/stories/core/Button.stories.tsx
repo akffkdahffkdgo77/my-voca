@@ -70,6 +70,16 @@ const meta = {
                 type: { summary: 'small | medium | large | extraLarge' }
             }
         },
+        circleSize: {
+            type: { name: 'string', required: false },
+            control: { type: 'number' },
+            description: '버튼 모양이 circle일 경우, width와 height',
+            table: {
+                category: 'style',
+                defaultValue: { summary: '' },
+                type: { summary: 'number' }
+            }
+        },
         width: {
             type: { name: 'string', required: false },
             control: { type: 'number' },
@@ -98,6 +108,16 @@ const meta = {
                 category: 'style',
                 defaultValue: { summary: '' },
                 type: { summary: 'string | number' }
+            }
+        },
+        backgroundColor: {
+            type: { name: 'string', required: false },
+            control: { type: 'text' },
+            description: '[CSS] 버튼 배경색',
+            table: {
+                category: 'style',
+                defaultValue: { summary: '' },
+                type: { summary: 'string' }
             }
         },
         twStyle: {
@@ -204,8 +224,7 @@ export const ShapeCircle: Story = {
         variant: 'outlined',
         shape: 'circle',
         theme: StyleThemes.Gray,
-        width: 56,
-        height: 56
+        circleSize: 56
     }
 };
 

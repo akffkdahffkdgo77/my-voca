@@ -25,12 +25,12 @@ const TwButton = styled.button(({ variant, shape, circleSize, size, theme, width
     tw`bg-inherit`,
     shape && buttonShape[shape],
     variant !== 'icon' && size && buttonSize[size],
-    shape === 'circle' && { width: circleSize, height: circleSize },
     theme && variant === 'icon' && [getBackgroundColor(theme), tw`w-6 h-6`],
     theme && variant === 'outlined' && [tw`border`, getBorderColor(theme)],
     theme && variant === 'contained' && [getBackgroundColor(theme), theme === StyleThemes.Gray && tw`bg-gray-950 text-white`],
     width && { width },
     height && { height },
+    shape === 'circle' && { width: circleSize, height: circleSize },
     borderRadius && { borderRadius },
     backgroundColor && { backgroundColor },
     twStyle && twStyle

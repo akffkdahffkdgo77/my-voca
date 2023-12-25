@@ -16,6 +16,16 @@ const meta = {
     tags: ['autodocs'],
     // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
     argTypes: {
+        isDisabled: {
+            type: { name: 'boolean', required: false },
+            control: { type: 'boolean' },
+            description: '활성화/비활성화',
+            table: {
+                category: 'optional',
+                defaultValue: { summary: false },
+                type: { summary: 'true | false' }
+            }
+        },
         isError: {
             type: { name: 'boolean', required: false },
             control: { type: 'boolean' },
@@ -109,6 +119,7 @@ export const Primary: Story = {
     args: {
         theme: StyleThemes.Gray,
         variant: 'outlined',
+        isDisabled: false,
         isError: false,
         labelText: '닉네임',
         helperText: '한글만 입력해 주세요.',
