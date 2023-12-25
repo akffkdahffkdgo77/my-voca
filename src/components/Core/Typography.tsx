@@ -3,14 +3,14 @@ import React from 'react';
 import styled from '@emotion/styled';
 import tw, { TwStyle } from 'twin.macro';
 
-import { StyleThemes, TypographyAlignType, TypographyFontFamily, TypographyVariantType, getTextColor, typographyAligns, typographyFontFamily, typographyVariants } from 'utils/theme';
+import { OptionalThemeType, TypographyAlignType, TypographyFontFamily, TypographyVariantType, getTextColor, typographyAligns, typographyFontFamily, typographyVariants } from 'utils/theme';
 
 type Props = React.HTMLAttributes<HTMLElement> & React.LabelHTMLAttributes<HTMLLabelElement>;
 
-type StylesType = {
-    theme?: StyleThemes;
+type StylesType = OptionalThemeType & {
     variant?: TypographyVariantType;
     color?: string;
+    backgroundColor?: string;
     fontFamily?: TypographyFontFamily;
     fontSize?: string;
     fontWeight?: string;
@@ -31,8 +31,8 @@ function Typography({ component = 'p', children, ...rest }: TypographyType) {
 }
 
 const TwTypography = styled(Typography, {
-    shouldForwardProp: (prop) => prop !== 'twStyle' && prop !== 'gutterBottom' && prop !== 'lineHeight'
-})(({ variant, color, align, gutterBottom, fontWeight, fontSize, fontFamily, lineHeight, theme, twStyle }: StylesType) => [
+    shouldForwardProp: (prop) => !['twStyle', 'gutterBottom', 'lineHeight', 'backgroundColor'].includes(prop)
+})(({ variant, color, align, gutterBottom, fontWeight, fontSize, fontFamily, lineHeight, backgroundColor, theme, twStyle }: StylesType) => [
     tw`text-gray-950 text-b16`,
     theme && getTextColor(theme),
     variant && typographyVariants[variant],
@@ -41,6 +41,7 @@ const TwTypography = styled(Typography, {
     fontWeight && { fontWeight },
     lineHeight && { lineHeight },
     color && { color },
+    backgroundColor && { backgroundColor },
     align && typographyAligns[align],
     gutterBottom && { marginBottom: gutterBottom },
     twStyle && twStyle

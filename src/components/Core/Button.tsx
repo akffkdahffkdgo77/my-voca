@@ -8,9 +8,11 @@ type StylesType = {
     variant?: ButtonVariantType;
     shape?: ButtonShapeType;
     size?: ButtonSizeType;
+    circleSize?: number;
     width?: string | number;
     height?: string | number;
     borderRadius?: string;
+    backgroundColor?: string;
     twStyle?: TwStyle;
 };
 
@@ -19,16 +21,18 @@ type ButtonType = React.ButtonHTMLAttributes<HTMLButtonElement> &
         children: React.ReactNode;
     };
 
-const TwButton = styled.button(({ variant, shape, size, theme, width, height, borderRadius, twStyle }: StylesType) => [
+const TwButton = styled.button(({ variant, shape, circleSize, size, theme, width, height, borderRadius, backgroundColor, twStyle }: StylesType) => [
     tw`bg-inherit`,
     shape && buttonShape[shape],
     variant !== 'icon' && size && buttonSize[size],
+    shape === 'circle' && { width: circleSize, height: circleSize },
     theme && variant === 'icon' && [getBackgroundColor(theme), tw`w-6 h-6`],
     theme && variant === 'outlined' && [tw`border`, getBorderColor(theme)],
     theme && variant === 'contained' && [getBackgroundColor(theme), theme === StyleThemes.Gray && tw`bg-gray-950 text-white`],
     width && { width },
     height && { height },
     borderRadius && { borderRadius },
+    backgroundColor && { backgroundColor },
     twStyle && twStyle
 ]);
 
@@ -39,7 +43,6 @@ const TwButton = styled.button(({ variant, shape, size, theme, width, height, bo
  *      - focus
  *      - hover
  *      - active
- *  - variant - circle일 경우 width, height
  */
 export default function CustomizedButton(props: ButtonType) {
     const { children, theme = StyleThemes.Gray, type = 'button', variant = 'outlined', shape = 'rounded', size = 'medium', onClick, ...rest } = props;

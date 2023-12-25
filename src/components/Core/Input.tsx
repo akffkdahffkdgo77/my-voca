@@ -5,13 +5,12 @@ import tw, { TwStyle, theme as TwinTheme } from 'twin.macro';
 
 import Typography from './Typography';
 
-import { InputVariantType, StyleThemes, getBackgroundColor, getBorderColor } from 'utils/theme';
+import { InputVariantType, OptionalThemeType, StyleThemes, getBackgroundColor, getBorderColor } from 'utils/theme';
 
-type StylesType = {
+type StylesType = OptionalThemeType & {
     isError?: boolean;
     width?: number | string;
     height?: number | string;
-    theme?: StyleThemes;
     variant?: InputVariantType;
     containerStyle?: TwStyle;
     twStyle?: TwStyle;
@@ -19,6 +18,7 @@ type StylesType = {
 
 type InputType = InputHTMLAttributes<HTMLInputElement> &
     StylesType & {
+        isDisabled?: boolean;
         labelText?: string;
         helperText?: string;
         hiddenText?: string;
@@ -27,7 +27,7 @@ type InputType = InputHTMLAttributes<HTMLInputElement> &
 const TwContainer = styled.div(({ containerStyle }: StylesType) => [tw`w-full`, containerStyle && containerStyle]);
 
 const TwInput = styled.input(({ isError, theme, width, height, variant, twStyle }: StylesType) => [
-    [tw`h-12 text-b16 placeholder:text-gray-400 outline-none bg-inherit text-ellipsis rounded-lg ring-0 focus:ring-0 w-full px-3`],
+    tw`h-12 text-b16 placeholder:text-gray-400 outline-none bg-inherit text-ellipsis rounded-lg ring-0 focus:ring-0 w-full px-3`,
     theme && variant === 'contained' && getBackgroundColor(theme),
     theme && variant === 'text' && tw`rounded-none text-gray-950`,
     theme && variant === 'outlined' && [tw`border`, getBorderColor(theme)],
@@ -37,32 +37,22 @@ const TwInput = styled.input(({ isError, theme, width, height, variant, twStyle 
     twStyle && twStyle
 ]);
 
-const Input = forwardRef<HTMLInputElement, InputType>(function useCreateInput(
-    { theme = StyleThemes.Gray, containerStyle, isError, hiddenText, labelText, helperText, type, maxLength, min, max, ...props },
-    ref
-) {
+const Input = forwardRef<HTMLInputElement, InputType>(function useCreateInput(props, ref) {
+    const { theme = StyleThemes.Gray, containerStyle, isDisabled, isError, hiddenText, labelText, helperText, type, maxLength, min, max, ...rest } = props;
     const id = useId();
+
     return (
         <TwContainer containerStyle={containerStyle}>
-            <Typography htmlFor={id} component="label" variant="b12" fontWeight="500" gutterBottom={4} className={!labelText ? '!sr-only' : ''} twStyle={tw`flex items-center`}>
+            <Typography htmlFor={id} component="label" variant="b12" fontWeight="500" gutterBottom={4} twStyle={{ ...tw`flex items-center`, ...(!labelText && tw`!sr-only`) }}>
                 {hiddenText || labelText}
             </Typography>
             <TwInput
+                {...rest}
                 ref={ref}
-                {...props}
-                theme={theme}
                 id={id}
                 type={type}
                 maxLength={maxLength}
-                isError={isError}
-                onKeyDown={(e) => {
-                    if (type === 'number' && ['e', 'E', '+', '-'].includes(e.key)) {
-                        e.preventDefault();
-                    }
-                    if (props.onKeyDown) {
-                        props.onKeyDown(e);
-                    }
-                }}
+                disabled={isDisabled}
                 onChange={(e) => {
                     if (type === 'text') {
                         // 한글 글자수 제한
@@ -88,6 +78,16 @@ const Input = forwardRef<HTMLInputElement, InputType>(function useCreateInput(
                         props.onChange(e);
                     }
                 }}
+                onKeyDown={(e) => {
+                    if (type === 'number' && ['e', 'E', '+', '-'].includes(e.key)) {
+                        e.preventDefault();
+                    }
+                    if (props.onKeyDown) {
+                        props.onKeyDown(e);
+                    }
+                }}
+                isError={isError}
+                theme={theme}
             />
             {helperText && (
                 <Typography variant="b12" fontWeight="600" color={isError ? TwinTheme`colors.red.600` : ''} twStyle={tw`ml-2`}>

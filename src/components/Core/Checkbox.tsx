@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { CheckIcon } from '@heroicons/react/24/outline';
 import tw, { TwStyle } from 'twin.macro';
 
-import { StyleThemes, getTextColor } from 'utils/theme';
+import { OptionalThemeType, StyleThemes, getTextColor } from 'utils/theme';
 
 const TwLabel = styled.label(({ theme, twStyle }: { theme: StyleThemes; twStyle?: TwStyle }) => [
     tw`relative flex h-4 w-4 cursor-pointer items-center justify-center rounded border border-gray-900 focus-within:ring-1`,
@@ -12,8 +12,7 @@ const TwLabel = styled.label(({ theme, twStyle }: { theme: StyleThemes; twStyle?
     twStyle && twStyle
 ]);
 
-type StylesType = {
-    theme?: StyleThemes;
+type StylesType = OptionalThemeType & {
     twStyle?: TwStyle;
 };
 
@@ -23,7 +22,7 @@ type CheckboxType = InputHTMLAttributes<HTMLInputElement> &
         hiddenText?: string;
     };
 
-function Checkbox({ theme = StyleThemes.Gray, twStyle, isChecked, hiddenText, ...props }: CheckboxType) {
+export default function Checkbox({ theme = StyleThemes.Gray, twStyle, isChecked, hiddenText, ...props }: CheckboxType) {
     const id = useId();
     const [selected, setSelected] = useState('');
 
@@ -43,5 +42,3 @@ function Checkbox({ theme = StyleThemes.Gray, twStyle, isChecked, hiddenText, ..
         </TwLabel>
     );
 }
-
-export default Checkbox;
