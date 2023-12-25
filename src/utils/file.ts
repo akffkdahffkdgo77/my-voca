@@ -1,3 +1,5 @@
+import { v4 as uuid } from 'uuid';
+
 import { DataType } from './data';
 import { formatDate } from './format';
 
@@ -16,15 +18,24 @@ export function exportFile(data: string, name: string) {
 
 function createList(list: string[]) {
     const curTime = new Date().getTime();
-    const newWordList: DataType = { idx: curTime, title: `단어장 ${formatDate(curTime, 'YYYY.MM.DD')}`, createdAt: curTime, words: [] };
+    const newWordList: DataType = {
+        wordListIdx: uuid(),
+        wordListName: `단어장 ${formatDate(curTime, 'YYYY.MM.DD')}`,
+        wordListDate: curTime,
+        status: 'TODO',
+        category: '영어 단어',
+        words: []
+    };
     for (let i = 0; i < list.length; i++) {
         const [word, definition] = list[i].split(':');
+        const [definition1, definition2] = definition.split('\n');
         newWordList.words[i] = {
-            wordIdx: i + 1,
+            wordIdx: uuid(),
             word,
-            definition,
-            successCount: 0,
-            failCount: 0
+            definition: [definition1, definition2 || ''],
+            count: 0,
+            isHighlighted: false,
+            isMemorized: false
         };
     }
 

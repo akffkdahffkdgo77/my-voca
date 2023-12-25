@@ -1,8 +1,16 @@
 import { Input, Typography } from 'components/Core';
-import { CustomizedColorPicker, CustomizedMobileTextInput, CustomizedTextInput } from 'components/Customized';
-import tw from 'twin.macro';
+import { CustomizedColorPicker, CustomizedDoubleTextInput, CustomizedMobileTextInput, CustomizedSingleTextInput } from 'components/Customized';
+
+import { v4 as uuid } from 'uuid';
 
 import { useTheme } from 'hooks';
+import { WordType } from 'utils/data';
+import { getTextColor, textStyle } from 'utils/theme';
+
+const DUMMY_WORDS: WordType[] = [
+    { wordIdx: uuid(), count: 1, word: '단어', definition: ['뜻', '뜻2'], isHighlighted: false, isMemorized: false },
+    { wordIdx: uuid(), count: 3, word: '단어', definition: ['뜻', '뜻2'], isHighlighted: false, isMemorized: false }
+];
 
 export default function TextInputGuide() {
     const { theme, handleClick } = useTheme();
@@ -23,26 +31,33 @@ export default function TextInputGuide() {
                     theme={theme}
                     maxLength={20}
                     placeholder="단어장 이름을 입력해 주세요"
-                    twStyle={tw`bg-inherit text-h1 h-full px-0 font-nanumpenscript`}
+                    twStyle={{ ...textStyle.title, ...getTextColor(theme) }}
                 />
                 <Typography variant="b24" fontWeight="700" component="h3">
                     Single TextInput
                 </Typography>
                 <div className="h-full w-full">
-                    <CustomizedTextInput count={1} theme={theme} word="단어" definition={['뜻', '뜻2']} />
-                    <CustomizedTextInput count={2} theme={theme} word="단어" definition={['뜻', '뜻2']} />
+                    <CustomizedSingleTextInput isHidden={false} isDisabled count={1} word="단어" definition={['뜻', '뜻2']} theme={theme} />
+                    <CustomizedSingleTextInput isHidden={false} isDisabled count={2} word="단어" definition={['뜻', '뜻2']} theme={theme} />
+                </div>
+                <div className="h-full w-full">
+                    <CustomizedSingleTextInput isHidden isDisabled count={1} word="단어" definition={['뜻', '뜻2']} theme={theme} />
+                    <CustomizedSingleTextInput isHidden isDisabled count={2} word="단어" definition={['뜻', '뜻2']} theme={theme} />
                 </div>
                 <Typography variant="b24" fontWeight="700" component="h3">
                     Double TextInput
                 </Typography>
                 <div className="h-full w-full">
-                    <CustomizedTextInput count={1} isDouble theme={theme} word="단어" definition={['뜻', '뜻2']} />
-                    <CustomizedTextInput count={2} isDouble theme={theme} word="단어" definition={['뜻', '뜻2']} />
+                    <CustomizedDoubleTextInput isHidden={[false, false]} isDisabled words={DUMMY_WORDS} theme={theme} />
+                </div>
+                <div className="h-full w-full">
+                    <CustomizedDoubleTextInput isHidden={[true, true]} isDisabled words={DUMMY_WORDS} theme={theme} />
                 </div>
                 <Typography variant="b24" fontWeight="700" component="h3">
                     Mobile TextInput
                 </Typography>
-                <CustomizedMobileTextInput count={3} theme={theme} word="단어" definition={['뜻', '뜻2'].join('\n')} />
+                <CustomizedMobileTextInput isHidden={false} isDisabled count={3} theme={theme} word="단어" definition={['뜻', '뜻2'].join('\n')} />
+                <CustomizedMobileTextInput isHidden isDisabled count={3} theme={theme} word="단어" definition={['뜻', '뜻2'].join('\n')} />
             </div>
         </div>
     );

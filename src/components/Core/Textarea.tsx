@@ -8,9 +8,10 @@ import Typography from './Typography';
 import useForwardRef from 'hooks/useForwardRef';
 
 type StylesType = {
+    isError?: boolean;
+    isAutoHeight?: boolean;
     width?: number;
     height?: number;
-    isAutoHeight?: boolean;
     backgroundColor?: string;
     color?: string;
     fontSize?: string;
@@ -23,20 +24,22 @@ type StylesType = {
 
 type TextareaType = TextareaHTMLAttributes<HTMLTextAreaElement> &
     StylesType & {
+        isDisabled?: boolean;
         labelText?: string;
         hiddenText?: string;
     };
 
-const TwTextareaContainer = styled.div(({ width, height, isAutoHeight, containerStyle }: StylesType) => [
+const TwTextareaContainer = styled.div(({ isError, width, height, isAutoHeight, containerStyle }: StylesType) => [
     tw`pl-3 pr-1 py-2 w-full bg-white h-200pxr`,
     width && { width },
     height && { height },
     isAutoHeight && tw`px-3 min-h-120pxr h-full`,
+    isError && tw`border border-red-500`,
     containerStyle && containerStyle
 ]);
 
 const TwTextarea = styled.textarea(({ isAutoHeight, color, fontSize, fontWeight, lineHeight, letterSpacing, twStyle }: StylesType) => [
-    tw`outline-none min-h-0 placeholder:text-gray-400 pr-2 overflow-y-auto focus:ring-0 ring-0 h-full w-full bg-transparent text-b16 text-gray-950`,
+    tw`outline-none min-h-0 placeholder:text-gray-400 pr-2 overflow-y-auto focus:ring-0 ring-0 h-full w-full bg-transparent text-b18 text-gray-950`,
     color && { color },
     fontSize && { fontSize },
     fontWeight && { fontWeight },
@@ -53,7 +56,7 @@ const TwTextarea = styled.textarea(({ isAutoHeight, color, fontSize, fontWeight,
 ]);
 
 const Textarea = forwardRef<HTMLTextAreaElement, TextareaType>(function useCreateTextarea({ value, onChange, ...rest }, ref) {
-    const { width, height, isAutoHeight, backgroundColor, containerStyle, maxLength, labelText, hiddenText } = rest;
+    const { width, height, isError, isDisabled, isAutoHeight, backgroundColor, containerStyle, maxLength, labelText, hiddenText } = rest;
     const id = useId();
     const textareaRef = useForwardRef<HTMLTextAreaElement>(ref);
 
@@ -69,15 +72,16 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaType>(function useCreat
 
     return (
         <>
-            <Typography htmlFor={id} component="label" variant="b12" fontWeight="500" className={!labelText ? '!sr-only' : ''} twStyle={tw`flex items-center pl-3`}>
+            <Typography htmlFor={id} component="label" variant="b12" fontWeight="500" twStyle={{ ...tw`flex items-center pl-3`, ...(!labelText && tw`!sr-only`) }}>
                 {hiddenText || labelText}
             </Typography>
-            <TwTextareaContainer isAutoHeight={isAutoHeight} width={width} height={height} backgroundColor={backgroundColor} containerStyle={containerStyle}>
+            <TwTextareaContainer isError={isError} isAutoHeight={isAutoHeight} width={width} height={height} backgroundColor={backgroundColor} containerStyle={containerStyle}>
                 <TwTextarea
-                    id={id}
                     {...rest}
                     ref={textareaRef}
+                    id={id}
                     value={value}
+                    disabled={isDisabled}
                     maxLength={maxLength}
                     onChange={(e) => {
                         // 한글 글자수 제한

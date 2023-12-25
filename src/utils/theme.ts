@@ -45,9 +45,11 @@ export const buttonShape: Record<ButtonShapeType, TwStyle> = {
 export const buttonSize: Record<ButtonSizeType, TwStyle> = {
     small: tw`min-w-48pxr px-2 h-7 text-b12`,
     medium: tw`min-w-56pxr px-2 h-8 text-b12`,
-    large: tw`h-10 min-w-80pxr  px-3 py-2 text-b14`,
+    large: tw`h-10 min-w-80pxr px-3 py-2 text-b14`,
     extraLarge: tw`h-12 min-w-120pxr px-3 py-2 text-b14`
 };
+
+export type InputVariantType = 'contained' | 'outlined' | 'text';
 
 export enum StyleThemes {
     'Red' = 'red',
@@ -128,6 +130,27 @@ export const getBorderColor = (theme: StyleThemes) => {
             return tw`border-blue-chill-300`;
         default:
             return tw`border-gray-950`;
+    }
+};
+
+export const getLightBorderColor = (theme: StyleThemes) => {
+    switch (theme) {
+        case StyleThemes.Red:
+            return tw`border-red-100`;
+        case StyleThemes.Rust:
+            return tw`border-rust-100`;
+        case StyleThemes.ButteredRum:
+            return tw`border-buttered-rum-100`;
+        case StyleThemes.Christi:
+            return tw`border-christi-100`;
+        case StyleThemes.BlueGem:
+            return tw`border-blue-gem-100`;
+        case StyleThemes.JazzberryJam:
+            return tw`border-jazzberry-jam-100`;
+        case StyleThemes.BlueChill:
+            return tw`border-blue-chill-100`;
+        default:
+            return tw`border-gray-100`;
     }
 };
 
@@ -278,4 +301,9 @@ export const colors: Record<string, Record<number, string>> = {
         900: '#3d3d3d',
         950: '#292929'
     }
+};
+
+export const textStyle = {
+    title: tw`bg-inherit text-h1 h-full px-0 font-nanumpenscript`,
+    modalText: tw`whitespace-pre-wrap break-all`
 };

@@ -8,9 +8,11 @@ type StylesType = {
     variant?: ButtonVariantType;
     shape?: ButtonShapeType;
     size?: ButtonSizeType;
+    circleSize?: number;
     width?: string | number;
     height?: string | number;
     borderRadius?: string;
+    backgroundColor?: string;
     twStyle?: TwStyle;
 };
 
@@ -19,7 +21,7 @@ type ButtonType = React.ButtonHTMLAttributes<HTMLButtonElement> &
         children: React.ReactNode;
     };
 
-const TwButton = styled.button(({ variant, shape, size, theme, width, height, borderRadius, twStyle }: StylesType) => [
+const TwButton = styled.button(({ variant, shape, circleSize, size, theme, width, height, borderRadius, backgroundColor, twStyle }: StylesType) => [
     tw`bg-inherit`,
     shape && buttonShape[shape],
     variant !== 'icon' && size && buttonSize[size],
@@ -28,7 +30,9 @@ const TwButton = styled.button(({ variant, shape, size, theme, width, height, bo
     theme && variant === 'contained' && [getBackgroundColor(theme), theme === StyleThemes.Gray && tw`bg-gray-950 text-white`],
     width && { width },
     height && { height },
+    shape === 'circle' && { width: circleSize, height: circleSize },
     borderRadius && { borderRadius },
+    backgroundColor && { backgroundColor },
     twStyle && twStyle
 ]);
 

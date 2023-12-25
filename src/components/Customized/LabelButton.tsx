@@ -9,6 +9,7 @@ type CustomizedLabelButtonType = OptionalThemeType & {
     buttonText: string;
     onClick?: () => void;
 };
+
 export default function CustomizedLabelButton({ theme = StyleThemes.Gray, buttonText, onClick }: CustomizedLabelButtonType) {
     const id = useId();
     return (
@@ -16,7 +17,7 @@ export default function CustomizedLabelButton({ theme = StyleThemes.Gray, button
             <Typography id={id} variant="c11" component="small" color={twinTheme`colors.gray.900`} twStyle={tw`uppercase`}>
                 Layout
             </Typography>
-            <Button aria-describedby={id} type="button" shape="rounded" variant="outlined" borderRadius="16px" size="large" theme={theme} onClick={onClick}>
+            <Button aria-describedby={id} type="button" shape="rounded" variant="outlined" borderRadius="16px" size="large" theme={theme} onClick={onClick} twStyle={tw`bg-white`}>
                 <Typography variant="h4" align="center" fontFamily="nanumpenscript" lineHeight="24px">
                     {buttonText}
                 </Typography>

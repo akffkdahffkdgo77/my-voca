@@ -13,9 +13,11 @@ const TwLoader = styled.div(({ width, height, borderWidth, borderColor }: Styles
     width && { width },
     height && { height },
     borderWidth && { borderWidth },
-    borderColor && { borderColor }
+    borderColor && { borderColor, borderBottomColor: 'transparent' }
 ]);
 
-export default function Loader(props: StylesType) {
+export type LoaderType = StylesType;
+
+export default function Loader(props: LoaderType) {
     return <TwLoader {...props} />;
 }

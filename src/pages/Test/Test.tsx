@@ -1,65 +1,111 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import styled from '@emotion/styled';
-import { Button, CustomizedColorPicker, CustomizedDatePicker, CustomizedLabelButton, CustomizedMobileTextInput, CustomizedSelect, CustomizedTextInput, Input } from 'components';
+import { CustomizedDatePicker, CustomizedSingleTextInput, CustomizedDoubleTextInput, CustomizedLabelButton, CustomizedMobileTextInput, Input } from 'components';
+import Header from 'layout/Header';
 import tw from 'twin.macro';
 
-import { STATUS, STATUS_OPTIONS } from 'dummy/word';
-import { useMobile, useTheme } from 'hooks';
-import { StyleThemes, ThemeType, getLightBackgroundColor } from 'utils/theme';
+import { TestAside } from './components';
 
-const TwContainer = styled.div(({ theme }: ThemeType) => [tw`min-h-[calc(100vh-128px)] overflow-y-auto w-full py-10`, theme && getLightBackgroundColor(theme)]);
+import { useMobile, useTheme } from 'hooks';
+import { WordType, getWord } from 'utils/data';
+import { ThemeType, getLightBackgroundColor, getTextColor, textStyle } from 'utils/theme';
+
+const TwContainer = styled.div(({ theme }: ThemeType) => [tw`min-h-screen overflow-y-auto w-full py-10`, theme && getLightBackgroundColor(theme)]);
+
+function splitIntoTwo(arr: WordType[]) {
+    const groupNum = 2;
+    const splitList: WordType[][] = [];
+    for (let i = 0; i < arr.length; i += groupNum) {
+        splitList.push(arr.slice(i, i + groupNum));
+    }
+    return splitList;
+}
 
 export default function Test() {
-    const { theme, handleClick } = useTheme();
+    const navigate = useNavigate();
+    const { wordListIdx } = useParams();
     const isMobile = useMobile();
+    const { theme, handleClick } = useTheme();
+
     const [isDouble, setIsDouble] = useState(false);
-    const [isDisabled, setIsDisabled] = useState(true);
+    const wordList = useMemo(() => getWord(wordListIdx!) || null, [wordListIdx]);
+    const [isHidden, setIsHidden] = useState<Record<string, boolean>>(wordList?.words.reduce((acc, val) => ({ ...acc, [val.wordIdx]: true }), {}));
+
+    useEffect(() => {
+        if (!wordList) {
+            navigate('/register', { replace: true });
+        }
+    }, [wordList]);
+
+    const handleHiddenClick = useCallback((idx: string) => setIsHidden((prev) => ({ ...prev, [idx]: !prev[idx] })), []);
+    const handleLayoutClick = useCallback(() => setIsDouble((prev) => !prev), []);
+
+    if (!wordList) {
+        return null;
+    }
 
     return (
         <>
-            <header className="fixed left-0 right-0 top-0 z-10 h-14 p-3 text-right backdrop-blur-sm">
-                <div className="m-auto max-w-7xl space-x-2.5">
-                    {!isDisabled && (
-                        <Button variant="outlined" shape="square" size="medium" theme={StyleThemes.Gray} twStyle={tw`bg-white`} onClick={() => setIsDisabled((prev) => !prev)}>
-                            저장
-                        </Button>
-                    )}
-                    <Button variant="outlined" shape="square" size="medium" theme={StyleThemes.Gray} twStyle={tw`bg-white`} onClick={() => setIsDisabled((prev) => !prev)}>
-                        {isDisabled ? '수정' : '공부'}
-                    </Button>
-                </div>
-            </header>
+            <Header theme={theme} />
             <TwContainer theme={theme}>
                 <div className="mx-auto max-w-5xl px-5 pt-6">
-                    <div className="mb-5 flex items-center justify-center">
+                    <div className="mb-10 flex items-center justify-center">
                         <Input
-                            disabled={isDisabled}
-                            hiddenText="단어장 이름"
                             type="text"
                             variant="text"
-                            theme={theme}
                             maxLength={20}
+                            hiddenText="단어장 이름"
                             placeholder="단어장 이름을 입력해 주세요"
-                            twStyle={tw`bg-inherit text-h1 h-full px-0 font-nanumpenscript`}
+                            defaultValue={wordList.wordListName}
+                            isDisabled
+                            theme={theme}
+                            twStyle={{ ...textStyle.title, ...getTextColor(theme) }}
                         />
                         <CustomizedDatePicker theme={theme} />
                     </div>
-                    <div className="mb-5 flex items-end gap-2.5">
-                        {!isMobile && <CustomizedLabelButton theme={theme} buttonText={isDouble ? '2x' : '1x'} onClick={() => setIsDouble((prev) => !prev)} />}
-                        <CustomizedSelect caption="Status" theme={theme} value={STATUS.TODO} options={STATUS_OPTIONS} />
+                    <div className="mb-5 flex items-end gap-2.5">{!isMobile && <CustomizedLabelButton theme={theme} buttonText={isDouble ? '2x' : '1x'} onClick={handleLayoutClick} />}</div>
+                    <div className="space-y-4 tablet:space-y-0">
+                        {!isMobile && isDouble
+                            ? splitIntoTwo(wordList.words).map((word, index) => (
+                                  <CustomizedDoubleTextInput
+                                      key={index}
+                                      words={word}
+                                      isDisabled
+                                      isHidden={word.map((val) => isHidden[val.wordIdx])}
+                                      onHiddenClick={(idx) => handleHiddenClick(idx as keyof typeof isHidden)}
+                                      theme={theme}
+                                  />
+                              ))
+                            : wordList.words.map((word) =>
+                                  isMobile ? (
+                                      <CustomizedMobileTextInput
+                                          key={word.wordIdx}
+                                          word={word.word}
+                                          definition={word.definition.join('\n')}
+                                          count={word.count}
+                                          isDisabled
+                                          isHidden={isHidden[word.wordIdx]}
+                                          onHiddenClick={() => handleHiddenClick(word.wordIdx)}
+                                          theme={theme}
+                                      />
+                                  ) : (
+                                      <CustomizedSingleTextInput
+                                          key={word.wordIdx}
+                                          word={word.word}
+                                          definition={word.definition}
+                                          count={word.count}
+                                          isDisabled
+                                          isHidden={isHidden[word.wordIdx]}
+                                          onHiddenClick={() => handleHiddenClick(word.wordIdx)}
+                                          theme={theme}
+                                      />
+                                  )
+                              )}
                     </div>
-                    {[...Array.from({ length: 10 }).keys()].map((key) =>
-                        isMobile ? (
-                            <CustomizedMobileTextInput key={key} isDisabled={isDisabled} theme={theme} />
-                        ) : (
-                            <CustomizedTextInput key={key} isDisabled={isDisabled} isDouble={isDouble} theme={theme} />
-                        )
-                    )}
                 </div>
-                <aside className="fixed right-10 top-1/2 hidden -translate-y-1/2 flex-col gap-y-2.5 rounded-full bg-white p-1 shadow-md desktop:flex">
-                    <CustomizedColorPicker onClick={handleClick} />
-                </aside>
+                <TestAside onClick={handleClick} />
             </TwContainer>
         </>
     );

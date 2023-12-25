@@ -1,6 +1,9 @@
 import { CustomizedColorPicker, CustomizedLabelButton, CustomizedSelect, Typography } from 'components';
 
+import { STATUS_OPTIONS } from 'dummy/word';
 import { useTheme } from 'hooks';
+
+const LAYOUT_OPTIONS = ['1x', '2x'];
 
 export default function CustomizedEtcGuide() {
     const { theme, handleClick } = useTheme();
@@ -15,22 +18,13 @@ export default function CustomizedEtcGuide() {
                     Status Select
                 </Typography>
                 <div className="flex w-max gap-x-5">
-                    <CustomizedSelect
-                        theme={theme}
-                        caption="Status"
-                        options={[
-                            { label: 'TODO', value: 'todo' },
-                            { label: 'PROGRESS', value: 'progress' },
-                            { label: 'DONE', value: 'done' }
-                        ]}
-                        value="todo"
-                    />
+                    <CustomizedSelect theme={theme} caption="Status" options={STATUS_OPTIONS} value="todo" />
                 </div>
                 <Typography variant="b24" fontWeight="700" component="h3">
                     Layout Button
                 </Typography>
                 <div className="flex items-center gap-x-2.5">
-                    {['1x', '2x'].map((val) => (
+                    {LAYOUT_OPTIONS.map((val) => (
                         <CustomizedLabelButton key={val} buttonText={val} theme={theme} />
                     ))}
                 </div>

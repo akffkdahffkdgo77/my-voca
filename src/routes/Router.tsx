@@ -4,6 +4,7 @@ import RootBoundary from 'app/RootBoundary';
 import { Layout } from 'layout';
 import Guide from 'pages/Guide';
 import Home from 'pages/Home';
+import Register from 'pages/Register';
 import Test from 'pages/Test';
 
 const router = createBrowserRouter([
@@ -18,10 +19,10 @@ const router = createBrowserRouter([
             },
             {
                 path: 'register',
-                element: <Home />
+                element: <Register />
             },
             {
-                path: 'test',
+                path: 'test/:wordListIdx',
                 element: <Test />
             },
             {
