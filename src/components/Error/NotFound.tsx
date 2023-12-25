@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
@@ -8,6 +9,9 @@ import { StyleThemes } from 'utils/theme';
 export default function NotFound() {
     const navigate = useNavigate();
 
+    const handleHome = useCallback(() => navigate('/', { replace: true }), []);
+    const handlePrevious = useCallback(() => navigate(-1), []);
+
     return (
         <div className="fixed bottom-0 left-0 right-0 top-0 z-50 min-h-screen">
             <div className="flex h-full flex-col items-center justify-center">
@@ -16,10 +20,10 @@ export default function NotFound() {
                     404
                 </Typography>
                 <div className="flex gap-5">
-                    <Button size="large" shape="square" variant="outlined" theme={StyleThemes.Gray} onClick={() => navigate('/', { replace: true })}>
+                    <Button size="large" shape="square" variant="outlined" theme={StyleThemes.Gray} onClick={handleHome}>
                         홈으로 돌아가기
                     </Button>
-                    <Button size="large" shape="square" variant="contained" theme={StyleThemes.Gray} onClick={() => navigate(-1)}>
+                    <Button size="large" shape="square" variant="contained" theme={StyleThemes.Gray} onClick={handlePrevious}>
                         이전으로 돌아가기
                     </Button>
                 </div>
