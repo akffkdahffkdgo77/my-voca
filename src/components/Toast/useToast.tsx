@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuid } from 'uuid';
 
 import Toast from './Toast';
 
@@ -55,7 +55,7 @@ export function ToastProvider({ children, position }: ToastProviderType) {
 
     const handleOpen = useCallback(
         (content: string, options?: OptionsType) => {
-            const newMessage = { id: uuidv4(), content, options };
+            const newMessage = { id: uuid(), content, options };
             if (position?.includes('top')) {
                 setMessages((prev) => [...prev, newMessage]);
             } else {

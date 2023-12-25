@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 
 import { Button, Typography } from 'components/Core';
-import tw from 'twin.macro';
 
 import { ModalOptionsType } from './useModal';
+
+import { textStyle } from 'utils/theme';
 
 type ModalType = {
     options?: ModalOptionsType;
@@ -14,11 +15,9 @@ type ModalType = {
 
 export default function Modal({ onClick, options, onConfirm, onClose }: ModalType) {
     useEffect(() => {
-        document.body.className = 'overflow-hidden';
+        document.body.classList.add('overflow-hidden');
 
-        return () => {
-            document.body.className = '';
-        };
+        return () => document.body.classList.remove('overflow-hidden');
     }, []);
 
     return (
@@ -31,16 +30,16 @@ export default function Modal({ onClick, options, onConfirm, onClose }: ModalTyp
             className="fixed bottom-0 left-0 right-0 top-0 z-50 flex items-center justify-center bg-black/70"
         >
             <div className="min-w-320pxr overflow-hidden rounded-lg bg-white p-30pxr shadow-inner ">
-                <Typography variant="b14" component="p" gutterBottom={40} twStyle={tw`whitespace-pre-wrap break-all`}>
+                <Typography variant="b16" fontWeight="500" component="p" gutterBottom={40} twStyle={textStyle.modalText}>
                     {options?.message}
                 </Typography>
                 <div className="mx-auto w-full space-x-2.5 text-right">
                     {options?.messageType === 'confirm' && (
                         <Button
-                            shape="square"
+                            type="button"
                             variant="outlined"
                             size="large"
-                            type="button"
+                            shape="square"
                             onClick={(e) => {
                                 e.stopPropagation();
                                 onClose();
@@ -50,10 +49,10 @@ export default function Modal({ onClick, options, onConfirm, onClose }: ModalTyp
                         </Button>
                     )}
                     <Button
-                        shape="square"
+                        type="button"
                         variant="contained"
                         size="large"
-                        type="button"
+                        shape="square"
                         onClick={(e) => {
                             e.stopPropagation();
                             onConfirm();
