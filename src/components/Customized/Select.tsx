@@ -1,4 +1,4 @@
-import { MouseEvent, useEffect, useId, useRef, useState } from 'react';
+import { MouseEvent, useCallback, useEffect, useId, useRef, useState } from 'react';
 
 import styled from '@emotion/styled';
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
@@ -13,6 +13,11 @@ type CustomizedSelectType = OptionalThemeType & {
     options?: { label: string; value: string | number }[];
     value?: string;
     onChange?: (newValue: string | number) => void;
+};
+
+const customStyle = {
+    caption: tw`uppercase pl-1`,
+    buttonText: tw`h-auto uppercase`
 };
 
 const TwButton = styled.button(({ theme }: ThemeType) => [
@@ -36,9 +41,11 @@ export default function CustomizedSelect({ theme = StyleThemes.Gray, options = [
         }
     }, [value]);
 
-    const handleClickOutside = () => {
+    const handleClickOutside = useCallback(() => {
         setIsOpen(false);
-    };
+    }, []);
+
+    useClickAway<HTMLButtonElement>({ ref, onClickOutside: handleClickOutside });
 
     const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();
@@ -60,15 +67,13 @@ export default function CustomizedSelect({ theme = StyleThemes.Gray, options = [
         }
     }, [isOpen]);
 
-    useClickAway<HTMLButtonElement>({ ref, onClickOutside: handleClickOutside });
-
     return (
         <div className="relative flex flex-col">
-            <Typography id={id} variant="c11" color={twinTheme`colors.gray.900`} twStyle={tw`uppercase pl-1`}>
+            <Typography id={id} variant="c11" component="small" color={twinTheme`colors.gray.900`} twStyle={customStyle.caption}>
                 {caption}
             </Typography>
             <TwButton type="button" aria-controls={listId} aria-expanded={!!isOpen} aria-haspopup="listbox" aria-labelledby={id} role="combobox" ref={ref} theme={theme} onClick={handleClick}>
-                <Typography variant="b16" fontWeight="500" color="inherit" twStyle={tw`h-auto uppercase`}>
+                <Typography variant="b16" fontWeight="500" color="inherit" twStyle={customStyle.buttonText}>
                     {selected}
                 </Typography>
                 <div className="flex h-5 w-5 flex-none items-center justify-center rounded-full bg-gray-900 p-1">
