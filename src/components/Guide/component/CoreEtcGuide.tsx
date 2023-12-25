@@ -3,6 +3,8 @@ import { Button, Checkbox, CustomizedColorPicker, Typography } from 'components'
 import { useTheme } from 'hooks';
 import { ButtonSizeType } from 'utils/theme';
 
+const BUTTON_SIZE: ButtonSizeType[] = ['small', 'medium', 'large', 'extraLarge'];
+
 export default function CoreEtcGuide() {
     const { theme, handleClick } = useTheme();
 
@@ -24,22 +26,22 @@ export default function CoreEtcGuide() {
                 </Typography>
                 <div className="space-y-5">
                     <div className="space-x-2.5">
-                        {['small', 'medium', 'large', 'extraLarge'].map((size) => (
-                            <Button key={size} theme={theme} variant="outlined" size={size as ButtonSizeType}>
+                        {BUTTON_SIZE.map((size) => (
+                            <Button key={size} theme={theme} variant="outlined" size={size}>
                                 등록
                             </Button>
                         ))}
                     </div>
                     <div className="space-x-2.5">
-                        {['small', 'medium', 'large', 'extraLarge'].map((size) => (
-                            <Button key={size} theme={theme} variant="contained" size={size as ButtonSizeType}>
+                        {BUTTON_SIZE.map((size) => (
+                            <Button key={size} theme={theme} variant="contained" size={size}>
                                 저장
                             </Button>
                         ))}
                     </div>
                     <div className="space-x-2.5">
-                        {['small', 'medium', 'large', 'extraLarge'].map((size) => (
-                            <Button key={size} theme={theme} variant="text" size={size as ButtonSizeType}>
+                        {BUTTON_SIZE.map((size) => (
+                            <Button key={size} theme={theme} variant="text" size={size}>
                                 공부
                             </Button>
                         ))}
