@@ -1,7 +1,12 @@
+import styled from '@emotion/styled';
 import { Typography } from 'components/Core';
 import tw from 'twin.macro';
 
-import { colors } from 'utils/theme';
+import Caption from './Caption';
+
+import { StyleThemes, ThemeType, colors, getBorderColor } from 'utils/theme';
+
+const TwColor = styled.div(({ theme }: ThemeType) => [tw`h-14 w-28`, theme && getBorderColor(theme)]);
 
 export default function ThemeBorderColorGuide() {
     return (
@@ -12,91 +17,77 @@ export default function ThemeBorderColorGuide() {
             <div className="flex items-center gap-x-5">
                 <div className="flex items-center gap-x-5">
                     <div className="space-y-1">
-                        <Typography variant="b12" fontWeight="700" component="small" twStyle={tw`capitalize`}>
-                            red
-                        </Typography>
+                        <Caption text="red" />
                         <div>
-                            <div className="h-14 w-28 bg-red-300" />
+                            <TwColor theme={StyleThemes.Red} />
                             <Typography variant="b18" fontFamily="nanumpenscript">
-                                <small className="font-[inherit]">300</small>
+                                <small className="font-inherit">300</small>
                                 <br />
                                 {colors.red['300']}
                             </Typography>
                         </div>
                     </div>
                     <div className="space-y-1">
-                        <Typography variant="b12" fontWeight="700" component="small" twStyle={tw`capitalize`}>
-                            rust
-                        </Typography>
+                        <Caption text="rust" />
                         <div>
-                            <div className="h-14 w-28 bg-rust-300" />
+                            <TwColor theme={StyleThemes.Rust} />
                             <Typography variant="b18" fontFamily="nanumpenscript">
-                                <small className="font-[inherit]">300</small>
+                                <small className="font-inherit">300</small>
                                 <br />
                                 {colors.rust['300']}
                             </Typography>
                         </div>
                     </div>
                     <div className="space-y-1">
-                        <Typography variant="b12" fontWeight="700" component="small" twStyle={tw`capitalize`}>
-                            buttered-rum
-                        </Typography>
+                        <Caption text="buttered-rum" />
                         <div>
-                            <div className="h-14 w-28 bg-buttered-rum-300" />
+                            <TwColor theme={StyleThemes.ButteredRum} />
                             <Typography variant="b18" fontFamily="nanumpenscript">
-                                <small className="font-[inherit]">300</small>
+                                <small className="font-inherit">300</small>
                                 <br />
                                 {colors['buttered-rum']['300']}
                             </Typography>
                         </div>
                     </div>
                     <div className="space-y-1">
-                        <Typography variant="b12" fontWeight="700" component="small" twStyle={tw`capitalize`}>
-                            christi
-                        </Typography>
+                        <Caption text="christi" />
                         <div>
-                            <div className="h-14 w-28 bg-christi-300" />
+                            <TwColor theme={StyleThemes.Christi} />
                             <Typography variant="b18" fontFamily="nanumpenscript">
-                                <small className="font-[inherit]">300</small>
+                                <small className="font-inherit">300</small>
                                 <br />
                                 {colors.christi['300']}
                             </Typography>
                         </div>
                     </div>
                     <div className="space-y-1">
-                        <Typography variant="b12" fontWeight="700" component="small" twStyle={tw`capitalize`}>
-                            blue-chill
-                        </Typography>
+                        <Caption text="blue-chill" />
                         <div>
-                            <div className="h-14 w-28 bg-blue-chill-300" />
+                            <TwColor theme={StyleThemes.BlueChill} />
                             <Typography variant="b18" fontFamily="nanumpenscript">
-                                <small className="font-[inherit]">300</small>
+                                <small className="font-inherit">300</small>
                                 <br />
                                 {colors['blue-chill']['300']}
                             </Typography>
                         </div>
                     </div>
                     <div className="space-y-1">
-                        <Typography variant="b12" fontWeight="700" component="small" twStyle={tw`capitalize`}>
-                            blue-gem
-                        </Typography>
+                        <Caption text="blue-gem" />
                         <div>
-                            <div className="h-14 w-28 bg-blue-gem-300" />
+                            <TwColor theme={StyleThemes.BlueGem} />
                             <Typography variant="b18" fontFamily="nanumpenscript">
-                                <small className="font-[inherit]">300</small>
+                                <small className="font-inherit">300</small>
                                 <br />
                                 {colors['blue-gem']['300']}
                             </Typography>
                         </div>
                     </div>
                     <div className="space-y-1">
-                        <Typography variant="b12" fontWeight="700" component="small" twStyle={tw`capitalize`}>
-                            jazzberry-jam
-                        </Typography>
+                        <Caption text="jazzberry-jam" />
                         <div>
-                            <div className="h-14 w-28 bg-jazzberry-jam-300" />
+                            <TwColor theme={StyleThemes.JazzberryJam} />
                             <Typography variant="b18" fontFamily="nanumpenscript">
-                                <small className="font-[inherit]">300</small>
+                                <small className="font-inherit">300</small>
                                 <br />
                                 {colors['jazzberry-jam']['300']}
                             </Typography>

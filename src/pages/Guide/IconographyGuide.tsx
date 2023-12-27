@@ -13,17 +13,18 @@ import {
     XMarkIcon
 } from '@heroicons/react/24/outline';
 import { Typography } from 'components';
-import tw from 'twin.macro';
 
 export default function IconographyGuide() {
     return (
         <>
-            <Typography id="iconography" variant="h3" component="h2" twStyle={tw`flex items-center gap-x-2.5`}>
-                Iconography
+            <div id="iconography" className="flex items-center gap-x-2.5">
+                <Typography variant="h3" component="h2">
+                    Iconography
+                </Typography>
                 <Link title="Heroicons" to="https://heroicons.com/" target="_blank" rel="noopener noreferrer">
                     <LinkIcon className="h-5 w-5" />
                 </Link>
-            </Typography>
+            </div>
             <div className="flex items-start gap-x-20 rounded bg-white p-5 shadow-md">
                 <div className="space-y-2.5">
                     <Typography variant="b16" fontWeight="700" component="h3">

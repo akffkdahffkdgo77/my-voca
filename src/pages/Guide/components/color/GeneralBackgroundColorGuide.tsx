@@ -15,7 +15,7 @@ export default function GeneralBackgroundColorGuide() {
                     </Typography>
                     <div className="h-14 w-28 border border-gray-950 bg-white" />
                     <Typography variant="b18" fontFamily="nanumpenscript">
-                        <small className="font-[inherit]">neutral</small>
+                        <small className="font-inherit">neutral</small>
                         <br />
                         #ffffff
                     </Typography>
@@ -26,7 +26,7 @@ export default function GeneralBackgroundColorGuide() {
                     </Typography>
                     <div className="h-14 w-28 bg-black" />
                     <Typography variant="b18" fontFamily="nanumpenscript">
-                        <small className="font-[inherit]">neutral</small>
+                        <small className="font-inherit">neutral</small>
                         <br />
                         #000000
                     </Typography>
@@ -37,9 +37,20 @@ export default function GeneralBackgroundColorGuide() {
                     </Typography>
                     <div className="h-14 w-28 bg-grid" />
                     <Typography variant="b18" fontFamily="nanumpenscript">
-                        <small className="font-[inherit]">grid</small>
+                        <small className="font-inherit">grid</small>
                         <br />
                         #eeeeee
+                    </Typography>
+                </div>
+                <div className="space-y-1">
+                    <Typography variant="b12" fontWeight="700" component="small">
+                        Light Grid
+                    </Typography>
+                    <div className="bg-grid-light h-14 w-28" />
+                    <Typography variant="b18" fontFamily="nanumpenscript">
+                        <small className="font-inherit">light-grid</small>
+                        <br />
+                        #fafafa
                     </Typography>
                 </div>
                 <div className="space-y-1">
@@ -48,7 +59,7 @@ export default function GeneralBackgroundColorGuide() {
                     </Typography>
                     <div className="h-14 w-28 bg-red-500" />
                     <Typography variant="b18" fontFamily="nanumpenscript">
-                        <small className="font-[inherit]">500</small>
+                        <small className="font-inherit">500</small>
                         <br />
                         #ef4444
                     </Typography>
@@ -59,7 +70,7 @@ export default function GeneralBackgroundColorGuide() {
                     </Typography>
                     <div className="h-14 w-28 bg-blue-500" />
                     <Typography variant="b18" fontFamily="nanumpenscript">
-                        <small className="font-[inherit]">500</small>
+                        <small className="font-inherit">500</small>
                         <br />
                         #3b82f6
                     </Typography>
@@ -70,7 +81,7 @@ export default function GeneralBackgroundColorGuide() {
                     </Typography>
                     <div className="h-14 w-28 bg-yellow-500" />
                     <Typography variant="b18" fontFamily="nanumpenscript">
-                        <small className="font-[inherit]">500</small>
+                        <small className="font-inherit">500</small>
                         <br />
                         #eab308
                     </Typography>
@@ -81,7 +92,7 @@ export default function GeneralBackgroundColorGuide() {
                     </Typography>
                     <div className="h-14 w-28 bg-green-500" />
                     <Typography variant="b18" fontFamily="nanumpenscript">
-                        <small className="font-[inherit]">500</small>
+                        <small className="font-inherit">500</small>
                         <br />
                         #22c55e
                     </Typography>
@@ -92,7 +103,7 @@ export default function GeneralBackgroundColorGuide() {
                     </Typography>
                     <div className="h-14 w-28 bg-gray-200" />
                     <Typography variant="b18" fontFamily="nanumpenscript">
-                        <small className="font-[inherit]">200</small>
+                        <small className="font-inherit">200</small>
                         <br />
                         {colors.gray['200']}
                     </Typography>
@@ -103,7 +114,7 @@ export default function GeneralBackgroundColorGuide() {
                     </Typography>
                     <div className="h-14 w-28 bg-gray-900" />
                     <Typography variant="b18" fontFamily="nanumpenscript">
-                        <small className="font-[inherit]">900</small>
+                        <small className="font-inherit">900</small>
                         <br />
                         {colors.gray['900']}
                     </Typography>

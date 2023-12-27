@@ -1,4 +1,5 @@
 import { Typography } from 'components';
+
 import {
     GeneralBackgroundColorGuide,
     GeneralBorderColorGuide,
@@ -8,7 +9,7 @@ import {
     ThemeColorGuide,
     ThemeLightBackgroundColorGuide,
     ThemeTextColorGuide
-} from 'components/Guide';
+} from 'pages/Guide/components';
 
 export default function ColorGuide() {
     return (

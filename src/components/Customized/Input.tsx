@@ -18,7 +18,8 @@ type CustomizedInputType = OptionalThemeType & {
 
 const customStyle = {
     title: tw`h-full pl-10 bg-transparent font-nanumpenscript text-h4`,
-    tooltip: tw`absolute whitespace-nowrap min-w-4/5 z-200 -bottom-9 -right-5 bg-gray-100 rounded shadow-xl h-auto p-5`
+    titleContainer: tw`h-full`,
+    tooltip: tw`absolute whitespace-nowrap min-w-4/5 z-200 -bottom-9 left-10 bg-gray-100 rounded shadow-xl h-auto p-5`
 };
 
 const TwTriangle = styled.div(({ theme }: CustomizedInputType) => [
@@ -49,7 +50,7 @@ export function CustomizedInput({ theme = StyleThemes.Gray, isDisabled, count = 
                     variant="text"
                     hiddenText="단어"
                     theme={theme}
-                    containerStyle={tw`h-full`}
+                    containerStyle={customStyle.titleContainer}
                     twStyle={customStyle.title}
                 />
                 {word && word.length > 8 && (
@@ -61,7 +62,7 @@ export function CustomizedInput({ theme = StyleThemes.Gray, isDisabled, count = 
                     </div>
                 )}
             </div>
-            <div className="divide-y-2 divide-[inherit] bg-grid">
+            <div className="divide-y-2 divide-inherit bg-grid">
                 {definition?.map((val, index) => (
                     <Input
                         key={index}

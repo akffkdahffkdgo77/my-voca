@@ -33,17 +33,17 @@ export default function Test() {
     const wordList = useMemo(() => getWord(wordListIdx!) || null, [wordListIdx]);
     const [isHidden, setIsHidden] = useState<Record<string, boolean>>(wordList?.words.reduce((acc, val) => ({ ...acc, [val.wordIdx]: true }), {}));
 
+    const handleHiddenClick = useCallback((idx: string) => setIsHidden((prev) => ({ ...prev, [idx]: !prev[idx] })), []);
+    const handleLayoutClick = useCallback(() => setIsDouble((prev) => !prev), []);
+
     useEffect(() => {
         if (!wordList) {
             navigate('/register', { replace: true });
         }
     }, [wordList]);
 
-    const handleHiddenClick = useCallback((idx: string) => setIsHidden((prev) => ({ ...prev, [idx]: !prev[idx] })), []);
-    const handleLayoutClick = useCallback(() => setIsDouble((prev) => !prev), []);
-
     if (!wordList) {
-        return null;
+        return <div className="min-h-screen w-full bg-white" />;
     }
 
     return (

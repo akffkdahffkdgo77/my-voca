@@ -11,6 +11,7 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
+                inherit: 'inherit',
                 sans: ['Noto Sans KR', 'sans-serif'],
                 nanumpenscript: ['Nanum Pen Script', 'cursive']
             },
@@ -28,6 +29,9 @@ module.exports = {
                 b12: ['0.75rem', { lineHeight: 'normal', fontWeight: 400, letterSpacing: 'normal' }],
                 c11: ['0.688rem', { lineHeight: 'normal', fontWeight: 400, letterSpacing: 'normal' }],
                 c8: ['0.5rem', { lineHeight: 'normal', fontWeight: 400, letterSpacing: 'normal' }]
+            },
+            fontWeight: {
+                inherit: 'inherit'
             },
             colors: {
                 gray: {
@@ -188,12 +192,16 @@ module.exports = {
             borderRadius: {
                 '2.5xl': '1.25rem'
             },
+            borderColor: {
+                inherit: 'inherit'
+            },
             zIndex: {
                 ...px1000
             },
             gridTemplateColumns: {
                 single: '0.8fr 2fr',
-                double: '0.7fr 1fr 0.7fr 1fr'
+                double: '0.7fr 1fr 0.7fr 1fr',
+                auto: 'auto 1fr'
             },
             strokeWidth: {
                 3: '3px',

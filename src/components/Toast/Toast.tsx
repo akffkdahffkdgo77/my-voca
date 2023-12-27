@@ -41,7 +41,7 @@ export default function Toast({ children, options, onClose }: ToastType) {
     useEffect(() => {
         const timerId = setTimeout(onClose, 5000);
         return () => clearTimeout(timerId);
-    }, [onClose]);
+    }, []);
 
     return (
         <TwContainer variant={options?.variant}>
@@ -50,7 +50,7 @@ export default function Toast({ children, options, onClose }: ToastType) {
             </Typography>
             <div className="flex items-center">
                 <TwDivider variant={options?.variant} />
-                <Button type="button" variant="text" onClick={onClose}>
+                <Button type="button" variant="icon" width={20} height={20} backgroundColor="transparent" onClick={onClose}>
                     <XMarkIcon width={20} height={20} />
                 </Button>
             </div>

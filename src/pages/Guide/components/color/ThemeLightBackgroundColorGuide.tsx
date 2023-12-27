@@ -1,7 +1,12 @@
+import styled from '@emotion/styled';
 import { Typography } from 'components/Core';
 import tw from 'twin.macro';
 
-import { colors } from 'utils/theme';
+import Caption from './Caption';
+
+import { StyleThemes, ThemeType, colors, getLightBackgroundColor } from 'utils/theme';
+
+const TwColor = styled.div(({ theme }: ThemeType) => [tw`h-14 w-28 border border-gray-950`, theme && getLightBackgroundColor(theme)]);
 
 export default function ThemeLightBackgroundColorGuide() {
     return (
@@ -12,91 +17,77 @@ export default function ThemeLightBackgroundColorGuide() {
             <div className="flex items-center gap-x-5">
                 <div className="flex items-center gap-x-5">
                     <div className="space-y-1">
-                        <Typography variant="b12" fontWeight="700" component="small" twStyle={tw`capitalize`}>
-                            red
-                        </Typography>
+                        <Caption text="red" />
                         <div>
-                            <div className="h-14 w-28 border border-gray-950 bg-red-50/20" />
+                            <TwColor theme={StyleThemes.Red} />
                             <Typography variant="b18" fontFamily="nanumpenscript">
-                                <small className="font-[inherit]">50/20</small>
+                                <small className="font-inherit">50/20</small>
                                 <br />
                                 {colors.red['50']}, opacity 20
                             </Typography>
                         </div>
                     </div>
                     <div className="space-y-1">
-                        <Typography variant="b12" fontWeight="700" component="small" twStyle={tw`capitalize`}>
-                            rust
-                        </Typography>
+                        <Caption text="rust" />
                         <div>
-                            <div className="h-14 w-28 border border-gray-950 bg-rust-50/20" />
+                            <TwColor theme={StyleThemes.Rust} />
                             <Typography variant="b18" fontFamily="nanumpenscript">
-                                <small className="font-[inherit]">50/20</small>
+                                <small className="font-inherit">50/20</small>
                                 <br />
                                 {colors.rust['50']}, opacity 20
                             </Typography>
                         </div>
                     </div>
                     <div className="space-y-1">
-                        <Typography variant="b12" fontWeight="700" component="small" twStyle={tw`capitalize`}>
-                            buttered-rum
-                        </Typography>
+                        <Caption text="buttered-rum" />
                         <div>
-                            <div className="h-14 w-28 border border-gray-950 bg-buttered-rum-50/20" />
+                            <TwColor theme={StyleThemes.ButteredRum} />{' '}
                             <Typography variant="b18" fontFamily="nanumpenscript">
-                                <small className="font-[inherit]">50/20</small>
+                                <small className="font-inherit">50/20</small>
                                 <br />
                                 {colors['buttered-rum']['50']}, opacity 20
                             </Typography>
                         </div>
                     </div>
                     <div className="space-y-1">
-                        <Typography variant="b12" fontWeight="700" component="small" twStyle={tw`capitalize`}>
-                            christi
-                        </Typography>
+                        <Caption text="christi" />
                         <div>
-                            <div className="h-14 w-28 border border-gray-950 bg-christi-50/20" />
+                            <TwColor theme={StyleThemes.Christi} />
                             <Typography variant="b18" fontFamily="nanumpenscript">
-                                <small className="font-[inherit]">50/20</small>
+                                <small className="font-inherit">50/20</small>
                                 <br />
                                 {colors.christi['50']}, opacity 20
                             </Typography>
                         </div>
                     </div>
                     <div className="space-y-1">
-                        <Typography variant="b12" fontWeight="700" component="small" twStyle={tw`capitalize`}>
-                            blue-chill
-                        </Typography>
+                        <Caption text="blue-chill" />
                         <div>
-                            <div className="h-14 w-28 border border-gray-950 bg-blue-chill-50/20" />
+                            <TwColor theme={StyleThemes.BlueChill} />
                             <Typography variant="b18" fontFamily="nanumpenscript">
-                                <small className="font-[inherit]">50/20</small>
+                                <small className="font-inherit">50/20</small>
                                 <br />
                                 {colors['blue-chill']['50']}, opacity 20
                             </Typography>
                         </div>
                     </div>
                     <div className="space-y-1">
-                        <Typography variant="b12" fontWeight="700" component="small" twStyle={tw`capitalize`}>
-                            blue-gem
-                        </Typography>
+                        <Caption text="blue-gem" />
                         <div>
-                            <div className="h-14 w-28 border border-gray-950 bg-blue-gem-50/20" />
+                            <TwColor theme={StyleThemes.BlueGem} />
                             <Typography variant="b18" fontFamily="nanumpenscript">
-                                <small className="font-[inherit]">50/20</small>
+                                <small className="font-inherit">50/20</small>
                                 <br />
                                 {colors['blue-gem']['50']}, opacity 20
                             </Typography>
                         </div>
                     </div>
                     <div className="space-y-1">
-                        <Typography variant="b12" fontWeight="700" component="small" twStyle={tw`capitalize`}>
-                            jazzberry-jam
-                        </Typography>
+                        <Caption text="jazzberry-jam" />
                         <div>
-                            <div className="h-14 w-28 border border-gray-950 bg-jazzberry-jam-50/20" />
+                            <TwColor theme={StyleThemes.JazzberryJam} />
                             <Typography variant="b18" fontFamily="nanumpenscript">
-                                <small className="font-[inherit]">50/20</small>
+                                <small className="font-inherit">50/20</small>
                                 <br />
                                 {colors['jazzberry-jam']['50']}, opacity 20
                             </Typography>
