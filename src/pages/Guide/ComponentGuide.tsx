@@ -1,5 +1,6 @@
 import { Typography } from 'components';
-import { CoreEtcGuide, CustomizedEtcGuide, InputGuide, ModalGuide, TextInputGuide, ToastGuide } from 'components/Guide';
+
+import { CoreEtcGuide, CustomizedEtcGuide, InputGuide, ModalGuide, TextInputGuide, ToastGuide } from 'pages/Guide/components';
 
 export default function ComponentGuide() {
     return (
