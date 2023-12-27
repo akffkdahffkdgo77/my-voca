@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import RootBoundary from 'app/RootBoundary';
 import { Layout } from 'layout';
+import Export from 'pages/Export';
 import Guide from 'pages/Guide';
 import Home from 'pages/Home';
 import Register from 'pages/Register';
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
             {
                 path: 'test/:wordListIdx',
                 element: <Test />
+            },
+            {
+                path: 'export',
+                element: <Export />
             },
             {
                 path: 'guide',

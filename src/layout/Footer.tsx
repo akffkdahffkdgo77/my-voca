@@ -15,6 +15,14 @@ export default function Footer() {
                 <nav>
                     <ul className="flex items-center gap-x-5">
                         <li>
+                            <Link to="/register" className="flex items-start">
+                                <Typography variant="b24" component="span" fontFamily="nanumpenscript" color="inherit">
+                                    데이터 등록
+                                </Typography>
+                                <ArrowTopRightOnSquareIcon className="h-3 w-3" />
+                            </Link>
+                        </li>
+                        <li>
                             <Link to="/guide" target="_blank" rel="noopener noreferrer" className="flex items-start">
                                 <Typography variant="b24" component="span" fontFamily="nanumpenscript" color="inherit">
                                     Guide
