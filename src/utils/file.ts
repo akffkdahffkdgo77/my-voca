@@ -20,7 +20,7 @@ function createList(list: string[]) {
     const curTime = new Date().getTime();
     const newWordList: DataType = {
         wordListIdx: uuid(),
-        wordListName: `단어장 ${formatDate(curTime, 'YYYY.MM.DD')}`,
+        wordListName: `단어장 ${formatDate(curTime, 'YYYY.MM.DD HH:mm:ss')}`,
         wordListDate: curTime,
         status: 'TODO',
         category: '영어 단어',
@@ -28,7 +28,7 @@ function createList(list: string[]) {
     };
     for (let i = 0; i < list.length; i++) {
         const [word, definition] = list[i].split(':');
-        const [definition1, definition2] = definition.split('\n');
+        const [definition1, definition2] = definition.split('\\n');
         newWordList.words[i] = {
             wordIdx: uuid(),
             word,
@@ -43,13 +43,15 @@ function createList(list: string[]) {
 }
 
 export function importFile(file: File): Promise<DataType> {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onloadend = () => {
             const fileData = reader.result;
             if (fileData) {
                 const list = fileData.toString().trim().split('\n');
                 resolve(createList(list));
+            } else {
+                reject(new Error('문제가 발생하였습니다. 파일을 다시 첨부해 주세요.'));
             }
         };
         reader.readAsText(file);
