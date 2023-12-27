@@ -32,7 +32,6 @@ export type WordList = {
 
 const CURRENT_DATE = new Date();
 
-// TODO: dummy?
 export const wordList = [
     {
         wordListIdx: '11254b3b-0543-4763-9474-d64a6026570d',
