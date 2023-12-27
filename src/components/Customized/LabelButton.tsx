@@ -10,14 +10,18 @@ type CustomizedLabelButtonType = OptionalThemeType & {
     onClick?: () => void;
 };
 
+const customStyle = {
+    label: tw`uppercase`
+};
+
 export default function CustomizedLabelButton({ theme = StyleThemes.Gray, buttonText, onClick }: CustomizedLabelButtonType) {
     const id = useId();
     return (
         <div className="flex flex-col">
-            <Typography id={id} variant="c11" component="small" color={twinTheme`colors.gray.900`} twStyle={tw`uppercase`}>
+            <Typography id={id} variant="c11" component="small" color={twinTheme`colors.gray.900`} twStyle={customStyle.label}>
                 Layout
             </Typography>
-            <Button aria-describedby={id} type="button" shape="rounded" variant="outlined" borderRadius="16px" size="large" theme={theme} onClick={onClick} twStyle={tw`bg-white`}>
+            <Button aria-describedby={id} type="button" shape="rounded" variant="outlined" borderRadius="16px" size="large" backgroundColor={twinTheme`colors.white`} theme={theme} onClick={onClick}>
                 <Typography variant="h4" align="center" fontFamily="nanumpenscript" lineHeight="24px">
                     {buttonText}
                 </Typography>

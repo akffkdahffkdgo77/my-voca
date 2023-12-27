@@ -1,3 +1,6 @@
+import { v4 as uuid } from 'uuid';
+
+import { formatDate } from './format';
 import { getLocalStorage, setLocalStorage } from './localStorage';
 
 export type WordType = {
@@ -19,6 +22,20 @@ export type DataType = {
 };
 
 export type DataListType = DataType[];
+
+export function createBaseData() {
+    const curTime = new Date().getTime();
+    const newWordList: DataType = {
+        wordListIdx: uuid(),
+        wordListName: `단어장 ${formatDate(curTime, 'YYYY.MM.DD HH:mm:ss')}`,
+        wordListDate: curTime,
+        status: 'TODO',
+        category: '영어 단어',
+        words: []
+    };
+
+    return newWordList;
+}
 
 export function getWords(): DataListType {
     return getLocalStorage('words') || [];

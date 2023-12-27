@@ -1,5 +1,6 @@
 import { Typography } from 'components/Core';
-import tw from 'twin.macro';
+
+import Caption from './Caption';
 
 import { colors } from 'utils/theme';
 
@@ -12,91 +13,77 @@ export default function ThemeBackgroundColorGuide() {
             <div className="flex items-center gap-x-5">
                 <div className="flex items-center gap-x-5">
                     <div className="space-y-1">
-                        <Typography variant="b12" fontWeight="700" component="small" twStyle={tw`capitalize`}>
-                            red
-                        </Typography>
+                        <Caption text="red" />
                         <div>
                             <div className="h-14 w-28 bg-red-100" />
                             <Typography variant="b18" fontFamily="nanumpenscript">
-                                <small className="font-[inherit]">100</small>
+                                <small className="font-inherit">100</small>
                                 <br />
                                 {colors.red['100']}
                             </Typography>
                         </div>
                     </div>
                     <div className="space-y-1">
-                        <Typography variant="b12" fontWeight="700" component="small" twStyle={tw`capitalize`}>
-                            rust
-                        </Typography>
+                        <Caption text="rust" />
                         <div>
                             <div className="h-14 w-28 bg-rust-100" />
                             <Typography variant="b18" fontFamily="nanumpenscript">
-                                <small className="font-[inherit]">100</small>
+                                <small className="font-inherit">100</small>
                                 <br />
                                 {colors.rust['100']}
                             </Typography>
                         </div>
                     </div>
                     <div className="space-y-1">
-                        <Typography variant="b12" fontWeight="700" component="small" twStyle={tw`capitalize`}>
-                            buttered-rum
-                        </Typography>
+                        <Caption text="buttered-rum" />
                         <div>
                             <div className="h-14 w-28 bg-buttered-rum-100" />
                             <Typography variant="b18" fontFamily="nanumpenscript">
-                                <small className="font-[inherit]">100</small>
+                                <small className="font-inherit">100</small>
                                 <br />
                                 {colors['buttered-rum']['100']}
                             </Typography>
                         </div>
                     </div>
                     <div className="space-y-1">
-                        <Typography variant="b12" fontWeight="700" component="small" twStyle={tw`capitalize`}>
-                            christi
-                        </Typography>
+                        <Caption text="christi" />
                         <div>
                             <div className="h-14 w-28 bg-christi-100" />
                             <Typography variant="b18" fontFamily="nanumpenscript">
-                                <small className="font-[inherit]">100</small>
+                                <small className="font-inherit">100</small>
                                 <br />
                                 {colors.christi['100']}
                             </Typography>
                         </div>
                     </div>
                     <div className="space-y-1">
-                        <Typography variant="b12" fontWeight="700" component="small" twStyle={tw`capitalize`}>
-                            blue-chill
-                        </Typography>
+                        <Caption text="blue-chill" />
                         <div>
                             <div className="h-14 w-28 bg-blue-chill-100" />
                             <Typography variant="b18" fontFamily="nanumpenscript">
-                                <small className="font-[inherit]">100</small>
+                                <small className="font-inherit">100</small>
                                 <br />
                                 {colors['blue-chill']['100']}
                             </Typography>
                         </div>
                     </div>
                     <div className="space-y-1">
-                        <Typography variant="b12" fontWeight="700" component="small" twStyle={tw`capitalize`}>
-                            blue-gem
-                        </Typography>
+                        <Caption text="blue-gem" />
                         <div>
                             <div className="h-14 w-28 bg-blue-gem-100" />
                             <Typography variant="b18" fontFamily="nanumpenscript">
-                                <small className="font-[inherit]">100</small>
+                                <small className="font-inherit">100</small>
                                 <br />
                                 {colors['blue-gem']['100']}
                             </Typography>
                         </div>
                     </div>
                     <div className="space-y-1">
-                        <Typography variant="b12" fontWeight="700" component="small" twStyle={tw`capitalize`}>
-                            jazzberry-jam
-                        </Typography>
+                        <Caption text="jazzberry-jam" />
                         <div>
                             <div className="h-14 w-28 bg-jazzberry-jam-100" />
                             <Typography variant="b18" fontFamily="nanumpenscript">
-                                <small className="font-[inherit]">100</small>
+                                <small className="font-inherit">100</small>
                                 <br />
                                 {colors['jazzberry-jam']['100']}
                             </Typography>

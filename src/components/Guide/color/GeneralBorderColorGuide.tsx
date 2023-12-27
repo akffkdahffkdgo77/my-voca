@@ -15,7 +15,7 @@ export default function GeneralBorderColorGuide() {
                     </Typography>
                     <div className="h-14 w-28 bg-gray-950" />
                     <Typography variant="b18" fontFamily="nanumpenscript">
-                        <small className="font-[inherit]">950</small>
+                        <small className="font-inherit">950</small>
                         <br />
                         {colors.gray['950']}
                     </Typography>
@@ -26,7 +26,7 @@ export default function GeneralBorderColorGuide() {
                     </Typography>
                     <div className="h-14 w-28 bg-gray-900" />
                     <Typography variant="b18" fontFamily="nanumpenscript">
-                        <small className="font-[inherit]">900</small>
+                        <small className="font-inherit">900</small>
                         <br />
                         {colors.gray['900']}
                     </Typography>
@@ -37,7 +37,7 @@ export default function GeneralBorderColorGuide() {
                     </Typography>
                     <div className="h-14 w-28 bg-gray-200" />
                     <Typography variant="b18" fontFamily="nanumpenscript">
-                        <small className="font-[inherit]">200</small>
+                        <small className="font-inherit">200</small>
                         <br />
                         {colors.gray['200']}
                     </Typography>

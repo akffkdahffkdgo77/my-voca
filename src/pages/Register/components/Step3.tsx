@@ -6,14 +6,13 @@ import tw, { theme } from 'twin.macro';
 
 import { v4 as uuid } from 'uuid';
 
-import { DataType, addWord } from 'utils/data';
-import { formatDate } from 'utils/format';
+import { addWord, createBaseData } from 'utils/data';
 import { StyleThemes } from 'utils/theme';
 
 const PLACEHOLDER_WORD = '[필수] 단어를 입력해 주세요.';
 const PLACEHOLDER_DEFINITIONS = ['[필수] 첫 번째 뜻을 입력해 주세요.', '두 번째 뜻을 입력해 주세요.'];
 
-const MAX_LENGTH = 4;
+const MAX_LENGTH = 100;
 
 const customStyle = {
     caption: tw`ml-1`,
@@ -72,7 +71,7 @@ export default function Step3({ isLoading, onLoading }: Props) {
         (e: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
             if (e.shiftKey && e.code === 'Enter') {
                 e.preventDefault();
-                if (!word || definition.every((val) => !val)) {
+                if (!word || definition.some((val) => !val)) {
                     setIsError(true);
                 } else {
                     setIsError(false);
@@ -89,22 +88,14 @@ export default function Step3({ isLoading, onLoading }: Props) {
     );
 
     const handleSubmit = useCallback(() => {
-        const curTime = new Date().getTime();
-        const newData: DataType = {
-            wordListIdx: uuid(),
-            wordListName: `단어장 ${formatDate(curTime, 'YYYY.MM.DD HH:mm:ss')}`,
-            wordListDate: curTime,
-            status: 'TODO',
-            category: '영어 단어',
-            words: newWordList.map((val) => ({
-                wordIdx: uuid(),
-                ...val,
-                count: 0,
-                isHighlighted: false,
-                isMemorized: false
-            }))
-        };
-
+        const newData = createBaseData();
+        newData.words = newWordList.map((val) => ({
+            wordIdx: uuid(),
+            ...val,
+            count: 0,
+            isHighlighted: false,
+            isMemorized: false
+        }));
         onLoading();
         timerId.current = setTimeout(() => {
             addWord(newData);
@@ -123,21 +114,22 @@ export default function Step3({ isLoading, onLoading }: Props) {
                 <div className="overflow-hidden rounded shadow-xl">
                     <Input
                         ref={inputRef}
-                        isDisabled={newWordList.length === MAX_LENGTH}
-                        isError={isError}
+                        maxLength={20}
                         value={word}
                         onChange={handleWord}
                         onKeyDown={handleAppend}
+                        isDisabled={newWordList.length === MAX_LENGTH}
+                        isError={isError}
                         theme={StyleThemes.Gray}
                         variant="contained"
                         twStyle={customStyle.input}
                     />
                     <Textarea
-                        isError={isError}
-                        isDisabled={newWordList.length === MAX_LENGTH}
                         value={definition.join('\n')}
                         onChange={handleDefinition}
                         onKeyDown={handleAppend}
+                        isError={isError}
+                        isDisabled={newWordList.length === MAX_LENGTH}
                         height={200}
                         containerStyle={customStyle.textareaContainer}
                     />
@@ -146,6 +138,10 @@ export default function Step3({ isLoading, onLoading }: Props) {
                     <Typography component="small" variant="c11" fontWeight="700" color={theme`colors.red.500`} twStyle={customStyle.caption}>
                         {isError ? '필수 값을 모두 입력해 주세요.' : '현재는 최대 4개까지 입력할 수 있습니다.'}
                     </Typography>
+                ) : word.length === 20 ? (
+                    <Typography component="small" variant="c11" fontWeight="700" twStyle={customStyle.caption}>
+                        단어는 최대 20자까지 입력 가능합니다.
+                    </Typography>
                 ) : (
                     <Typography component="small" variant="c11" fontWeight="700" twStyle={customStyle.caption}>
                         shift + enter를 누르면 단어를 추가할 수 있습니다.
@@ -153,7 +149,7 @@ export default function Step3({ isLoading, onLoading }: Props) {
                 )}
             </div>
             <div className="relative flex-1">
-                <ul className="flex max-h-500pxr w-full flex-col-reverse rounded bg-white shadow-xl">
+                <ul className="flex max-h-400pxr w-full flex-col-reverse overflow-y-auto rounded bg-white p-10 shadow-xl">
                     {newWordList.length ? (
                         newWordList.map(({ word, definition }, index) => (
                             <li key={index} className="w-full">

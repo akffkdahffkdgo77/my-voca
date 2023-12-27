@@ -16,7 +16,7 @@ export default function ThemeColorGuide() {
                                 <li key={key} className="w-full">
                                     <div style={{ backgroundColor: colors[color][Number(key)] }} className="h-14 w-full" />
                                     <Typography variant="b18" fontFamily="nanumpenscript">
-                                        <small className="font-[inherit]">{key}</small>
+                                        <small className="font-inherit">{key}</small>
                                         <br />
                                         {colors[color][Number(key)]}
                                     </Typography>

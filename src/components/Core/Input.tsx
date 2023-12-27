@@ -1,7 +1,7 @@
 import { InputHTMLAttributes, forwardRef, useId } from 'react';
 
 import styled from '@emotion/styled';
-import tw, { TwStyle, theme as TwinTheme } from 'twin.macro';
+import tw, { TwStyle, theme as twinTheme } from 'twin.macro';
 
 import Typography from './Typography';
 
@@ -24,6 +24,10 @@ type InputType = InputHTMLAttributes<HTMLInputElement> &
         hiddenText?: string;
     };
 
+const customStyle = {
+    helperText: tw`ml-2`
+};
+
 const TwContainer = styled.div(({ containerStyle }: StylesType) => [tw`w-full`, containerStyle && containerStyle]);
 
 const TwInput = styled.input(({ isError, theme, width, height, variant, twStyle }: StylesType) => [
@@ -38,7 +42,7 @@ const TwInput = styled.input(({ isError, theme, width, height, variant, twStyle 
 ]);
 
 const Input = forwardRef<HTMLInputElement, InputType>(function useCreateInput(props, ref) {
-    const { theme = StyleThemes.Gray, containerStyle, isDisabled, isError, hiddenText, labelText, helperText, type, maxLength, min, max, ...rest } = props;
+    const { theme = StyleThemes.Gray, containerStyle, isDisabled, isError, hiddenText, labelText, helperText, type = 'text', maxLength, min, max, ...rest } = props;
     const id = useId();
 
     return (
@@ -90,7 +94,7 @@ const Input = forwardRef<HTMLInputElement, InputType>(function useCreateInput(pr
                 theme={theme}
             />
             {helperText && (
-                <Typography variant="b12" fontWeight="600" color={isError ? TwinTheme`colors.red.600` : ''} twStyle={tw`ml-2`}>
+                <Typography variant="b12" fontWeight="600" color={isError ? twinTheme`colors.red.600` : ''} twStyle={customStyle.helperText}>
                     {helperText}
                 </Typography>
             )}
