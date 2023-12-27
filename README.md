@@ -45,11 +45,26 @@
         <br/>
         <img src="https://img.shields.io/badge/v1.2-2023--09-ff8da9?style=flat" alt="v1.2" />
         <br/>
-        <img src="https://img.shields.io/badge/Coming Soon v1.3-2023-ff7194?style=flat" alt="v1.3" />
+        <img src="https://img.shields.io/badge/v1.3-2023--12-ff7194?style=flat" alt="v1.3" />
+        <br/>
+        <img src="https://img.shields.io/badge/Coming Soon v1.4-2024-ff3668?style=flat" alt="v1.4" />
       </td>
     </tr>
   </tbody>
 </table>
+
+## 프로젝트 버젼
+### ❄️ v1.3
+
+-   [x] UI 업데이트
+    -   [x] 테마 추가
+    -   [x] Register Page (파일 업로드 / 직접 등록)
+    -   [x] Home Page (List Page)
+    -   [x] Export Page (파일 다운로드 / 이미지 다운로드)
+-   [x] 기타
+    -   [x] React로 변경
+    -   [x] Core / Customized로 공통 컴포넌트 분리
+    -   [x] Storybook 추가
 
 <details>
   <summary>
@@ -91,15 +106,18 @@
     -   [x] 최대 10개까지 수동 입력 가능하도록
     -   [x] 단어장 export / import 기능
        
-### 🎃 v1.3 (10월 ~ 11월 업데이트)
+### ❄️ v1.3
 
 -   [x] UI 업데이트
-    -   [x] 등록 + 상세 + 테스트 화면 합치기
     -   [x] 테마 추가
+    -   [x] Register Page
+    -   [x] Home Page (List Page)
+    -   [x] Export Page
 -   [x] 기타
     -   [x] 리액트로 변경
-    -   [x] 공통 컴포넌트 분리
-       
+    -   [x] Core / Customized로 공통 컴포넌트 분리
+    -   [x] Storybook 추가
+
 </details>
 
 <details>
