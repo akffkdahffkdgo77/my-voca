@@ -19,8 +19,7 @@ const MILLISECONDS = 1000;
 const SECONDS = MILLISECONDS * 60;
 const MINUTES = SECONDS * 60;
 const HOURS = MINUTES * 24;
-// const DUE_DATE = dayjs().add(1, 'day').set('hour', 0).set('minute', 0).set('second', 0);
-const DUE_DATE = dayjs('2023-12-27 15:15:00');
+const DUE_DATE = dayjs().add(1, 'day').set('hour', 0).set('minute', 0).set('second', 0);
 
 const customStyle = {
     timeStyle: tw`px-2 h-8 w-36 leading-8`,
