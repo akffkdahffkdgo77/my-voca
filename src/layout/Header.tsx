@@ -9,6 +9,7 @@ import tw, { theme as twinTheme } from 'twin.macro';
 import dayjs from 'dayjs';
 
 import { getWords } from 'utils/data';
+import { getLocalStorage } from 'utils/localStorage';
 import { StyleThemes, getBackgroundColor, getLightBorderColor, getTextColor } from 'utils/theme';
 
 interface Props {
@@ -35,13 +36,14 @@ export default function Header({ theme }: Props) {
     const { pathname } = useLocation();
     const isRegister = pathname === '/register';
 
-    const [time, setTime] = useState('');
-    const timerId = useRef<NodeJS.Timer>();
     const handleModal = useModal();
     const { setMessage } = useToast();
 
+    const [time, setTime] = useState('');
+    const timerId = useRef<NodeJS.Timer>();
+
     const dueDate = useMemo(() => {
-        const startTime = Number(localStorage.getItem('startTime'));
+        const startTime = Number(getLocalStorage('startTime'));
         return dayjs(startTime).add(1, 'day').set('hour', 0).set('minute', 0).set('second', 0);
     }, []);
 

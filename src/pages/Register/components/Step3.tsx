@@ -6,12 +6,14 @@ import tw, { theme } from 'twin.macro';
 
 import { v4 as uuid } from 'uuid';
 
+import { useMobile } from 'hooks';
 import { addWord, createBaseData } from 'utils/data';
 import { StyleThemes } from 'utils/theme';
 
 interface Props {
     isLoading: boolean;
     onLoading: () => void;
+    onClick: (selected: number) => void;
 }
 
 const PLACEHOLDER_WORD = '[필수] 단어를 입력해 주세요.';
@@ -26,7 +28,7 @@ const customStyle = {
 };
 
 // 직접 등록
-export default function Step3({ isLoading, onLoading }: Props) {
+export default function Step3({ isLoading, onLoading, onClick }: Props) {
     const [word, setWord] = useState(PLACEHOLDER_WORD);
     const [definition, setDefinition] = useState<string[]>(PLACEHOLDER_DEFINITIONS);
     const [newWordList, setNewWordList] = useState<{ word: string; definition: string[] }[]>([]);
@@ -107,6 +109,14 @@ export default function Step3({ isLoading, onLoading }: Props) {
     useEffect(() => {
         return () => clearTimeout(timerId.current);
     }, []);
+
+    const isMobile = useMobile();
+
+    useEffect(() => {
+        if (isMobile) {
+            onClick(2);
+        }
+    }, [isMobile]);
 
     return (
         <>

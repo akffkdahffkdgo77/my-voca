@@ -44,8 +44,6 @@ export function ModalProvider({ children }: ModalProviderType) {
         });
     }, []);
 
-    const handleBackdropClick = useCallback(() => setOpen((prev) => !prev), []);
-
     const handleConfirm = useCallback(() => {
         setOpen(false);
         promiseInfo.current(true);
@@ -63,7 +61,7 @@ export function ModalProvider({ children }: ModalProviderType) {
     return (
         <ModalContext.Provider value={value}>
             {children}
-            {open && createPortal(<Modal options={options} onClick={handleBackdropClick} onConfirm={handleConfirm} onClose={handleClose} />, document.getElementById('portal') as HTMLElement)}
+            {open && createPortal(<Modal options={options} onConfirm={handleConfirm} onClose={handleClose} />, document.getElementById('portal') as HTMLElement)}
         </ModalContext.Provider>
     );
 }

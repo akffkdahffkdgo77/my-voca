@@ -8,12 +8,11 @@ import { textStyle } from 'utils/theme';
 
 type ModalType = {
     options?: ModalOptionsType;
-    onClick: () => void;
     onConfirm: () => void;
     onClose: () => void;
 };
 
-export default function Modal({ onClick, options, onConfirm, onClose }: ModalType) {
+export default function Modal({ options, onConfirm, onClose }: ModalType) {
     useEffect(() => {
         document.body.classList.add('overflow-hidden');
 
@@ -25,7 +24,7 @@ export default function Modal({ onClick, options, onConfirm, onClose }: ModalTyp
             role="presentation"
             onClick={(e) => {
                 e.stopPropagation();
-                onClick();
+                onClose();
             }}
             className="fixed bottom-0 left-0 right-0 top-0 z-50 flex items-center justify-center bg-black/70"
         >

@@ -63,9 +63,11 @@ export default function Step3({ words }: Props) {
                     ctx.fillText(definition1.slice(i, i + maxLength), e.nativeEvent.offsetX, e.nativeEvent.offsetY + FONT_SIZE * additionalY++);
                 }
 
-                for (let i = 0; i < definition2.length; i += maxLength) {
-                    ctx.font = "16px 'sans-serif'";
-                    ctx.fillText(definition2.slice(i, i + maxLength), e.nativeEvent.offsetX, e.nativeEvent.offsetY + FONT_SIZE * additionalY++);
+                if (definition2) {
+                    for (let i = 0; i < definition2.length; i += maxLength) {
+                        ctx.font = "16px 'sans-serif'";
+                        ctx.fillText(definition2.slice(i, i + maxLength), e.nativeEvent.offsetX, e.nativeEvent.offsetY + FONT_SIZE * additionalY++);
+                    }
                 }
 
                 setSelectedText(null);
@@ -127,7 +129,7 @@ export default function Step3({ words }: Props) {
                                             setMessage('단어가 선택되었습니다.', { variant: 'info' });
                                         }}
                                     >
-                                        <div className="grid-cols-auto grid w-full">
+                                        <div className="grid w-full grid-cols-auto">
                                             <Typography variant="b16" fontWeight="500" gutterBottom={4} align="left" twStyle={textStyle.modalText}>
                                                 <Typography component="span" variant="b16" fontWeight="700">
                                                     {index + 1}.{' '}
