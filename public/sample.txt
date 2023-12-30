@@ -1,3 +1,4 @@
 test:시험
 word:단어
 definition:정의
+단어명:1.첫 번째 정의\n2. 두 번째 정의
