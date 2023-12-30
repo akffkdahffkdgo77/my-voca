@@ -46,7 +46,7 @@ export default function GeneralBackgroundColorGuide() {
                     <Typography variant="b12" fontWeight="700" component="small">
                         Light Grid
                     </Typography>
-                    <div className="bg-grid-light h-14 w-28" />
+                    <div className="h-14 w-28 bg-grid-light" />
                     <Typography variant="b18" fontFamily="nanumpenscript">
                         <small className="font-inherit">light-grid</small>
                         <br />
