@@ -7,13 +7,13 @@ import tw from 'twin.macro';
 import { DataListType, getWord } from 'utils/data';
 import { exportFile } from 'utils/file';
 
-interface Props {
-    words: DataListType;
-}
-
 const customStyle = {
     label: tw`border-2 rounded border-gray-950 w-max px-2 py-1`
 };
+
+interface Props {
+    words: DataListType;
+}
 
 export default function Step2({ words }: Props) {
     const navigate = useNavigate();

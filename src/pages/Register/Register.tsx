@@ -1,13 +1,9 @@
 import { useCallback, useState } from 'react';
 
 import { CustomizedFullPageLoader } from 'components';
-import Header from 'layout/Header';
 
 import { Step1, Step2, Step3 } from './components';
 
-import { StyleThemes } from 'utils/theme';
-
-// TODO: 모바일 등록 UI
 export default function Register() {
     const [step, setStep] = useState(1);
     const [isLoading, setIsLoading] = useState(false);
@@ -17,8 +13,7 @@ export default function Register() {
     const handleLoading = useCallback(() => setIsLoading(true), []);
 
     return (
-        <div className="bg-grid-light flex min-h-screen w-full min-w-1512pxr items-center justify-center gap-x-10 p-10">
-            <Header theme={StyleThemes.Gray} />
+        <div className="flex min-h-screen w-full min-w-1512pxr items-center justify-center gap-x-10 p-10 bg-grid-light">
             {isLoading && (
                 <div className="fixed bottom-0 left-0 right-0 top-0 z-10 cursor-progress">
                     <CustomizedFullPageLoader />

@@ -3,7 +3,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import styled from '@emotion/styled';
 import { CustomizedDatePicker, CustomizedSingleTextInput, CustomizedDoubleTextInput, CustomizedLabelButton, CustomizedMobileTextInput, Input } from 'components';
-import Header from 'layout/Header';
 import tw from 'twin.macro';
 
 import { TestAside } from './components';
@@ -47,66 +46,67 @@ export default function Test() {
     }
 
     return (
-        <>
-            <Header theme={theme} />
-            <TwContainer theme={theme}>
-                <div className="mx-auto max-w-5xl px-5 pt-6">
-                    <div className="mb-10 flex items-center justify-center">
-                        <Input
-                            type="text"
-                            variant="text"
-                            maxLength={20}
-                            hiddenText="단어장 이름"
-                            placeholder="단어장 이름을 입력해 주세요"
-                            defaultValue={wordList.wordListName}
-                            isDisabled
-                            theme={theme}
-                            twStyle={{ ...textStyle.title, ...getTextColor(theme) }}
-                        />
-                        <CustomizedDatePicker theme={theme} />
+        <TwContainer theme={theme}>
+            <div className="mx-auto max-w-5xl px-5 pt-16 under-tablet:pt-6">
+                <div className="mb-10 flex items-center justify-center under-tablet:mb-2.5">
+                    <Input
+                        type="text"
+                        variant="text"
+                        maxLength={20}
+                        hiddenText="단어장 이름"
+                        placeholder="단어장 이름을 입력해 주세요"
+                        defaultValue={wordList.wordListName}
+                        isDisabled
+                        theme={theme}
+                        twStyle={{ ...textStyle.title, ...getTextColor(theme) }}
+                    />
+                    {!isMobile && <CustomizedDatePicker theme={theme} />}
+                </div>
+                {!isMobile && (
+                    <div className="mb-5 flex items-end gap-2.5">
+                        <CustomizedLabelButton theme={theme} buttonText={isDouble ? '2x' : '1x'} onClick={handleLayoutClick} />
                     </div>
-                    <div className="mb-5 flex items-end gap-2.5">{!isMobile && <CustomizedLabelButton theme={theme} buttonText={isDouble ? '2x' : '1x'} onClick={handleLayoutClick} />}</div>
-                    <div className="space-y-4 tablet:space-y-0">
-                        {!isMobile && isDouble
-                            ? splitIntoTwo(wordList.words).map((word, index) => (
-                                  <CustomizedDoubleTextInput
-                                      key={index}
-                                      words={word}
+                )}
+                <div className="space-y-4 tablet:space-y-0">
+                    {!isMobile && isDouble
+                        ? splitIntoTwo(wordList.words).map((word, index) => (
+                              <CustomizedDoubleTextInput
+                                  key={index}
+                                  words={word}
+                                  isDisabled
+                                  isHidden={word.map((val) => isHidden[val.wordIdx])}
+                                  onHiddenClick={(idx) => handleHiddenClick(idx as keyof typeof isHidden)}
+                                  theme={theme}
+                              />
+                          ))
+                        : wordList.words.map((word) =>
+                              isMobile ? (
+                                  <CustomizedMobileTextInput
+                                      key={word.wordIdx}
+                                      word={word.word}
+                                      definition={word.definition.join('\n')}
+                                      count={word.count}
                                       isDisabled
-                                      isHidden={word.map((val) => isHidden[val.wordIdx])}
-                                      onHiddenClick={(idx) => handleHiddenClick(idx as keyof typeof isHidden)}
+                                      isHidden={isHidden[word.wordIdx]}
+                                      onHiddenClick={() => handleHiddenClick(word.wordIdx)}
                                       theme={theme}
                                   />
-                              ))
-                            : wordList.words.map((word) =>
-                                  isMobile ? (
-                                      <CustomizedMobileTextInput
-                                          key={word.wordIdx}
-                                          word={word.word}
-                                          definition={word.definition.join('\n')}
-                                          count={word.count}
-                                          isDisabled
-                                          isHidden={isHidden[word.wordIdx]}
-                                          onHiddenClick={() => handleHiddenClick(word.wordIdx)}
-                                          theme={theme}
-                                      />
-                                  ) : (
-                                      <CustomizedSingleTextInput
-                                          key={word.wordIdx}
-                                          word={word.word}
-                                          definition={word.definition}
-                                          count={word.count}
-                                          isDisabled
-                                          isHidden={isHidden[word.wordIdx]}
-                                          onHiddenClick={() => handleHiddenClick(word.wordIdx)}
-                                          theme={theme}
-                                      />
-                                  )
-                              )}
-                    </div>
+                              ) : (
+                                  <CustomizedSingleTextInput
+                                      key={word.wordIdx}
+                                      word={word.word}
+                                      definition={word.definition}
+                                      count={word.count}
+                                      isDisabled
+                                      isHidden={isHidden[word.wordIdx]}
+                                      onHiddenClick={() => handleHiddenClick(word.wordIdx)}
+                                      theme={theme}
+                                  />
+                              )
+                          )}
                 </div>
-                <TestAside onClick={handleClick} />
-            </TwContainer>
-        </>
+            </div>
+            <TestAside onClick={handleClick} />
+        </TwContainer>
     );
 }

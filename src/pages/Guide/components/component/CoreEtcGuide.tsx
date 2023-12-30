@@ -3,7 +3,7 @@ import { Button, Checkbox, CustomizedColorPicker, Typography } from 'components'
 import { useTheme } from 'hooks';
 import { ButtonSizeType } from 'utils/theme';
 
-const BUTTON_SIZE: ButtonSizeType[] = ['small', 'medium', 'large', 'extraLarge'];
+export const BUTTON_SIZE: ButtonSizeType[] = ['small', 'medium', 'large', 'extraLarge'];
 
 export default function CoreEtcGuide() {
     const { theme, handleClick } = useTheme();

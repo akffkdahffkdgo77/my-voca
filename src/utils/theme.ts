@@ -304,6 +304,6 @@ export const colors: Record<string, Record<number, string>> = {
 };
 
 export const textStyle = {
-    title: tw`bg-inherit text-h1 h-full px-0 font-nanumpenscript`,
+    title: tw`bg-inherit text-h1 h-full px-0 font-nanumpenscript under-tablet:text-h3`,
     modalText: tw`whitespace-pre-wrap break-all`
 };

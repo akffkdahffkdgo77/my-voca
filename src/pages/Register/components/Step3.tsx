@@ -9,6 +9,11 @@ import { v4 as uuid } from 'uuid';
 import { addWord, createBaseData } from 'utils/data';
 import { StyleThemes } from 'utils/theme';
 
+interface Props {
+    isLoading: boolean;
+    onLoading: () => void;
+}
+
 const PLACEHOLDER_WORD = '[필수] 단어를 입력해 주세요.';
 const PLACEHOLDER_DEFINITIONS = ['[필수] 첫 번째 뜻을 입력해 주세요.', '두 번째 뜻을 입력해 주세요.'];
 
@@ -19,11 +24,6 @@ const customStyle = {
     textareaContainer: tw`bg-grid border-t-0 rounded-b`,
     input: tw`rounded-b-none font-nanumpenscript text-h4 shadow-md`
 };
-
-interface Props {
-    isLoading: boolean;
-    onLoading: () => void;
-}
 
 // 직접 등록
 export default function Step3({ isLoading, onLoading }: Props) {

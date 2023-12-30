@@ -6,20 +6,19 @@ import { InboxArrowDownIcon } from '@heroicons/react/24/outline';
 import { Button, Typography, useToast } from 'components';
 import tw, { theme } from 'twin.macro';
 
+import { DEFAULT_ERROR_MESSAGE } from 'utils/constants';
 import { addWord } from 'utils/data';
 import { exportFile, importFile } from 'utils/file';
 import { OptionalThemeType, StyleThemes } from 'utils/theme';
-
-const TwLabel = styled.label(({ isDragging }: OptionalThemeType & { isDragging: boolean }) => [
-    tw`flex h-500pxr w-500pxr cursor-pointer hover:bg-gray-100 flex-col items-center justify-center rounded border border-gray-950 shadow-xl bg-white`,
-    isDragging && tw`bg-gray-100`
-]);
 
 interface Props {
     onLoading: () => void;
 }
 
-const DEFAULT_ERROR_MESSAGE = '문제가 발생하였습니다. 잠시 후 다시 시도해 주세요.';
+const TwLabel = styled.label(({ isDragging }: OptionalThemeType & { isDragging: boolean }) => [
+    tw`flex h-500pxr w-500pxr cursor-pointer hover:bg-gray-100 flex-col items-center justify-center rounded border border-gray-950 shadow-xl bg-white`,
+    isDragging && tw`bg-gray-100`
+]);
 
 // 파일 drag n drop
 export default function Step2({ onLoading }: Props) {

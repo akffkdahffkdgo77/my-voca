@@ -6,6 +6,6 @@ export function getLocalStorage(name: string) {
     return '';
 }
 
-export function setLocalStorage(name: string, value: unknown[]) {
+export function setLocalStorage(name: string, value: unknown) {
     localStorage.setItem(name, JSON.stringify(value));
 }

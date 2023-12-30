@@ -2,11 +2,9 @@ import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Typography } from 'components';
-import Header from 'layout/Header';
 import tw from 'twin.macro';
 
 import { getWords } from 'utils/data';
-import { StyleThemes } from 'utils/theme';
 
 const customStyle = {
     label: tw`border-2 rounded border-gray-950 w-max px-2 py-1`
@@ -16,8 +14,7 @@ export default function Home() {
     const words = useMemo(() => getWords(), []);
 
     return (
-        <div className="bg-grid-light flex min-h-screen w-full items-center justify-center py-16">
-            <Header theme={StyleThemes.Gray} />
+        <div className="flex min-h-screen w-full items-center justify-center py-16 bg-grid-light">
             {words.length > 0 ? (
                 <ul className="w-full max-w-5xl space-y-10 px-5">
                     {words.map((word) => (

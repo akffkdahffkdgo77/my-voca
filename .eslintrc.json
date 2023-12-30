@@ -69,7 +69,7 @@
                         "position": "before"
                     },
                     {
-                        "pattern": "{hooks/**,hooks*,dummy/**,lib/zustand/**,utils/**,}",
+                        "pattern": "{hooks/**,hooks*,constants/**,utils/**,}",
                         "patternOptions": {
                             "dot": true,
                             "nocomment": true,

@@ -1,9 +1,9 @@
 import { CustomizedColorPicker, CustomizedLabelButton, CustomizedSelect, Typography } from 'components';
 
-import { STATUS_OPTIONS } from 'dummy/word';
 import { useTheme } from 'hooks';
+import { STATUS_OPTIONS } from 'utils/constants';
 
-const LAYOUT_OPTIONS = ['1x', '2x'];
+export const LAYOUT_OPTIONS = ['1x', '2x'];
 
 export default function CustomizedEtcGuide() {
     const { theme, handleClick } = useTheme();

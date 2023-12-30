@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import styled from '@emotion/styled';
@@ -19,7 +19,6 @@ const MILLISECONDS = 1000;
 const SECONDS = MILLISECONDS * 60;
 const MINUTES = SECONDS * 60;
 const HOURS = MINUTES * 24;
-const DUE_DATE = dayjs().add(1, 'day').set('hour', 0).set('minute', 0).set('second', 0);
 
 const customStyle = {
     timeStyle: tw`px-2 h-8 w-36 leading-8`,
@@ -41,14 +40,20 @@ export default function Header({ theme }: Props) {
     const handleModal = useModal();
     const { setMessage } = useToast();
 
+    const dueDate = useMemo(() => {
+        const startTime = Number(localStorage.getItem('startTime'));
+        return dayjs(startTime).add(1, 'day').set('hour', 0).set('minute', 0).set('second', 0);
+    }, []);
+
     useEffect(() => {
         timerId.current = setInterval(() => {
             const today = new Date();
-            const diff = DUE_DATE.diff(today);
+            const diff = dueDate.diff(today);
 
             if (diff < 0) {
                 if (isRegister) {
                     localStorage.clear();
+                    localStorage.setItem('startTime', `${new Date().getTime()}`);
                     setMessage('모든 데이터가 초기화되었습니다.', { variant: 'info' });
                 } else {
                     handleModal({
@@ -56,6 +61,7 @@ export default function Header({ theme }: Props) {
                         confirmText: '등록하러 가기!'
                     }).then(() => {
                         localStorage.clear();
+                        localStorage.setItem('startTime', `${new Date().getTime()}`);
                         navigate('/register', { replace: true });
                     });
                 }
@@ -70,7 +76,7 @@ export default function Header({ theme }: Props) {
         }, 1000);
 
         return () => clearInterval(timerId.current);
-    }, [isRegister]);
+    }, [dueDate, isRegister]);
 
     const handleClick = useCallback(() => {
         if (getWords().length === 0) {

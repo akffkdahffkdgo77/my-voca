@@ -1,5 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
+import DesignLayout from 'layout/DesignLayout';
+
 import RootBoundary from 'app/RootBoundary';
 import { Layout } from 'layout';
 import Export from 'pages/Export';
@@ -29,9 +31,15 @@ const router = createBrowserRouter([
             {
                 path: 'export',
                 element: <Export />
-            },
+            }
+        ]
+    },
+    {
+        path: '/guide',
+        element: <DesignLayout />,
+        children: [
             {
-                path: 'guide',
+                path: '',
                 element: <Guide />
             }
         ]

@@ -5,12 +5,14 @@ const customStyle = {
     caption: tw`capitalize`
 };
 
-function Caption({ text }: { text: string }) {
+interface Props {
+    text: string;
+}
+
+export default function Caption({ text }: Props) {
     return (
         <Typography variant="b12" fontWeight="700" component="small" twStyle={customStyle.caption}>
             {text}
         </Typography>
     );
 }
-
-export default Caption;

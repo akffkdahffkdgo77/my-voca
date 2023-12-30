@@ -13,7 +13,7 @@ export default function Footer() {
                     </Typography>
                 </Link>
                 <nav>
-                    <ul className="flex items-center gap-x-5">
+                    <ul className="flex items-center gap-x-5 under-tablet:flex-col under-tablet:gap-y-2.5">
                         <li>
                             <Link to="/register" className="flex items-start">
                                 <Typography variant="b24" component="span" fontFamily="nanumpenscript" color="inherit">
