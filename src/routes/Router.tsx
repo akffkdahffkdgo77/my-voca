@@ -10,40 +10,45 @@ import Home from 'pages/Home';
 import Register from 'pages/Register';
 import Test from 'pages/Test';
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+    [
+        {
+            path: '/',
+            element: <Layout />,
+            errorElement: <RootBoundary />,
+            children: [
+                {
+                    path: '',
+                    element: <Home />
+                },
+                {
+                    path: 'register',
+                    element: <Register />
+                },
+                {
+                    path: 'test/:wordListIdx',
+                    element: <Test />
+                },
+                {
+                    path: 'export',
+                    element: <Export />
+                }
+            ]
+        },
+        {
+            path: '/guide',
+            element: <DesignLayout />,
+            children: [
+                {
+                    path: '',
+                    element: <Guide />
+                }
+            ]
+        }
+    ],
     {
-        path: '/',
-        element: <Layout />,
-        errorElement: <RootBoundary />,
-        children: [
-            {
-                path: '',
-                element: <Home />
-            },
-            {
-                path: 'register',
-                element: <Register />
-            },
-            {
-                path: 'test/:wordListIdx',
-                element: <Test />
-            },
-            {
-                path: 'export',
-                element: <Export />
-            }
-        ]
-    },
-    {
-        path: '/guide',
-        element: <DesignLayout />,
-        children: [
-            {
-                path: '',
-                element: <Guide />
-            }
-        ]
+        basename: process.env.PUBLIC_URL
     }
-]);
+);
 
 export default router;
