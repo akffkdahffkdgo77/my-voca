@@ -143,19 +143,7 @@ module.exports = {
                 mobile: '360px',
                 tablet: '768px',
                 desktop: '1280px',
-                '4k': '1920px',
-                'under-mobile': {
-                    maxWidth: '360px'
-                },
-                'under-tablet': {
-                    maxWidth: '768px'
-                },
-                'under-desktop': {
-                    maxWidth: '1280px'
-                },
-                'under-4k': {
-                    maxWidth: '1920px'
-                }
+                '4k': '1920px'
             },
             spacing: {
                 ...px1000.reduce((acc, px) => {

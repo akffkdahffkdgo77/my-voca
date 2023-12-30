@@ -47,8 +47,8 @@ export default function Test() {
 
     return (
         <TwContainer theme={theme}>
-            <div className="mx-auto max-w-5xl px-5 pt-16 under-tablet:pt-6">
-                <div className="mb-10 flex items-center justify-center under-tablet:mb-2.5">
+            <div className="mx-auto max-w-5xl px-5 pt-8 tablet:pt-16">
+                <div className="mb-2.5 flex items-center justify-center tablet:mb-10">
                     <Input
                         type="text"
                         variant="text"
