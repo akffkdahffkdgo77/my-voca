@@ -58,29 +58,29 @@ export default function TypographyGuide() {
                     </div>
                     <div className="flex flex-col gap-y-5">
                         <Typography variant="b16" fontFamily="sans" fontWeight="400" twStyle={customStyle.flex}>
-                            <span className="font-inherit w-24 text-gray-900">Regular</span>
-                            <span className="font-inherit whitespace-nowrap">가나다라마바사</span>
+                            <span className="w-24 font-inherit text-gray-900">Regular</span>
+                            <span className="whitespace-nowrap font-inherit">가나다라마바사</span>
                             <span className="font-inherit">ABCDEFG</span>
                             <span className="font-inherit">abcdefg</span>
                             <span className="font-inherit">0123456789</span>
                         </Typography>
                         <Typography variant="b16" fontFamily="sans" fontWeight="500" twStyle={customStyle.flex}>
-                            <span className="font-inherit w-24 text-gray-900">Medium</span>
-                            <span className="font-inherit whitespace-nowrap">가나다라마바사</span>
+                            <span className="w-24 font-inherit text-gray-900">Medium</span>
+                            <span className="whitespace-nowrap font-inherit">가나다라마바사</span>
                             <span className="font-inherit">ABCDEFG</span>
                             <span className="font-inherit">abcdefg</span>
                             <span className="font-inherit">0123456789</span>
                         </Typography>
                         <Typography variant="b16" fontFamily="sans" fontWeight="600" twStyle={customStyle.flex}>
-                            <span className="font-inherit w-24 text-gray-900">Semibold</span>
-                            <span className="font-inherit whitespace-nowrap">가나다라마바사</span>
+                            <span className="w-24 font-inherit text-gray-900">Semibold</span>
+                            <span className="whitespace-nowrap font-inherit">가나다라마바사</span>
                             <span className="font-inherit">ABCDEFG</span>
                             <span className="font-inherit">abcdefg</span>
                             <span className="font-inherit">0123456789</span>
                         </Typography>
                         <Typography variant="b16" fontFamily="sans" fontWeight="700" twStyle={customStyle.flex}>
-                            <span className="font-inherit w-24 text-gray-900">Bold</span>
-                            <span className="font-inherit whitespace-nowrap">가나다라마바사</span>
+                            <span className="w-24 font-inherit text-gray-900">Bold</span>
+                            <span className="whitespace-nowrap font-inherit">가나다라마바사</span>
                             <span className="font-inherit">ABCDEFG</span>
                             <span className="font-inherit">abcdefg</span>
                             <span className="font-inherit">0123456789</span>
@@ -88,8 +88,8 @@ export default function TypographyGuide() {
                     </div>
                     <div className="mb-auto flex flex-col gap-y-5">
                         <Typography variant="b16" fontFamily="nanumpenscript" fontWeight="400" twStyle={customStyle.flex}>
-                            <span className="font-inherit w-24 text-gray-900">Regular</span>
-                            <span className="font-inherit whitespace-nowrap">가나다라마바사</span>
+                            <span className="w-24 font-inherit text-gray-900">Regular</span>
+                            <span className="whitespace-nowrap font-inherit">가나다라마바사</span>
                             <span className="font-inherit">ABCDEFG</span>
                             <span className="font-inherit">abcdefg</span>
                             <span className="font-inherit">0123456789</span>

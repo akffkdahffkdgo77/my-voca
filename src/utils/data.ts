@@ -49,4 +49,9 @@ export function getWord(idx: string) {
 export function addWord(newWord: DataType) {
     const prevList = getWords();
     setLocalStorage('words', [...prevList, newWord]);
+
+    if (!getLocalStorage('startTime')) {
+        const currentTime = `${new Date().getTime()}`;
+        setLocalStorage('startTime', currentTime);
+    }
 }
