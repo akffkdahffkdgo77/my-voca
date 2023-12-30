@@ -55,7 +55,6 @@ export default function Header({ theme }: Props) {
             if (diff < 0) {
                 if (isRegister) {
                     localStorage.clear();
-                    localStorage.setItem('startTime', `${new Date().getTime()}`);
                     setMessage('모든 데이터가 초기화되었습니다.', { variant: 'info' });
                 } else {
                     handleModal({
@@ -63,7 +62,6 @@ export default function Header({ theme }: Props) {
                         confirmText: '등록하러 가기!'
                     }).then(() => {
                         localStorage.clear();
-                        localStorage.setItem('startTime', `${new Date().getTime()}`);
                         navigate('/register', { replace: true });
                     });
                 }
