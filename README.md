@@ -17,12 +17,9 @@
       <th align="left" width="200">Project Tech Stacks</th>
       <td>
         <div>
-          <img src="https://img.shields.io/badge/Next-black?style=flat&logo=next.js&logoColor=white" alt="NextJS" />
+          <img src="https://img.shields.io/badge/create_react_app-303846?style=flat&logo=createreactapp&logoColor=09D3AC" alt="Create React App" />
           <img src="https://img.shields.io/badge/react-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB" alt="React" />
           <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat&logo=typescript&logoColor=white" alt="TypeScript" />
-          <br/>
-          <img src="https://img.shields.io/badge/React%20Hook%20Form-%23EC5990.svg?style=flat&logo=reacthookform&logoColor=white" alt="React Hook Form" />
-          <img src="https://img.shields.io/badge/-zustand-black?style=flat" alt="zustand" />
           <br/>
           <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat&logo=tailwind-css&logoColor=white" alt="TailwindCSS" />
           <img src="https://img.shields.io/badge/-heroicons-8B5CF6?style=flat" alt="heroicons" />
