@@ -23,7 +23,7 @@ export default function Footer() {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/guide" target="_blank" rel="noopener noreferrer" className="flex items-start">
+                            <Link to="/guide" className="flex items-start">
                                 <Typography variant="b24" component="span" fontFamily="nanumpenscript" color="inherit">
                                     Guide
                                 </Typography>
