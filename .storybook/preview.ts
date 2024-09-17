@@ -1,34 +1,35 @@
-import type { Preview } from '@storybook/react';
-import '../src/styles/index.css'; // replace with the name of your tailwind css file
 import { withThemeByClassName } from '@storybook/addon-themes';
 
+import '../src/styles/index.css';
+
+import type { Preview } from '@storybook/react'; // tailwind css file
+
 export const decorators = [
-    withThemeByClassName({
-        themes: {
-            light: 'light',
-            dark: 'dark'
-        },
-        defaultTheme: 'light'
-    })
+  withThemeByClassName({
+    themes: {
+      light: 'light',
+      dark: 'dark',
+    },
+    defaultTheme: 'light',
+  }),
 ];
 
 const preview: Preview = {
-    parameters: {
-        actions: { argTypesRegex: '^on[A-Z].*' },
-        controls: {
-            matchers: {
-                color: /(background|color)$/i,
-                date: /Date$/i
-            }
-        },
-        options: {
-            storySort: {
-                method: 'alphabetical',
-                includeNames: true,
-                order: ['Introduction', 'Examples']
-            }
-        }
-    }
+  parameters: {
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/i,
+      },
+    },
+    options: {
+      storySort: {
+        method: 'alphabetical',
+        includeNames: true,
+        order: ['Introduction', 'Pages'],
+      },
+    },
+  },
 };
 
 export default preview;

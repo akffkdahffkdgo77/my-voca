@@ -1,2 +1,5 @@
-export * from './useModal';
-export { default as Modal } from './Modal';
+import Modal from './Modal';
+
+export default Modal;
+
+export * from './Modal';
