@@ -1,7 +1,6 @@
 import dayjs from 'dayjs';
-
-require('dayjs/locale/ko');
+import 'dayjs/locale/ko';
 
 dayjs.locale('ko');
 
-export const formatDate = (date: string | number | Date, format: string) => dayjs(date).format(format);
+export const formatDate = (date: number | string | Date, format: string) => dayjs(date).format(format);

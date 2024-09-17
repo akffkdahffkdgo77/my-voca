@@ -1,1 +1,2 @@
-export { default as TestAside } from './TestAside';
+export { default as Aside } from './Aside';
+export { default as LayoutChangeButton } from './LayoutChangeButton';
