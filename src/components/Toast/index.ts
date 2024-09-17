@@ -1,2 +1,5 @@
-export * from './useToast';
-export { default as Toast } from './Toast';
+import Toast from './Toast';
+
+export default Toast;
+
+export * from './Toast';

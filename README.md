@@ -17,7 +17,7 @@
       <th align="left" width="200">Project Tech Stacks</th>
       <td>
         <div>
-          <img src="https://img.shields.io/badge/create_react_app-303846?style=flat&logo=createreactapp&logoColor=09D3AC" alt="Create React App" />
+          <img src="https://img.shields.io/badge/vite-%23646CFF.svg??style=flat&logo=vite&logoColor=white" alt="Vite"/>
           <img src="https://img.shields.io/badge/react-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB" alt="React" />
           <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat&logo=typescript&logoColor=white" alt="TypeScript" />
           <br/>
@@ -26,7 +26,6 @@
           <br/>
           <img src="https://img.shields.io/badge/yarn-%232C8EBB.svg?style=flat&logo=yarn&logoColor=white" alt="Yarn" />
           <img src="https://img.shields.io/badge/ESLint-4B3263?style=flat&logo=eslint&logoColor=white" alt="ESLint" />
-          <img src="https://img.shields.io/badge/Airbnb-%23ff5a5f.svg?style=flat&logo=Airbnb&logoColor=white" alt="Airbnb" />
           <img src="https://img.shields.io/badge/prettier-1A2C34?style=flat&logo=prettier&logoColor=F7BA3E" alt="Prettier" />
         </div>
       </td>
@@ -51,17 +50,18 @@
 </table>
 
 ## 프로젝트 버젼
+
 ### ❄️ v1.3
 
--   [x] UI 업데이트
-    -   [x] 테마 추가
-    -   [x] Register Page (파일 업로드 / 직접 등록)
-    -   [x] Home Page (List Page)
-    -   [x] Export Page (파일 다운로드 / 이미지 다운로드)
--   [x] 기타
-    -   [x] React로 변경
-    -   [x] Core / Customized로 공통 컴포넌트 분리
-    -   [x] Storybook 추가
+- [x] UI 업데이트
+  - [x] 테마 추가
+  - [x] Register Page (파일 업로드 / 직접 등록)
+  - [x] Home Page (List Page)
+  - [x] Export Page (파일 다운로드 / 이미지 다운로드)
+- [x] 기타
+  - [x] React로 변경
+  - [x] Core / Customized로 공통 컴포넌트 분리
+  - [x] Storybook 추가
 
 <details>
   <summary>
@@ -69,51 +69,51 @@
   </summary>
 
 ### 😎 v1.0
-   
--   [x] [단어 입력 폼](https://github.com/akffkdahffkdgo77/weekly-clone-coding/blob/main/my-voca/1.md)
-    -   [x] 이전 데이터 불러오기
-    -   [x] 이전 데이터 삭제하기
--   [x] [단어 카드](https://github.com/akffkdahffkdgo77/weekly-clone-coding/blob/main/my-voca/2.md)
-    -   [x] 카드 형식으로 단어 외우기
--   [x] [단어 테스트](https://github.com/akffkdahffkdgo77/weekly-clone-coding/blob/main/my-voca/3.md)
-    -   [x] 단어의 뜻을 입력하며 맞추기
+
+- [x] [단어 입력 폼](https://github.com/akffkdahffkdgo77/weekly-clone-coding/blob/main/my-voca/1.md)
+  - [x] 이전 데이터 불러오기
+  - [x] 이전 데이터 삭제하기
+- [x] [단어 카드](https://github.com/akffkdahffkdgo77/weekly-clone-coding/blob/main/my-voca/2.md)
+  - [x] 카드 형식으로 단어 외우기
+- [x] [단어 테스트](https://github.com/akffkdahffkdgo77/weekly-clone-coding/blob/main/my-voca/3.md)
+  - [x] 단어의 뜻을 입력하며 맞추기
 
 ### 🚀 v1.0.1
 
--   [x] 폴더 구조 변경
-    -   [x] ~~Feature-based Folders~~
--   [x] Dark Mode
--   [x] Layout 작업
--   [x] 1차 코드 리팩토링
+- [x] 폴더 구조 변경
+  - [x] ~~Feature-based Folders~~
+- [x] Dark Mode
+- [x] Layout 작업
+- [x] 1차 코드 리팩토링
 
 ### 🚀 v1.1
 
--   [x] NextJS Migration
+- [x] NextJS Migration
 
 ### 🔮 v1.2
 
--   [x] UI 개선
-    -   [x] 반응형 UI (PC & MWEB)
-    -   [x] 홈 화면 개선
-    -   [x] 등록 UI 개선
--   [x] 새로운 페이지
-    -   [x] 단어장 리스트 
-    -   [x] 단어장 상세 
--   [x] 기능 업데이트
-    -   [x] 최대 10개까지 수동 입력 가능하도록
-    -   [x] 단어장 export / import 기능
-       
+- [x] UI 개선
+  - [x] 반응형 UI (PC & MWEB)
+  - [x] 홈 화면 개선
+  - [x] 등록 UI 개선
+- [x] 새로운 페이지
+  - [x] 단어장 리스트
+  - [x] 단어장 상세
+- [x] 기능 업데이트
+  - [x] 최대 10개까지 수동 입력 가능하도록
+  - [x] 단어장 export / import 기능
+
 ### ❄️ v1.3
 
--   [x] UI 업데이트
-    -   [x] 테마 추가
-    -   [x] Register Page
-    -   [x] Home Page (List Page)
-    -   [x] Export Page
--   [x] 기타
-    -   [x] 리액트로 변경
-    -   [x] Core / Customized로 공통 컴포넌트 분리
-    -   [x] Storybook 추가
+- [x] UI 업데이트
+  - [x] 테마 추가
+  - [x] Register Page
+  - [x] Home Page (List Page)
+  - [x] Export Page
+- [x] 기타
+  - [x] 리액트로 변경
+  - [x] Core / Customized로 공통 컴포넌트 분리
+  - [x] Storybook 추가
 
 </details>
 
