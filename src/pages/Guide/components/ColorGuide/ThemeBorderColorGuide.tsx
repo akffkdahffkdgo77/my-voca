@@ -5,7 +5,7 @@ import tw from 'twin.macro';
 
 import Typography from '@components/Typography';
 
-import { colors, getBorderColor, StyleThemes, ThemeType } from '@utils/theme';
+import { COLOR, colors, ColorType } from '@utils/color';
 
 import Caption from './Caption';
 
@@ -20,77 +20,88 @@ const ThemeBorderColorGuide = () => {
           <div className="space-y-1">
             <Caption text="red" />
             <div>
-              <TWColor theme={StyleThemes.Red} />
+              <TWColor color={COLOR.Red} />
               <Typography fontFamily="nanumpenscript" variant="b18">
                 <small className="font-inherit">300</small>
                 <br />
-                {colors.red['300']}
+                {colors.red[300]}
               </Typography>
             </div>
           </div>
           <div className="space-y-1">
             <Caption text="rust" />
             <div>
-              <TWColor theme={StyleThemes.Rust} />
+              <TWColor color={COLOR.Rust} />
               <Typography fontFamily="nanumpenscript" variant="b18">
                 <small className="font-inherit">300</small>
                 <br />
-                {colors.rust['300']}
+                {colors.rust[300]}
               </Typography>
             </div>
           </div>
           <div className="space-y-1">
             <Caption text="buttered-rum" />
             <div>
-              <TWColor theme={StyleThemes.ButteredRum} />
+              <TWColor color={COLOR.ButteredRum} />
               <Typography fontFamily="nanumpenscript" variant="b18">
                 <small className="font-inherit">300</small>
                 <br />
-                {colors['buttered-rum']['300']}
+                {colors['buttered-rum'][300]}
               </Typography>
             </div>
           </div>
           <div className="space-y-1">
             <Caption text="christi" />
             <div>
-              <TWColor theme={StyleThemes.Christi} />
+              <TWColor color={COLOR.Christi} />
               <Typography fontFamily="nanumpenscript" variant="b18">
                 <small className="font-inherit">300</small>
                 <br />
-                {colors.christi['300']}
+                {colors.christi[300]}
               </Typography>
             </div>
           </div>
           <div className="space-y-1">
             <Caption text="blue-chill" />
             <div>
-              <TWColor theme={StyleThemes.BlueChill} />
+              <TWColor color={COLOR.BlueChill} />
               <Typography fontFamily="nanumpenscript" variant="b18">
                 <small className="font-inherit">300</small>
                 <br />
-                {colors['blue-chill']['300']}
+                {colors['blue-chill'][300]}
               </Typography>
             </div>
           </div>
           <div className="space-y-1">
             <Caption text="blue-gem" />
             <div>
-              <TWColor theme={StyleThemes.BlueGem} />
+              <TWColor color={COLOR.BlueGem} />
               <Typography fontFamily="nanumpenscript" variant="b18">
                 <small className="font-inherit">300</small>
                 <br />
-                {colors['blue-gem']['300']}
+                {colors['blue-gem'][300]}
               </Typography>
             </div>
           </div>
           <div className="space-y-1">
             <Caption text="jazzberry-jam" />
             <div>
-              <TWColor theme={StyleThemes.JazzberryJam} />
+              <TWColor color={COLOR.JazzberryJam} />
               <Typography fontFamily="nanumpenscript" variant="b18">
                 <small className="font-inherit">300</small>
                 <br />
-                {colors['jazzberry-jam']['300']}
+                {colors['jazzberry-jam'][300]}
+              </Typography>
+            </div>
+          </div>
+          <div className="space-y-1">
+            <Caption text="gray" />
+            <div>
+              <TWColor color={COLOR.Gray} />
+              <Typography fontFamily="nanumpenscript" variant="b18">
+                <small className="font-inherit">950</small>
+                <br />
+                {colors['gray'][950]}
               </Typography>
             </div>
           </div>
@@ -102,4 +113,7 @@ const ThemeBorderColorGuide = () => {
 
 export default ThemeBorderColorGuide;
 
-const TWColor = styled.div(({ theme }: ThemeType) => [tw`h-14 w-28`, theme && getBorderColor(theme)]);
+const TWColor = styled.div(({ color }: ColorType) => [
+  tw`h-14 w-28`,
+  color && { backgroundColor: color === COLOR.Gray ? colors[color][950] : colors[color][300] },
+]);

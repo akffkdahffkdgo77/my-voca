@@ -3,21 +3,21 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import styled from '@emotion/styled';
 import dayjs from 'dayjs';
-import tw, { theme as twinTheme } from 'twin.macro';
+import tw from 'twin.macro';
 
-import { DocumentArrowUpIcon } from '@heroicons/react/24/outline';
+import { ArrowDownloadFilled } from '@fluentui/react-icons';
 
-import Button from '@components/Button';
+import { BackupIconButton } from '@components/IconButton';
 import Typography from '@components/Typography';
 import { useModal } from '@contexts/Modal';
 import { useToast } from '@contexts/Toast';
 
+import { COLOR, getBackgroundColor, getLightBorderColor, getTextColor } from '@utils/color';
 import { getWords } from '@utils/data';
 import { getLocalStorage } from '@utils/localStorage';
-import { getBackgroundColor, getLightBorderColor, getTextColor, StyleThemes } from '@utils/theme';
 
 interface Props {
-  theme: StyleThemes;
+  color: COLOR;
 }
 
 const MILLISECONDS = 1000;
@@ -25,7 +25,7 @@ const SECONDS = MILLISECONDS * 60;
 const MINUTES = SECONDS * 60;
 const HOURS = MINUTES * 24;
 
-const Gnb = ({ theme }: Props) => {
+const Gnb = ({ color }: Props) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
@@ -83,15 +83,15 @@ const Gnb = ({ theme }: Props) => {
               align="center"
               fontFamily="nanumpenscript"
               fontWeight="700"
-              twStyle={{ ...customStyle.timeStyle, ...getTextColor(theme) }}
+              twStyle={{ ...customStyle.timeStyle, ...getTextColor(color) }}
               variant="h4"
             >
               {time}
             </Typography>
-            <TWTriangle theme={theme} />
+            <TWTriangle color={color} />
             <Typography
               fontWeight="600"
-              twStyle={{ ...customStyle.tooltipStyle, ...getBackgroundColor(theme) }}
+              twStyle={{ ...customStyle.tooltipStyle, ...getBackgroundColor(color) }}
               variant="b14"
             >
               <Fragment>
@@ -100,23 +100,14 @@ const Gnb = ({ theme }: Props) => {
                 종료 후 모든 데이터가 초기화됩니다.
                 <br />
                 <br />
-                <Typography color={twinTheme`colors.red.500`} component="small" fontWeight="600" variant="b12">
-                  데이터를 백업하고 싶다면 <DocumentArrowUpIcon className="mb-1 inline h-5 w-5 text-gray-950" />{' '}
+                <Typography color={COLOR.Red} component="small" fontWeight="600" variant="b12">
+                  데이터를 백업하고 싶다면 <ArrowDownloadFilled className="mb-1 !inline h-5 w-5 text-gray-950" />
                   아이콘을 클릭하세요.
                 </Typography>
               </Fragment>
             </Typography>
           </div>
-          <Button
-            backgroundColor="transparent"
-            height={32}
-            title="데이터 백업하기"
-            variant="icon"
-            width={32}
-            onClick={handleClick}
-          >
-            <DocumentArrowUpIcon className="m-auto h-7 w-7 text-gray-950" />
-          </Button>
+          <BackupIconButton onClick={handleClick} />
         </div>
       )}
     </header>
@@ -130,7 +121,7 @@ const customStyle = {
   tooltipStyle: tw`absolute right-0 top-11 hidden h-auto w-max rounded bg-gray-100 p-5 shadow-xl group-hover:block`,
 };
 
-const TWTriangle = styled.div(({ theme }: Props) => [
+const TWTriangle = styled.div(({ color }: Props) => [
   tw`absolute right-5 top-5 hidden h-4 border-4 group-hover:block`,
-  theme && [getLightBorderColor(theme), tw`border-x-transparent border-t-transparent`],
+  color && [getLightBorderColor(color), tw`border-x-transparent border-t-transparent`],
 ]);

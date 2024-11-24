@@ -3,11 +3,9 @@ import { Link } from 'react-router-dom';
 
 import tw from 'twin.macro';
 
-import { LinkIcon } from '@heroicons/react/24/outline';
+import { LinkFilled } from '@fluentui/react-icons';
 
-import Typography from '@components/Typography';
-
-import { TypographyVariantType } from '@utils/theme';
+import Typography, { TypographyVariantType } from '@components/Typography';
 
 const TypographyGuide = () => {
   return (
@@ -17,7 +15,7 @@ const TypographyGuide = () => {
       </Typography>
       <div className="rounded bg-white p-5 shadow-md">
         <div className="grid grid-cols-2 gap-y-5">
-          <div className="flex items-center gap-x-2.5">
+          <div className="flex items-start gap-x-1">
             <Typography component="h3" fontFamily="sans" fontWeight="700" variant="b16">
               System Font
             </Typography>
@@ -27,10 +25,10 @@ const TypographyGuide = () => {
               title="Noto Sans KR Font"
               to="https://fonts.google.com/noto/specimen/Noto+Sans+KR"
             >
-              <LinkIcon className="h-3 w-3" />
+              <LinkFilled className="!block h-3 w-3 -rotate-45" />
             </Link>
           </div>
-          <div className="flex items-center gap-x-2.5">
+          <div className="flex items-start gap-x-1">
             <Typography component="h3" fontFamily="nanumpenscript" fontWeight="700" variant="b24">
               Title Font
             </Typography>
@@ -40,7 +38,7 @@ const TypographyGuide = () => {
               title="Nanum Pen Script Font"
               to="https://fonts.google.com/specimen/Nanum+Pen+Script"
             >
-              <LinkIcon className="h-3 w-3" />
+              <LinkFilled className="!block h-3 w-3 -rotate-45" />
             </Link>
           </div>
           <div className="flex items-center">

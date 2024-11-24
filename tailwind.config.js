@@ -11,6 +11,9 @@ const px10000 = Array.from({ length: 10000 }, (_, idx) => idx + 1);
 export default {
   darkMode: ['class', '[data-mode="dark"]'],
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     extend: {
       fontFamily: {
@@ -19,19 +22,19 @@ export default {
         nanumpenscript: ['Nanum Pen Script', 'cursive'],
       },
       fontSize: {
-        h1: ['3rem', { lineHeight: 'normal', fontWeight: 700, letterSpacing: 'normal' }],
+        h1: ['4rem', { lineHeight: 'normal', fontWeight: 700, letterSpacing: 'normal' }],
         h2: ['2.625rem', { lineHeight: 'normal', fontWeight: 700, letterSpacing: 'normal' }],
         h3: ['2.25rem', { lineHeight: 'normal', fontWeight: 700, letterSpacing: 'normal' }],
         h4: ['1.875rem', { lineHeight: 'normal', fontWeight: 700, letterSpacing: 'normal' }],
         h5: ['1.5rem', { lineHeight: 'normal', fontWeight: 700, letterSpacing: 'normal' }],
         h6: ['1.125rem', { lineHeight: 'normal', fontWeight: 700, letterSpacing: 'normal' }],
-        b24: ['1.5rem', { lineHeight: 'normal', fontWeight: 400, letterSpacing: 'normal' }],
-        b18: ['1.125rem', { lineHeight: 'normal', fontWeight: 400, letterSpacing: 'normal' }],
+        b24: ['1.5rem', { lineHeight: 'normal', fontWeight: 600, letterSpacing: 'normal' }],
+        b18: ['1.125rem', { lineHeight: 'normal', fontWeight: 500, letterSpacing: 'normal' }],
         b16: ['1rem', { lineHeight: 'normal', fontWeight: 400, letterSpacing: 'normal' }],
         b14: ['0.875rem', { lineHeight: 'normal', fontWeight: 400, letterSpacing: 'normal' }],
         b12: ['0.75rem', { lineHeight: 'normal', fontWeight: 400, letterSpacing: 'normal' }],
-        c11: ['0.688rem', { lineHeight: 'normal', fontWeight: 400, letterSpacing: 'normal' }],
-        c8: ['0.5rem', { lineHeight: 'normal', fontWeight: 400, letterSpacing: 'normal' }],
+        c11: ['0.688rem', { lineHeight: 'normal', fontWeight: 300, letterSpacing: 'normal' }],
+        c8: ['0.5rem', { lineHeight: 'normal', fontWeight: 300, letterSpacing: 'normal' }],
       },
       fontWeight: {
         inherit: 'inherit',

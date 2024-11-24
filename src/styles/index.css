@@ -16,10 +16,14 @@
   html,
   body,
   #root {
-    min-height: 100%;
-    width: 100%;
+    @apply min-h-full w-full;
   }
   textarea {
-    resize: none;
+    @apply resize-none;
+  }
+  button,
+  input,
+  textarea {
+    @apply outline-0 ring-0 ring-offset-0;
   }
 }

@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 
 import Typography from '@components/Typography';
 
-import { colors } from '@utils/theme';
+import { colors } from '@utils/color';
 
 const ThemeColorGuide = () => {
   return (

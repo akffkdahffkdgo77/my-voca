@@ -1,18 +1,14 @@
 import { Fragment } from 'react';
 
-import { theme } from 'twin.macro';
-
-import { ArrowUpIcon } from '@heroicons/react/24/outline';
-
-import Button from '@components/Button';
 import ColorPicker from '@components/ColorPicker';
+import { TopIconButton } from '@components/IconButton';
 import Typography from '@components/Typography';
 import Footer from '@layouts/Footer';
 
-import { useTheme } from '@hooks/utils';
+import { useColor } from '@hooks/utils';
 
 const LayoutGuide = () => {
-  const { onThemeChange } = useTheme();
+  const { onColorChange } = useColor();
 
   return (
     <Fragment>
@@ -27,16 +23,7 @@ const LayoutGuide = () => {
               클릭 시 페이지 상단으로 이동
             </Typography>
           </Typography>
-          <Button
-            backgroundColor={theme`colors.black`}
-            height={50}
-            shape="circle"
-            type="button"
-            variant="icon"
-            width={50}
-          >
-            <ArrowUpIcon className="mx-auto h-5 w-5 text-white" />
-          </Button>
+          <TopIconButton />
         </div>
         <div className="w-full space-y-5">
           <Typography component="h3" fontWeight="700" variant="b24">
@@ -46,7 +33,7 @@ const LayoutGuide = () => {
             </Typography>
           </Typography>
           <div className="flex w-max flex-col gap-y-2.5 rounded-full p-1 shadow-md">
-            <ColorPicker onClick={onThemeChange} />
+            <ColorPicker onClick={onColorChange} />
           </div>
         </div>
         <div className="w-full space-y-5">

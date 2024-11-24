@@ -5,12 +5,11 @@ import styled from '@emotion/styled';
 import tw from 'twin.macro';
 
 import DatePicker from '@components/DatePicker';
-import { DoubleTextInput, MobileTextInput, SingleTextInput } from '@components/Editor';
-import Input from '@components/Input';
+import { DoubleTextInput, MobileTextInput, SingleTextInput, TitleTextInput } from '@components/Editor';
 
-import { useMobile, useTheme } from '@hooks/utils';
+import { useColor, useMobile } from '@hooks/utils';
+import { ColorType, getLightBackgroundColor } from '@utils/color';
 import { getWord, WordType } from '@utils/data';
-import { getLightBackgroundColor, getTextColor, textStyle, ThemeType } from '@utils/theme';
 
 import { Aside, LayoutChangeButton } from './components';
 
@@ -27,7 +26,7 @@ const Test = () => {
   const navigate = useNavigate();
   const { wordListIdx } = useParams();
   const isMobile = useMobile();
-  const { theme, onThemeChange } = useTheme();
+  const { color, onColorChange } = useColor();
 
   const [isDouble, setIsDouble] = useState(false);
   const wordList = useMemo(() => getWord(wordListIdx!) || null, [wordListIdx]);
@@ -49,33 +48,28 @@ const Test = () => {
   }
 
   return (
-    <TWContainer theme={theme}>
+    <TWContainer color={color}>
       <div className="mx-auto max-w-5xl px-5 pt-8 tablet:pt-16">
         <div className="mb-2.5 flex items-center justify-center tablet:mb-10">
-          <Input
-            isDisabled
+          <TitleTextInput
+            color={color}
             defaultValue={wordList.wordListName}
-            hiddenText="단어장 이름"
+            isDisabled={false}
             maxLength={20}
             placeholder="단어장 이름을 입력하세요"
-            theme={theme}
-            twStyle={{ ...textStyle.title, ...getTextColor(theme) }}
-            type="text"
             variant="text"
           />
-          {!isMobile && <DatePicker theme={theme} />}
+          {!isMobile && <DatePicker color={color} />}
         </div>
-        {!isMobile && (
-          <LayoutChangeButton buttonText={isDouble ? '2x' : '1x'} theme={theme} onClick={handleLayoutClick} />
-        )}
+        {!isMobile && <LayoutChangeButton color={color} type={isDouble ? '2x' : '1x'} onClick={handleLayoutClick} />}
         <div className="space-y-4 tablet:space-y-0">
           {!isMobile && isDouble
             ? splitIntoTwo(wordList.words).map((word, index) => (
                 <DoubleTextInput
                   key={index}
                   isDisabled
+                  color={color}
                   isHidden={word.map((val) => isHidden[val.wordIdx])}
-                  theme={theme}
                   words={word}
                   onHiddenClick={(idx) => handleHiddenClick(idx as keyof typeof isHidden)}
                 />
@@ -85,10 +79,10 @@ const Test = () => {
                   <MobileTextInput
                     key={word.wordIdx}
                     isDisabled
+                    color={color}
                     count={word.count}
                     definition={word.definition.join('\n')}
                     isHidden={isHidden[word.wordIdx]}
-                    theme={theme}
                     word={word.word}
                     onHiddenClick={() => handleHiddenClick(word.wordIdx)}
                   />
@@ -96,10 +90,10 @@ const Test = () => {
                   <SingleTextInput
                     key={word.wordIdx}
                     isDisabled
+                    color={color}
                     count={word.count}
                     definition={word.definition}
                     isHidden={isHidden[word.wordIdx]}
-                    theme={theme}
                     word={word.word}
                     onHiddenClick={() => handleHiddenClick(word.wordIdx)}
                   />
@@ -107,14 +101,14 @@ const Test = () => {
               )}
         </div>
       </div>
-      <Aside onClick={onThemeChange} />
+      <Aside onClick={onColorChange} />
     </TWContainer>
   );
 };
 
 export default Test;
 
-const TWContainer = styled.div(({ theme }: ThemeType) => [
+const TWContainer = styled.div(({ color }: ColorType) => [
   tw`min-h-screen w-full overflow-y-auto py-10`,
-  theme && getLightBackgroundColor(theme),
+  color && getLightBackgroundColor(color),
 ]);

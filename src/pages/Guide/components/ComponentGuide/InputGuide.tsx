@@ -7,13 +7,13 @@ import Input from '@components/Input';
 import Textarea from '@components/Textarea';
 import Typography from '@components/Typography';
 
-import { useTheme } from '@hooks/utils';
+import { useColor } from '@hooks/utils';
 
 const SAMPLE_TEXT =
   '설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력설명 입력';
 
 const InputGuide = () => {
-  const { theme, onThemeChange } = useTheme();
+  const { color, onColorChange } = useColor();
   const [value, setValue] = useState(SAMPLE_TEXT);
 
   const handleChange = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => setValue(e.currentTarget.value), []);
@@ -21,7 +21,7 @@ const InputGuide = () => {
   return (
     <div className="relative flex-1">
       <div className="absolute right-5 top-5 space-x-1">
-        <ColorPicker onClick={onThemeChange} />
+        <ColorPicker onClick={onColorChange} />
       </div>
       <div className="w-max space-y-5 rounded bg-white p-5 shadow-md">
         <Typography component="h3" fontWeight="700" variant="b24">
@@ -31,7 +31,7 @@ const InputGuide = () => {
           <Typography component="h4" fontWeight="600" twStyle={customStyle.input} variant="b12">
             Default
           </Typography>
-          <Input placeholder="닉네임을 입력하세요." theme={theme} variant="text" />
+          <Input color={color} placeholder="닉네임을 입력하세요." variant="text" />
         </div>
         <div className="flex w-120 items-center gap-x-10">
           <Typography component="h4" fontWeight="600" twStyle={customStyle.input} variant="b12">
@@ -39,10 +39,10 @@ const InputGuide = () => {
           </Typography>
           <Input
             isError
+            color={color}
             helperText="최소 3자 입력하세요"
             labelText="닉네임"
             placeholder="닉네임을 입력하세요."
-            theme={theme}
             variant="outlined"
           />
         </div>
@@ -52,10 +52,10 @@ const InputGuide = () => {
           </Typography>
           <Input
             isError
+            color={color}
             helperText="최소 3자 입력하세요"
             labelText="닉네임"
             placeholder="닉네임을 입력하세요."
-            theme={theme}
             variant="contained"
           />
         </div>

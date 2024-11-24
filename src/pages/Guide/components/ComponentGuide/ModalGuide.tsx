@@ -4,8 +4,6 @@ import Button from '@components/Button';
 import Typography from '@components/Typography';
 import { useModal } from '@contexts/Modal';
 
-import { textStyle } from '@utils/theme';
-
 const ModalGuide = () => {
   const handleModal = useModal();
 
@@ -19,20 +17,21 @@ const ModalGuide = () => {
       <Typography component="h3" fontWeight="700" variant="b24">
         Modal
       </Typography>
-      <Button size="medium" variant="outlined" onClick={handleClick}>
-        Open Modal
-      </Button>
-      <div className="min-w-80 overflow-hidden rounded-lg border border-gray-950 bg-white p-7.5 shadow-inner">
-        <Typography component="p" fontWeight="500" gutterBottom={40} twStyle={textStyle.modalText} variant="b16">
+      <Button size="medium" text="열기" variant="outlined" onClick={handleClick} />
+      <div className="min-w-80 overflow-hidden rounded-lg border border-gray-950 bg-white px-4 py-5 shadow-inner">
+        <Typography
+          component="p"
+          fontWeight="500"
+          gutterBottom={40}
+          variant="b16"
+          whiteSpace="pre-wrap"
+          wordBreak="all"
+        >
           수정하시겠습니까?
         </Typography>
         <div className="mx-auto w-full space-x-2.5 text-right">
-          <Button shape="square" size="large" type="button" variant="outlined">
-            취소
-          </Button>
-          <Button shape="square" size="large" type="button" variant="contained">
-            확인
-          </Button>
+          <Button shape="square" size="large" text="취소" type="button" variant="outlined" />
+          <Button shape="square" size="large" text="확인" type="button" variant="contained" />
         </div>
       </div>
     </div>

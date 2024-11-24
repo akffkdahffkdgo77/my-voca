@@ -1,9 +1,9 @@
 import ColorPicker from '@components/ColorPicker';
 
-import { StyleThemes } from '@utils/theme';
+import { COLOR } from '@utils/color';
 
 interface Props {
-  onClick: (newTheme: StyleThemes) => void;
+  onClick: (newTheme: COLOR) => void;
 }
 
 const Aside = ({ onClick }: Props) => {

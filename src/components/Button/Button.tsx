@@ -1,40 +1,32 @@
-import { ButtonHTMLAttributes, ReactNode } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 
 import styled from '@emotion/styled';
 import tw, { TwStyle } from 'twin.macro';
 
-import {
-  buttonShape,
-  ButtonShapeType,
-  buttonSize,
-  ButtonSizeType,
-  ButtonVariantType,
-  getBackgroundColor,
-  getBorderColor,
-  StyleThemes,
-} from '@utils/theme';
+import { COLOR } from '@utils/color';
+
+import { buttonContained, buttonOutlined, buttonText } from './styles';
+
+export type ButtonShapeType = 'rounded' | 'square';
+export type ButtonVariantType = 'contained' | 'outlined' | 'text';
+export type ButtonSizeType = 'extraLarge' | 'large' | 'medium' | 'mini' | 'small';
 
 type StylesType = {
-  backgroundColor?: string;
-  borderRadius?: string;
-  circleSize?: number;
-  height?: number | string;
+  color?: COLOR;
   shape?: ButtonShapeType;
   size?: ButtonSizeType;
-  theme?: StyleThemes;
   twStyle?: TwStyle;
   variant?: ButtonVariantType;
-  width?: number | string;
 };
 
-interface Props extends ButtonHTMLAttributes<HTMLButtonElement>, StylesType {
-  children: ReactNode;
+interface Props extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'>, StylesType {
+  text: string;
 }
 
 const Button = (props: Props) => {
   const {
-    children,
-    theme = StyleThemes.Gray,
+    text,
+    color = COLOR.Gray,
     type = 'button',
     variant = 'outlined',
     shape = 'rounded',
@@ -46,39 +38,59 @@ const Button = (props: Props) => {
   return (
     <TWButton
       {...rest}
+      color={color}
       shape={shape}
       size={size}
-      theme={theme}
       type={type}
       variant={variant}
       onClick={(e) => {
         e.stopPropagation();
+        e.currentTarget.blur();
         if (onClick) {
           onClick(e);
         }
       }}
     >
-      {children}
+      {text}
     </TWButton>
   );
 };
 
 export default Button;
 
+const buttonShape: Record<ButtonShapeType, TwStyle> = {
+  rounded: tw`rounded-lg`,
+  square: tw`rounded`,
+};
+
+const buttonSize: Record<ButtonSizeType, TwStyle> = {
+  mini: tw`h-6 w-6`,
+  small: tw`h-7 min-w-12 px-2 text-b12`,
+  medium: tw`h-8 min-w-14 px-2 text-b12`,
+  large: tw`h-10 min-w-20 px-3 py-2 text-b16`,
+  extraLarge: tw`h-12 min-w-30 px-3 py-2 text-b18`,
+};
+
 const TWButton = styled.button(
-  ({ variant, shape, circleSize, size, theme, width, height, borderRadius, backgroundColor, twStyle }: StylesType) => [
-    tw`bg-inherit`,
+  ({
+    variant,
+    shape,
+    size,
+    color,
+    twStyle,
+  }: {
+    color: COLOR;
+    shape: ButtonShapeType;
+    size: ButtonSizeType;
+    variant: ButtonVariantType;
+    twStyle?: TwStyle;
+  }) => [
+    tw`bg-white`,
     shape && buttonShape[shape],
-    variant !== 'icon' && size && buttonSize[size],
-    theme && variant === 'icon' && [getBackgroundColor(theme), tw`h-6 w-6`],
-    theme && variant === 'outlined' && [tw`border`, getBorderColor(theme)],
-    theme &&
-      variant === 'contained' && [getBackgroundColor(theme), theme === StyleThemes.Gray && tw`bg-gray-950 text-white`],
-    width && { width, minWidth: width },
-    height && { height, minHeight: height },
-    shape === 'circle' && { width: circleSize, height: circleSize },
-    borderRadius && { borderRadius },
-    backgroundColor && { backgroundColor },
+    size && buttonSize[size],
+    variant === 'outlined' && buttonOutlined(color),
+    variant === 'contained' && buttonContained(color),
+    variant === 'text' && [tw`bg-transparent underline`, buttonText(color)],
     twStyle && twStyle,
   ],
 );

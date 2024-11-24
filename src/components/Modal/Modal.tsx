@@ -3,8 +3,6 @@ import { useEffect } from 'react';
 import Button from '@components/Button';
 import Typography from '@components/Typography';
 
-import { textStyle } from '@utils/theme';
-
 export type ModalOptionsType = {
   cancelText?: string;
   confirmText?: string;
@@ -36,8 +34,15 @@ const Modal = ({ options, onConfirm, onClose }: Props) => {
         onClose();
       }}
     >
-      <div className="min-w-80 overflow-hidden rounded-lg bg-white p-7.5 shadow-inner">
-        <Typography component="p" fontWeight="500" gutterBottom={40} twStyle={textStyle.modalText} variant="b16">
+      <div className="min-w-80 overflow-hidden rounded-lg bg-white px-4 py-5 shadow-inner">
+        <Typography
+          component="p"
+          fontWeight="500"
+          gutterBottom={40}
+          variant="b16"
+          whiteSpace="pre-wrap"
+          wordBreak="all"
+        >
           {options?.message}
         </Typography>
         <div className="mx-auto w-full space-x-2.5 text-right">
@@ -45,28 +50,24 @@ const Modal = ({ options, onConfirm, onClose }: Props) => {
             <Button
               shape="square"
               size="large"
-              type="button"
+              text={options?.cancelText ?? '취소'}
               variant="outlined"
               onClick={(e) => {
                 e.stopPropagation();
                 onClose();
               }}
-            >
-              {options?.cancelText ?? '취소'}
-            </Button>
+            />
           )}
           <Button
             shape="square"
             size="large"
-            type="button"
+            text={options?.confirmText || '확인'}
             variant="contained"
             onClick={(e) => {
               e.stopPropagation();
               onConfirm();
             }}
-          >
-            {options?.confirmText || '확인'}
-          </Button>
+          />
         </div>
       </div>
     </div>

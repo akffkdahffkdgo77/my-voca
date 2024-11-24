@@ -3,14 +3,14 @@ import { ChangeEvent, Fragment, KeyboardEvent } from 'react';
 import styled from '@emotion/styled';
 import tw from 'twin.macro';
 
-import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
+import { ArrowLeftFilled, ArrowRightFilled } from '@fluentui/react-icons';
 
 import { TextInput } from '@components/Editor';
 
+import { COLOR, getBackgroundColor, getBorderColor, OptionalColorType } from '@utils/color';
 import { WordType } from '@utils/data';
-import { getBackgroundColor, getBorderColor, OptionalThemeType, StyleThemes } from '@utils/theme';
 
-interface Props extends OptionalThemeType {
+interface Props extends OptionalColorType {
   isDisabled?: boolean;
   isHidden?: boolean[];
   words?: WordType[];
@@ -21,7 +21,7 @@ interface Props extends OptionalThemeType {
 }
 
 const DoubleTextInput = ({
-  theme = StyleThemes.Gray,
+  color = COLOR.Gray,
   isDisabled,
   words = [],
   isHidden = [],
@@ -29,17 +29,17 @@ const DoubleTextInput = ({
   ...rest
 }: Props) => {
   return (
-    <TWInputContainer theme={theme}>
+    <TWInputContainer color={color}>
       {words.map((word, index) => (
         <Fragment key={index}>
-          <TextInput isDisabled={isDisabled} theme={theme} {...word} {...rest} />
+          <TextInput color={color} isDisabled={isDisabled} {...word} {...rest} />
           {isHidden.length > 0 && (
             <TWBlocker
               className="group"
+              color={color}
               isEven={(index + 1) % 2 === 0}
               isHidden={isHidden[index]}
               role="presentation"
-              theme={theme}
               onClick={() => {
                 if (onHiddenClick) {
                   onHiddenClick(word.wordIdx);
@@ -47,9 +47,9 @@ const DoubleTextInput = ({
               }}
             >
               {isHidden[index] ? (
-                <ArrowRightIcon className="ml-5 hidden h-10 w-10 animate-pulse group-hover:block" />
+                <ArrowRightFilled className="ml-5 !hidden h-10 w-10 animate-pulse group-hover:!block" />
               ) : (
-                <ArrowLeftIcon className="ml-auto mr-5 hidden h-10 w-10 animate-pulse group-hover:block" />
+                <ArrowLeftFilled className="ml-auto mr-5 !hidden h-10 w-10 animate-pulse group-hover:!block" />
               )}
             </TWBlocker>
           )}
@@ -62,16 +62,16 @@ const DoubleTextInput = ({
 export default DoubleTextInput;
 
 const TWBlocker = styled.div(
-  ({ theme, isEven, isHidden }: { isEven?: boolean; isHidden?: boolean } & OptionalThemeType) => [
+  ({ color, isEven, isHidden }: { isEven?: boolean; isHidden?: boolean } & OptionalColorType) => [
     tw`absolute bottom-0 left-px right-0 top-0 flex items-center !border-0 hover:cursor-pointer`,
-    isHidden && theme && getBackgroundColor(theme),
+    isHidden && color && getBackgroundColor(color),
     !isHidden && tw`animate-pulse bg-transparent hover:bg-gray-50/50`,
     isEven && tw`[grid-column:4/-1]`,
     isEven === false && tw`[grid-column:2/2]`,
   ],
 );
 
-const TWInputContainer = styled.div(({ theme }: Omit<Props, 'isDisabled'>) => [
+const TWInputContainer = styled.div(({ color }: Omit<Props, 'isDisabled'>) => [
   tw`relative grid grid-cols-double border-t bg-white last-of-type:border-b`,
-  theme && [getBorderColor(theme), tw`divide-x divide-[inherit]`],
+  color && [getBorderColor(color), tw`divide-x divide-[inherit]`],
 ]);

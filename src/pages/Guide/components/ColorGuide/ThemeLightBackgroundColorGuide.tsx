@@ -5,7 +5,7 @@ import tw from 'twin.macro';
 
 import Typography from '@components/Typography';
 
-import { colors, getLightBackgroundColor, StyleThemes, ThemeType } from '@utils/theme';
+import { colors } from '@utils/color';
 
 import Caption from './Caption';
 
@@ -20,77 +20,88 @@ const ThemeLightBackgroundColorGuide = () => {
           <div className="space-y-1">
             <Caption text="red" />
             <div>
-              <TWColor theme={StyleThemes.Red} />
+              <TWColor style={{ backgroundColor: '#fcefee' }} />
               <Typography fontFamily="nanumpenscript" variant="b18">
                 <small className="font-inherit">50/20</small>
                 <br />
-                {colors.red['50']}, opacity 20
+                {colors.red[50]}, opacity 20
               </Typography>
             </div>
           </div>
           <div className="space-y-1">
             <Caption text="rust" />
             <div>
-              <TWColor theme={StyleThemes.Rust} />
+              <TWColor style={{ backgroundColor: '#faf4eb' }} />
               <Typography fontFamily="nanumpenscript" variant="b18">
                 <small className="font-inherit">50/20</small>
                 <br />
-                {colors.rust['50']}, opacity 20
+                {colors.rust[50]}, opacity 20
               </Typography>
             </div>
           </div>
           <div className="space-y-1">
             <Caption text="buttered-rum" />
             <div>
-              <TWColor theme={StyleThemes.ButteredRum} />{' '}
+              <TWColor style={{ backgroundColor: '#f8f8e9' }} />
               <Typography fontFamily="nanumpenscript" variant="b18">
                 <small className="font-inherit">50/20</small>
                 <br />
-                {colors['buttered-rum']['50']}, opacity 20
+                {colors['buttered-rum'][50]}, opacity 20
               </Typography>
             </div>
           </div>
           <div className="space-y-1">
             <Caption text="christi" />
             <div>
-              <TWColor theme={StyleThemes.Christi} />
+              <TWColor style={{ backgroundColor: '#edf8e7' }} />
               <Typography fontFamily="nanumpenscript" variant="b18">
                 <small className="font-inherit">50/20</small>
                 <br />
-                {colors.christi['50']}, opacity 20
+                {colors.christi[50]}, opacity 20
               </Typography>
             </div>
           </div>
           <div className="space-y-1">
             <Caption text="blue-chill" />
             <div>
-              <TWColor theme={StyleThemes.BlueChill} />
+              <TWColor style={{ backgroundColor: '#f1faf9' }} />
               <Typography fontFamily="nanumpenscript" variant="b18">
                 <small className="font-inherit">50/20</small>
                 <br />
-                {colors['blue-chill']['50']}, opacity 20
+                {colors['blue-chill'][50]}, opacity 20
               </Typography>
             </div>
           </div>
           <div className="space-y-1">
             <Caption text="blue-gem" />
             <div>
-              <TWColor theme={StyleThemes.BlueGem} />
+              <TWColor style={{ backgroundColor: '#f3effc' }} />
               <Typography fontFamily="nanumpenscript" variant="b18">
                 <small className="font-inherit">50/20</small>
                 <br />
-                {colors['blue-gem']['50']}, opacity 20
+                {colors['blue-gem'][50]}, opacity 20
               </Typography>
             </div>
           </div>
           <div className="space-y-1">
             <Caption text="jazzberry-jam" />
             <div>
-              <TWColor theme={StyleThemes.JazzberryJam} />
+              <TWColor style={{ backgroundColor: '#fceff6' }} />
               <Typography fontFamily="nanumpenscript" variant="b18">
                 <small className="font-inherit">50/20</small>
                 <br />
-                {colors['jazzberry-jam']['50']}, opacity 20
+                {colors['jazzberry-jam'][50]}, opacity 20
+              </Typography>
+            </div>
+          </div>
+          <div className="space-y-1">
+            <Caption text="gray" />
+            <div>
+              <TWColor style={{ backgroundColor: '#f7f6f6' }} />
+              <Typography fontFamily="nanumpenscript" variant="b18">
+                <small className="font-inherit">50/20</small>
+                <br />
+                {colors['gray'][50]}, opacity 20
               </Typography>
             </div>
           </div>
@@ -102,7 +113,4 @@ const ThemeLightBackgroundColorGuide = () => {
 
 export default ThemeLightBackgroundColorGuide;
 
-const TWColor = styled.div(({ theme }: ThemeType) => [
-  tw`h-14 w-28 border border-gray-950`,
-  theme && getLightBackgroundColor(theme),
-]);
+const TWColor = styled.div(() => [tw`h-14 w-28`]);

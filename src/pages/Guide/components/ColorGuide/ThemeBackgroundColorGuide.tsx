@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 
 import Typography from '@components/Typography';
 
-import { colors } from '@utils/theme';
+import { colors } from '@utils/color';
 
 import Caption from './Caption';
 
@@ -21,7 +21,7 @@ const ThemeBackgroundColorGuide = () => {
               <Typography fontFamily="nanumpenscript" variant="b18">
                 <small className="font-inherit">100</small>
                 <br />
-                {colors.red['100']}
+                {colors.red[100]}
               </Typography>
             </div>
           </div>
@@ -32,7 +32,7 @@ const ThemeBackgroundColorGuide = () => {
               <Typography fontFamily="nanumpenscript" variant="b18">
                 <small className="font-inherit">100</small>
                 <br />
-                {colors.rust['100']}
+                {colors.rust[100]}
               </Typography>
             </div>
           </div>
@@ -43,7 +43,7 @@ const ThemeBackgroundColorGuide = () => {
               <Typography fontFamily="nanumpenscript" variant="b18">
                 <small className="font-inherit">100</small>
                 <br />
-                {colors['buttered-rum']['100']}
+                {colors['buttered-rum'][100]}
               </Typography>
             </div>
           </div>
@@ -54,7 +54,7 @@ const ThemeBackgroundColorGuide = () => {
               <Typography fontFamily="nanumpenscript" variant="b18">
                 <small className="font-inherit">100</small>
                 <br />
-                {colors.christi['100']}
+                {colors.christi[100]}
               </Typography>
             </div>
           </div>
@@ -65,7 +65,7 @@ const ThemeBackgroundColorGuide = () => {
               <Typography fontFamily="nanumpenscript" variant="b18">
                 <small className="font-inherit">100</small>
                 <br />
-                {colors['blue-chill']['100']}
+                {colors['blue-chill'][100]}
               </Typography>
             </div>
           </div>
@@ -76,7 +76,7 @@ const ThemeBackgroundColorGuide = () => {
               <Typography fontFamily="nanumpenscript" variant="b18">
                 <small className="font-inherit">100</small>
                 <br />
-                {colors['blue-gem']['100']}
+                {colors['blue-gem'][100]}
               </Typography>
             </div>
           </div>
@@ -87,7 +87,18 @@ const ThemeBackgroundColorGuide = () => {
               <Typography fontFamily="nanumpenscript" variant="b18">
                 <small className="font-inherit">100</small>
                 <br />
-                {colors['jazzberry-jam']['100']}
+                {colors['jazzberry-jam'][100]}
+              </Typography>
+            </div>
+          </div>
+          <div className="space-y-1">
+            <Caption text="gray" />
+            <div>
+              <div className="h-14 w-28 bg-gray-100" />
+              <Typography fontFamily="nanumpenscript" variant="b18">
+                <small className="font-inherit">100</small>
+                <br />
+                {colors['gray'][100]}
               </Typography>
             </div>
           </div>

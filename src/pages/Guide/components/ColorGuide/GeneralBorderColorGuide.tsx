@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 
 import Typography from '@components/Typography';
 
-import { colors } from '@utils/theme';
+import { colors } from '@utils/color';
 
 const GeneralBorderColorGuide = () => {
   return (
@@ -19,7 +19,7 @@ const GeneralBorderColorGuide = () => {
           <Typography fontFamily="nanumpenscript" variant="b18">
             <small className="font-inherit">950</small>
             <br />
-            {colors.gray['950']}
+            {colors.gray[950]}
           </Typography>
         </div>
         <div className="space-y-1">
@@ -30,7 +30,7 @@ const GeneralBorderColorGuide = () => {
           <Typography fontFamily="nanumpenscript" variant="b18">
             <small className="font-inherit">900</small>
             <br />
-            {colors.gray['900']}
+            {colors.gray[900]}
           </Typography>
         </div>
         <div className="space-y-1">
@@ -41,7 +41,7 @@ const GeneralBorderColorGuide = () => {
           <Typography fontFamily="nanumpenscript" variant="b18">
             <small className="font-inherit">200</small>
             <br />
-            {colors.gray['200']}
+            {colors.gray[200]}
           </Typography>
         </div>
       </div>

@@ -7,7 +7,6 @@ import Typography from '@components/Typography';
 import { useToast } from '@contexts/Toast';
 
 import { DataListType, WordType } from '@utils/data';
-import { textStyle } from '@utils/theme';
 
 const FONT_SIZE = 18;
 
@@ -118,31 +117,23 @@ const Step3 = ({ words }: Props) => {
           width={500}
           onClick={handleText}
         />
-        <div className="space-x-5">
-          <Button size="medium" variant="outlined" onClick={handleReset}>
-            초기화
-          </Button>
-          <Button size="medium" variant="outlined" onClick={handleDownload}>
-            다운로드
-          </Button>
+        <div className="space-x-2.5">
+          <Button size="medium" text="초기화" variant="outlined" onClick={handleReset} />
+          <Button size="medium" text="다운로드" variant="outlined" onClick={handleDownload} />
         </div>
       </div>
       <ul className="mb-10 flex h-125 w-full min-w-87.5 max-w-3xl flex-col space-y-2.5">
         {words.map((word) => (
-          <li
-            key={word.wordListIdx}
-            className="group h-full flex-1 rounded border border-gray-950 bg-white p-5 shadow-xl"
-          >
+          <li key={word.wordListIdx} className="group h-full flex-1 rounded border border-gray-950 bg-white p-5">
             <Typography align="left" component="h2" fontFamily="nanumpenscript" gutterBottom={20} variant="b24">
               {word.wordListName}
             </Typography>
             <ul className="hidden h-full w-full group-hover:block">
               {word.words.map((w, index) => (
-                <li key={w.wordIdx} className="w-full hover:opacity-50">
-                  <Button
-                    height="100%"
-                    variant="text"
-                    width="100%"
+                <li key={w.wordIdx} className="w-full hover:opacity-80">
+                  <button
+                    className="h-full w-full"
+                    type="button"
                     onClick={() => {
                       setSelectedText(w);
                       setMessage('단어가 선택되었습니다.', { variant: 'info' });
@@ -153,8 +144,9 @@ const Step3 = ({ words }: Props) => {
                         align="left"
                         fontWeight="500"
                         gutterBottom={4}
-                        twStyle={textStyle.modalText}
                         variant="b16"
+                        whiteSpace="pre-wrap"
+                        wordBreak="all"
                       >
                         <Typography component="span" fontWeight="700" variant="b16">
                           {index + 1}.{' '}
@@ -165,13 +157,14 @@ const Step3 = ({ words }: Props) => {
                         align="left"
                         fontWeight="500"
                         gutterBottom={4}
-                        twStyle={textStyle.modalText}
                         variant="b16"
+                        whiteSpace="pre-wrap"
+                        wordBreak="all"
                       >
                         {w.definition.join('\n')}
                       </Typography>
                     </div>
-                  </Button>
+                  </button>
                 </li>
               ))}
             </ul>

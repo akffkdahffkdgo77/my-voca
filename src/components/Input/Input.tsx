@@ -1,22 +1,25 @@
 import { forwardRef, InputHTMLAttributes, useId } from 'react';
 
 import styled from '@emotion/styled';
-import tw, { theme as twinTheme, TwStyle } from 'twin.macro';
+import tw, { TwStyle } from 'twin.macro';
+
+import { ErrorCircleFilled } from '@fluentui/react-icons';
 
 import Typography from '@components/Typography';
 
-import { getBackgroundColor, getBorderColor, InputVariantType, OptionalThemeType, StyleThemes } from '@utils/theme';
+import { COLOR, getBackgroundColor, getBorderColor, OptionalColorType } from '@utils/color';
+
+export type InputVariantType = 'contained' | 'outlined' | 'text';
 
 type StylesType = {
   containerStyle?: TwStyle;
-  height?: number | string;
   isError?: boolean;
+  isFullWidth?: boolean;
   twStyle?: TwStyle;
   variant?: InputVariantType;
-  width?: number | string;
-} & OptionalThemeType;
+} & OptionalColorType;
 
-interface Props extends InputHTMLAttributes<HTMLInputElement>, StylesType {
+interface Props extends Omit<InputHTMLAttributes<HTMLInputElement>, 'color'>, StylesType {
   helperText?: string;
   hiddenText?: string;
   isDisabled?: boolean;
@@ -25,7 +28,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement>, StylesType {
 
 const Input = forwardRef<HTMLInputElement, Props>(function Input(props, ref) {
   const {
-    theme = StyleThemes.Gray,
+    color = COLOR.Gray,
     containerStyle,
     isDisabled,
     isError,
@@ -33,6 +36,7 @@ const Input = forwardRef<HTMLInputElement, Props>(function Input(props, ref) {
     labelText,
     helperText,
     type = 'text',
+    variant = 'outlined',
     maxLength,
     min,
     max,
@@ -55,39 +59,34 @@ const Input = forwardRef<HTMLInputElement, Props>(function Input(props, ref) {
       <TWInput
         {...rest}
         ref={ref}
+        color={color}
         disabled={isDisabled}
         id={id}
-        isError={isError}
         maxLength={maxLength}
-        theme={theme}
         type={type}
-        onChange={(e) => {
+        variant={variant}
+        onInput={(e) => {
           if (type === 'text') {
             // 한글 글자수 제한
             if (maxLength && e.currentTarget.value.length > maxLength) {
               e.currentTarget.value = e.currentTarget.value.slice(0, maxLength);
             }
-          }
-          if (type === 'number') {
-            // 최소 값
+          } else if (type === 'number') {
             if (min && Number(min) > 0 && e.currentTarget.value === '0') {
+              // 최소 값
               e.currentTarget.value = '';
-            }
-            // 최대 값
-            if (
+            } else if (
               max &&
               e.currentTarget.value.length >= max.toString().length &&
               Number(e.currentTarget.value) > Number(max)
             ) {
+              // 최대 값
               if (Number(e.currentTarget.value) > Number(max)) {
                 e.currentTarget.value = max.toString();
               } else {
                 e.currentTarget.value = e.currentTarget.value.slice(0, max.toString().length);
               }
             }
-          }
-          if (props.onChange) {
-            props.onChange(e);
           }
         }}
         onKeyDown={(e) => {
@@ -100,14 +99,12 @@ const Input = forwardRef<HTMLInputElement, Props>(function Input(props, ref) {
         }}
       />
       {helperText && (
-        <Typography
-          color={isError ? twinTheme`colors.red.600` : ''}
-          fontWeight="600"
-          twStyle={customStyle.helperText}
-          variant="b12"
-        >
-          {helperText}
-        </Typography>
+        <div className="mt-1 flex items-center gap-x-1 pl-2">
+          <ErrorCircleFilled className={`${isError ? 'text-red-600' : 'text-gray-950'} size-4`} />
+          <Typography color={isError ? COLOR.Red : COLOR.Gray} fontWeight="400" variant="b12">
+            {helperText}
+          </Typography>
+        </div>
       )}
     </TWContainer>
   );
@@ -115,19 +112,25 @@ const Input = forwardRef<HTMLInputElement, Props>(function Input(props, ref) {
 
 export default Input;
 
-const customStyle = {
-  helperText: tw`ml-2`,
-};
-
 const TWContainer = styled.div(({ containerStyle }: StylesType) => [tw`w-full`, containerStyle && containerStyle]);
 
-const TWInput = styled.input(({ isError, theme, width, height, variant, twStyle }: StylesType) => [
-  tw`h-12 w-full text-ellipsis rounded-lg bg-inherit px-3 text-b16 outline-none ring-0 placeholder:text-gray-400 focus:ring-0`,
-  theme && variant === 'contained' && getBackgroundColor(theme),
-  theme && variant === 'text' && tw`rounded-none text-gray-950`,
-  theme && variant === 'outlined' && [tw`border`, getBorderColor(theme)],
-  width && { width },
-  height && { height },
-  isError && tw`border border-red-500`,
-  twStyle && twStyle,
-]);
+const TWInput = styled.input(
+  ({
+    color,
+    isFullWidth,
+    variant,
+    twStyle,
+  }: {
+    color: COLOR;
+    variant: InputVariantType;
+    isFullWidth?: boolean;
+    twStyle?: TwStyle;
+  }) => [
+    tw`h-12 w-full text-ellipsis rounded-lg bg-inherit px-3 text-b16 placeholder:text-gray-400`,
+    color && variant === 'contained' && getBackgroundColor(color),
+    color && variant === 'text' && tw`rounded-none text-gray-950`,
+    color && variant === 'outlined' && [tw`border`, getBorderColor(color)],
+    isFullWidth && tw`w-full`,
+    twStyle && twStyle,
+  ],
+);

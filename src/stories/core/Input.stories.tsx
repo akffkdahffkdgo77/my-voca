@@ -1,6 +1,6 @@
 import Input from '@components/Input';
 
-import { StyleThemes } from '@utils/theme';
+import { COLOR } from '@utils/color';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -66,14 +66,14 @@ const meta = {
         type: { summary: 'string' },
       },
     },
-    theme: {
+    color: {
       type: { name: 'string', required: false },
       control: { type: 'select' },
       description: '[CSS] 색상',
-      options: Object.values(StyleThemes),
+      options: Object.values(COLOR),
       table: {
         category: 'style',
-        defaultValue: { summary: StyleThemes.Gray },
+        defaultValue: { summary: COLOR.Gray },
         type: { summary: 'rust | buttered-rum | christi | blue-chill | blue-gem | jazzberry-jam | gray' },
       },
     },
@@ -81,7 +81,7 @@ const meta = {
       type: { name: 'string', required: false },
       control: { type: 'select' },
       description: '[CSS] Variant',
-      options: Object.values(StyleThemes),
+      options: Object.values(COLOR),
       table: {
         category: 'style',
         defaultValue: { summary: 'outlined' },
@@ -117,7 +117,7 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {
   args: {
-    theme: StyleThemes.Gray,
+    color: COLOR.Gray,
     variant: 'outlined',
     isDisabled: false,
     isError: false,

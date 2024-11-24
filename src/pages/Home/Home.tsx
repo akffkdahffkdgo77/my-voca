@@ -1,13 +1,15 @@
 import { useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import tw from 'twin.macro';
 
+import Button from '@components/Button';
 import Typography from '@components/Typography';
 
 import { getWords } from '@utils/data';
 
 const Home = () => {
+  const navigate = useNavigate();
   const words = useMemo(() => getWords(), []);
 
   return (
@@ -17,7 +19,7 @@ const Home = () => {
           {words.map((word) => (
             <li
               key={word.wordListIdx}
-              className="w-full rounded border border-gray-950 bg-white p-10 shadow-xl hover:opacity-50"
+              className="w-full rounded border border-gray-950 bg-white p-10 shadow-md hover:opacity-80"
             >
               <Link to={`/test/${word.wordListIdx}`}>
                 <Typography component="h2" fontFamily="nanumpenscript" gutterBottom={20} variant="h2">
@@ -35,16 +37,11 @@ const Home = () => {
           ))}
         </ul>
       ) : (
-        <div className="h-full w-full max-w-5xl px-5">
-          <Typography align="center" component="h2" fontFamily="nanumpenscript" gutterBottom={40} variant="h2">
+        <div className="flex h-full w-full max-w-5xl flex-col items-center px-5">
+          <Typography align="center" component="h1" fontFamily="nanumpenscript" gutterBottom={40} variant="h1">
             등록된 단어장이 없습니다...
           </Typography>
-          <Link
-            className="mx-auto block w-max rounded border border-gray-950 bg-white px-10 py-4 shadow-md hover:opacity-50"
-            to="/register"
-          >
-            등록하러 가기!
-          </Link>
+          <Button size="extraLarge" text="등록하러 가기!" variant="outlined" onClick={() => navigate('/register')} />
         </div>
       )}
     </div>
@@ -54,5 +51,5 @@ const Home = () => {
 export default Home;
 
 const customStyle = {
-  label: tw`w-max rounded border-2 border-gray-950 px-2 py-1`,
+  label: tw`w-max rounded border border-gray-950 px-2 py-1`,
 };

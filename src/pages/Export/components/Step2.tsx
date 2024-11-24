@@ -3,15 +3,10 @@ import { useNavigate } from 'react-router-dom';
 
 import tw from 'twin.macro';
 
-import Button from '@components/Button';
 import Typography from '@components/Typography';
 
 import { DataListType, getWord } from '@utils/data';
 import { exportFile } from '@utils/file';
-
-const customStyle = {
-  label: tw`w-max rounded border-2 border-gray-950 px-2 py-1`,
-};
 
 interface Props {
   words: DataListType;
@@ -40,7 +35,7 @@ const Step2 = ({ words }: Props) => {
 
   return (
     <div className="flex h-full w-full flex-col items-center">
-      <Typography align="left" component="h2" fontFamily="nanumpenscript" gutterBottom={40} variant="h3">
+      <Typography align="left" component="h1" fontFamily="nanumpenscript" gutterBottom={40} variant="h1">
         {words.length === 0 ? (
           <Fragment>
             등록된 단어장이 없습니다.
@@ -55,20 +50,26 @@ const Step2 = ({ words }: Props) => {
         {words.map((word) => (
           <li
             key={word.wordListIdx}
-            className="w-full rounded border border-gray-950 bg-white p-10 shadow-xl hover:opacity-50"
+            className="w-full rounded border border-gray-950 bg-white shadow-xl hover:opacity-80"
           >
-            <Button height="100%" variant="text" width="100%" onClick={() => handleExport(word.wordListIdx)}>
+            <button className="h-full w-full p-10" type="button" onClick={() => handleExport(word.wordListIdx)}>
               <Typography align="left" component="h2" fontFamily="nanumpenscript" gutterBottom={20} variant="h2">
                 {word.wordListName}
               </Typography>
-              <div className="flex items-center gap-x-5">
+              <div className="flex items-center gap-x-2.5">
                 {[word.status, word.category].map((val) => (
-                  <Typography key={val} component="p" fontWeight="700" twStyle={customStyle.label} variant="b16">
+                  <Typography
+                    key={val}
+                    component="p"
+                    fontWeight="700"
+                    twStyle={tw`w-max rounded border-2 border-gray-950 px-2 py-1`}
+                    variant="b16"
+                  >
                     {val}
                   </Typography>
                 ))}
               </div>
-            </Button>
+            </button>
           </li>
         ))}
       </ul>

@@ -1,9 +1,9 @@
 import { Fragment } from 'react';
 import { Outlet, ScrollRestoration } from 'react-router-dom';
 
+import Fab from '../Fab';
 import Footer from '../Footer';
 import DesignGnb from '../Gnb/DesignGnb';
-import TopButton from '../TopButton';
 
 const DesignLayout = () => {
   return (
@@ -15,7 +15,7 @@ const DesignLayout = () => {
       <div className="min-w-378">
         <Footer />
       </div>
-      <TopButton />
+      <Fab />
       <ScrollRestoration />
     </Fragment>
   );

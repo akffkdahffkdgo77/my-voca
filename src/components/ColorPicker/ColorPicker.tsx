@@ -1,33 +1,19 @@
 import { Fragment } from 'react';
 
-import { PaintBrushIcon } from '@heroicons/react/24/outline';
+import { PaintBrushIconButton } from '@components/IconButton';
 
-import Button from '@components/Button';
-
-import { StyleThemes } from '@utils/theme';
+import { COLOR } from '@utils/color';
 
 interface Props {
-  onClick: (newTheme: StyleThemes) => void;
+  onClick: (newColor: COLOR) => void;
 }
 
 const ColorPicker = ({ onClick }: Props) => {
   return (
     <Fragment>
-      {Object.keys(StyleThemes).map((key) => {
-        const color = StyleThemes[key as keyof typeof StyleThemes];
-        return (
-          <Button
-            key={key}
-            shape="circle"
-            theme={color}
-            title={`${key} 색상으로 바꾸기`}
-            type="button"
-            variant="icon"
-            onClick={() => onClick(color)}
-          >
-            <PaintBrushIcon aria-hidden="true" className="m-auto h-3 w-3 text-inherit" />
-          </Button>
-        );
+      {Object.keys(COLOR).map((key) => {
+        const color = COLOR[key as keyof typeof COLOR];
+        return <PaintBrushIconButton key={color} color={color} onClick={() => onClick(color)} />;
       })}
     </Fragment>
   );

@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 
 import Typography from '@components/Typography';
 
-import { colors } from '@utils/theme';
+import { colors } from '@utils/color';
 
 import Caption from './Caption';
 
@@ -19,7 +19,7 @@ const GeneralTextColorGuide = () => {
           <Typography fontFamily="nanumpenscript" variant="b18">
             <small className="font-inherit">950</small>
             <br />
-            {colors.gray['950']}
+            {colors.gray[950]}
           </Typography>
         </div>
         <div className="space-y-1">
@@ -28,7 +28,7 @@ const GeneralTextColorGuide = () => {
           <Typography fontFamily="nanumpenscript" variant="b18">
             <small className="font-inherit">900</small>
             <br />
-            {colors.gray['900']}
+            {colors.gray[900]}
           </Typography>
         </div>
         <div className="space-y-1">
@@ -37,7 +37,7 @@ const GeneralTextColorGuide = () => {
           <Typography fontFamily="nanumpenscript" variant="b18">
             <small className="font-inherit">400</small>
             <br />
-            {colors.gray['400']}
+            {colors.gray[400]}
           </Typography>
         </div>
         <div className="space-y-1">

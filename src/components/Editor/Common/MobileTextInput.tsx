@@ -3,15 +3,15 @@ import { ChangeEvent, KeyboardEvent } from 'react';
 import styled from '@emotion/styled';
 import tw from 'twin.macro';
 
-import { ArrowDownIcon, ArrowUpIcon } from '@heroicons/react/24/outline';
+import { ArrowDownFilled, ArrowUpFilled } from '@fluentui/react-icons';
 
 import Checkbox from '@components/Checkbox';
 import Input from '@components/Input';
 import Textarea from '@components/Textarea';
 
-import { getBackgroundColor, OptionalThemeType, StyleThemes } from '@utils/theme';
+import { COLOR, getBackgroundColor, OptionalColorType } from '@utils/color';
 
-interface Props extends OptionalThemeType {
+interface Props extends OptionalColorType {
   count?: number;
   definition?: string;
   isDisabled?: boolean;
@@ -25,7 +25,7 @@ interface Props extends OptionalThemeType {
 
 const MobileTextInput = (props: Props) => {
   const {
-    theme = StyleThemes.Gray,
+    color = COLOR.Gray,
     isHidden,
     onHiddenClick,
     isDisabled,
@@ -40,11 +40,11 @@ const MobileTextInput = (props: Props) => {
   return (
     <div className="relative bg-white shadow-md">
       <Input
+        color={color}
         hiddenText="단어"
         isDisabled={isDisabled}
         maxLength={30}
         placeholder="word"
-        theme={theme}
         twStyle={customStyle.input}
         value={word}
         variant="contained"
@@ -56,9 +56,9 @@ const MobileTextInput = (props: Props) => {
         onKeyDown={onKeyDown}
       />
       <div className="absolute right-2 top-2 flex items-center justify-between gap-x-1">
-        <Checkbox hiddenText="테스트 1회" isChecked={count >= 1} theme={theme} onChange={onClick} />
-        <Checkbox hiddenText="테스트 2회" isChecked={count >= 2} theme={theme} onChange={onClick} />
-        <Checkbox hiddenText="테스트 3회" isChecked={count >= 3} theme={theme} onChange={onClick} />
+        <Checkbox color={color} hiddenText="테스트 1회" isChecked={count >= 1} onChange={onClick} />
+        <Checkbox color={color} hiddenText="테스트 2회" isChecked={count >= 2} onChange={onClick} />
+        <Checkbox color={color} hiddenText="테스트 3회" isChecked={count >= 3} onChange={onClick} />
       </div>
       <Textarea
         containerStyle={customStyle.textareaContainer}
@@ -76,9 +76,9 @@ const MobileTextInput = (props: Props) => {
       {isHidden !== undefined && (
         <TWBlocker
           className="group"
+          color={color}
           isHidden={isHidden}
           role="presentation"
-          theme={theme}
           onClick={() => {
             if (onHiddenClick) {
               onHiddenClick();
@@ -86,9 +86,9 @@ const MobileTextInput = (props: Props) => {
           }}
         >
           {isHidden ? (
-            <ArrowDownIcon className="mx-auto mt-5 hidden h-10 w-10 animate-pulse group-hover:block" />
+            <ArrowDownFilled className="mx-auto mt-5 !hidden size-10 animate-pulse group-hover:!block" />
           ) : (
-            <ArrowUpIcon className="mx-auto mb-5 hidden h-10 w-10 animate-pulse group-hover:block" />
+            <ArrowUpFilled className="mx-auto mb-5 !hidden size-10 animate-pulse group-hover:!block" />
           )}
         </TWBlocker>
       )}
@@ -103,8 +103,8 @@ const customStyle = {
   textareaContainer: tw`bg-grid`,
 };
 
-const TWBlocker = styled.div(({ theme, isHidden }: Omit<Props, 'isDisabled'>) => [
+const TWBlocker = styled.div(({ color, isHidden }: Omit<Props, 'isDisabled'>) => [
   tw`absolute -bottom-px left-0 right-0 flex h-50 items-center hover:cursor-pointer`,
-  isHidden && theme && getBackgroundColor(theme),
+  isHidden && color && getBackgroundColor(color),
   !isHidden && tw`animate-pulse bg-transparent hover:bg-gray-50/50`,
 ]);

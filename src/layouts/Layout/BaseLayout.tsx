@@ -1,19 +1,19 @@
 import { Fragment, useEffect, useMemo, useState } from 'react';
 import { Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
 
+import { COLOR } from '@utils/color';
 import { getLocalStorage } from '@utils/localStorage';
-import { StyleThemes } from '@utils/theme';
 
+import Fab from '../Fab';
 import Footer from '../Footer';
 import Gnb from '../Gnb/Gnb';
-import TopButton from '../TopButton';
 
 const BaseLayout = () => {
   const { pathname } = useLocation();
   const [startTime, setStartTime] = useState('');
 
   const hasHeader = useMemo(() => pathname !== '/export', [pathname]);
-  const hasTopButton = useMemo(() => pathname.includes('/test'), [pathname]);
+  const hasFab = useMemo(() => pathname.includes('/test'), [pathname]);
 
   useEffect(() => {
     if (!startTime && getLocalStorage('startTime')) {
@@ -23,12 +23,12 @@ const BaseLayout = () => {
 
   return (
     <Fragment>
-      {hasHeader && startTime && <Gnb theme={StyleThemes.Gray} />}
+      {hasHeader && startTime && <Gnb color={COLOR.Gray} />}
       <main className="relative w-full">
         <Outlet />
       </main>
       <Footer />
-      {hasTopButton && <TopButton />}
+      {hasFab && <Fab />}
       <ScrollRestoration />
     </Fragment>
   );

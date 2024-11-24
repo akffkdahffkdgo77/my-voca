@@ -1,6 +1,6 @@
 import Checkbox from '@components/Checkbox';
 
-import { StyleThemes } from '@utils/theme';
+import { COLOR } from '@utils/color';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -16,14 +16,14 @@ const meta = {
   tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    theme: {
+    color: {
       type: { name: 'string', required: false },
       control: { type: 'select' },
       description: '[CSS] 색상',
-      options: Object.values(StyleThemes),
+      options: Object.values(COLOR),
       table: {
         category: 'style',
-        defaultValue: { summary: StyleThemes.Gray },
+        defaultValue: { summary: COLOR.Gray },
         type: { summary: 'rust | buttered-rum | christi | blue-chill | blue-gem | jazzberry-jam | gray' },
       },
     },
@@ -68,6 +68,6 @@ export const Primary: Story = {
   args: {
     isChecked: false,
     hiddenText: 'test',
-    theme: StyleThemes.Gray,
+    color: COLOR.Gray,
   },
 };

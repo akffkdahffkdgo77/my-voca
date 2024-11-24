@@ -2,45 +2,62 @@ import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
 import {
-  ArrowTopRightOnSquareIcon,
-  ArrowUpIcon,
-  CheckIcon,
-  ChevronDownIcon,
-  ChevronUpIcon,
-  ExclamationCircleIcon,
-  ExclamationTriangleIcon,
-  LinkIcon,
-  PaintBrushIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline';
+  ArrowDownFilled,
+  ArrowDownloadFilled,
+  ArrowLeftFilled,
+  ArrowRightFilled,
+  ArrowUpFilled,
+  ChevronDownFilled,
+  ChevronUpFilled,
+  ColorFilled,
+  DismissFilled,
+  DocumentAddFilled,
+  DocumentTextFilled,
+  ErrorCircleFilled,
+  ImageFilled,
+  LinkFilled,
+  Multiplier1XFilled,
+  Multiplier2XFilled,
+  TextFieldFilled,
+} from '@fluentui/react-icons';
 
 import Typography from '@components/Typography';
 
 const IconographyGuide = () => {
   return (
     <Fragment>
-      <div className="flex items-center gap-x-2.5" id="iconography">
-        <Typography component="h2" variant="h3">
+      <div className="flex items-center gap-x-2.5">
+        <Typography component="h2" id="iconography" variant="h3">
           Iconography
         </Typography>
-        <Link rel="noopener noreferrer" target="_blank" title="Heroicons" to="https://heroicons.com/">
-          <LinkIcon className="h-5 w-5" />
+        <Link
+          rel="noopener noreferrer"
+          target="_blank"
+          title="fluentui-system-icons"
+          to="https://github.com/microsoft/fluentui-system-icons"
+        >
+          <LinkFilled className="h-10 w-10 -rotate-45" />
         </Link>
       </div>
-      <div className="flex items-start gap-x-20 rounded bg-white p-5 shadow-md">
-        <div className="space-y-2.5">
+      <div className="flex flex-wrap items-start gap-x-20 rounded bg-white p-5 shadow-md">
+        <div className="min-h-60 space-y-2.5">
           <Typography component="h3" fontWeight="700" variant="b16">
-            9 x 9
+            12 x 12
           </Typography>
           <div className="flex items-center gap-x-2.5">
-            <PaintBrushIcon className="h-3 w-3" />
-            <ArrowTopRightOnSquareIcon className="h-3 w-3" />
-            <div className="flex h-5 w-5 flex-none items-center justify-center rounded-full bg-gray-900 p-1">
-              <ChevronUpIcon className="h-3 w-3 stroke-3 text-white" />
-            </div>
-            <div className="flex h-5 w-5 flex-none items-center justify-center rounded-full bg-gray-900 p-1">
-              <ChevronDownIcon className="h-3 w-3 stroke-3 text-white" />
-            </div>
+            <LinkFilled className="h-3 w-3 -rotate-45" />
+            <ColorFilled className="h-3 w-3" />
+            <ChevronUpFilled className="h-3 w-3 stroke-3 text-white" />
+            <ChevronDownFilled className="h-3 w-3 stroke-3 text-white" />
+          </div>
+        </div>
+        <div className="space-y-2.5">
+          <Typography component="h3" fontWeight="700" variant="b16">
+            16 x 16
+          </Typography>
+          <div className="flex items-center gap-x-2.5">
+            <ErrorCircleFilled className="size-4 text-red-600" />
+            <ErrorCircleFilled className="size-4 text-gray-950" />
           </div>
         </div>
         <div className="space-y-2.5">
@@ -48,18 +65,41 @@ const IconographyGuide = () => {
             20 x 20
           </Typography>
           <div className="flex items-center gap-x-2.5">
-            <XMarkIcon className="h-5 w-5" />
-            <div className="flex h-12.5 w-12.5 items-center justify-center rounded-full bg-black">
-              <ArrowUpIcon className="h-5 w-5 text-white" />
-            </div>
+            <DismissFilled className="size-5" />
+            <ArrowUpFilled className="h-5 w-5 text-white" />
+            <ArrowDownloadFilled className="h-5 w-5 text-gray-950" />
           </div>
         </div>
         <div className="space-y-2.5">
           <Typography component="h3" fontWeight="700" variant="b16">
-            24 x 20
+            28 x 28
           </Typography>
           <div className="flex items-center gap-x-2.5">
-            <CheckIcon className="h-5 w-6 text-rust-500" />
+            <ArrowDownloadFilled className="h-7 w-7 text-gray-950" />
+          </div>
+        </div>
+        <div className="space-y-2.5">
+          <Typography component="h3" fontWeight="700" variant="b16">
+            40 x 40
+          </Typography>
+          <div className="flex items-center gap-x-2.5">
+            <ArrowUpFilled className="size-10" />
+            <ArrowDownFilled className="size-10" />
+            <ArrowLeftFilled className="size-10" />
+            <ArrowRightFilled className="size-10" />
+            <Multiplier1XFilled className="size-10" />
+            <Multiplier2XFilled className="size-10" />
+          </div>
+        </div>
+        <div className="space-y-2.5">
+          <Typography component="h3" fontWeight="700" variant="b16">
+            160 x 160
+          </Typography>
+          <div className="flex items-center gap-x-2.5">
+            <DocumentTextFilled className="h-40 w-40" />
+            <ArrowDownloadFilled className="h-40 w-40" />
+            <ImageFilled className="h-40 w-40" />
+            <TextFieldFilled className="h-40 w-40" />
           </div>
         </div>
         <div className="space-y-2.5">
@@ -67,8 +107,8 @@ const IconographyGuide = () => {
             200 x 200
           </Typography>
           <div className="flex items-center gap-x-2.5">
-            <ExclamationCircleIcon className="h-50 w-50 text-red-500" />
-            <ExclamationTriangleIcon className="h-50 w-50 text-red-500" />
+            <ErrorCircleFilled className="h-50 w-50 text-red-500" />
+            <DocumentAddFilled className="size-50" />
           </div>
         </div>
       </div>

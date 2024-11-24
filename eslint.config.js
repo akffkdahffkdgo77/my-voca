@@ -170,7 +170,7 @@ export default tseslint.config(
             value: {
               react: ['react', 'react-*', 'react-*/**'],
               app: ['@app'],
-              assets: ['@assets/**', '@heroicons/react/**'],
+              assets: ['@assets/**', '@heroicons/react/**', '@fluentui/react-icons'],
               components: ['@components/**', '@contexts/**', '@layouts/**'],
               utils: ['@hooks/**', '@libs/**', '@slices/**', '@services/**', '@utils/**'],
               pages: ['@pages/**'],

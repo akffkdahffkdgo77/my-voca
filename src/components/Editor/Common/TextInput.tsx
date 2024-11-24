@@ -7,9 +7,9 @@ import Checkbox from '@components/Checkbox';
 import Input from '@components/Input';
 import Typography from '@components/Typography';
 
-import { getBackgroundColor, getLightBorderColor, OptionalThemeType, StyleThemes } from '@utils/theme';
+import { COLOR, getBackgroundColor, getLightBorderColor, OptionalColorType } from '@utils/color';
 
-interface Props extends OptionalThemeType {
+interface Props extends OptionalColorType {
   count?: number;
   definition?: string[];
   isDisabled?: boolean;
@@ -20,7 +20,7 @@ interface Props extends OptionalThemeType {
 }
 
 const TextInput = ({
-  theme = StyleThemes.Gray,
+  color = COLOR.Gray,
   isDisabled,
   count = 0,
   word,
@@ -33,17 +33,17 @@ const TextInput = ({
     <Fragment>
       <div className="group relative h-full">
         <div className="absolute bottom-0 left-2 top-0 flex w-5 flex-col items-center justify-evenly">
-          <Checkbox hiddenText="테스트 1회" isChecked={count >= 1} theme={theme} onChange={onClick} />
-          <Checkbox hiddenText="테스트 2회" isChecked={count >= 2} theme={theme} onChange={onClick} />
-          <Checkbox hiddenText="테스트 3회" isChecked={count >= 3} theme={theme} onChange={onClick} />
+          <Checkbox color={color} hiddenText="테스트 1회" isChecked={count >= 1} onChange={onClick} />
+          <Checkbox color={color} hiddenText="테스트 2회" isChecked={count >= 2} onChange={onClick} />
+          <Checkbox color={color} hiddenText="테스트 3회" isChecked={count >= 3} onChange={onClick} />
         </div>
         <Input
+          color={color}
           containerStyle={customStyle.titleContainer}
           hiddenText="단어"
           isDisabled={isDisabled}
           maxLength={30}
           placeholder="word"
-          theme={theme}
           twStyle={customStyle.title}
           value={word}
           variant="text"
@@ -56,10 +56,10 @@ const TextInput = ({
         />
         {word && word.length > 8 && (
           <div className="hidden group-hover:block">
-            <TWTriangle theme={theme} />
+            <TWTriangle color={color} />
             <Typography
               fontWeight="600"
-              twStyle={{ ...customStyle.tooltip, ...getBackgroundColor(theme) }}
+              twStyle={{ ...customStyle.tooltip, ...getBackgroundColor(color) }}
               variant="b14"
             >
               {word}
@@ -67,16 +67,16 @@ const TextInput = ({
           </div>
         )}
       </div>
-      <div className="divide-y-2 divide-inherit bg-grid">
+      <div className="divide-y divide-inherit bg-grid">
         {definition?.map((val, index) => (
           <Input
             key={index}
+            color={color}
             height={definition.length < 2 ? 98 : 48}
             hiddenText="뜻"
             isDisabled={isDisabled}
             maxLength={100}
             placeholder={index % 2 === 0 ? '단어, 낱말' : '이야기, 말'}
-            theme={theme}
             value={val}
             variant="text"
             onChange={(e) => {
@@ -100,7 +100,7 @@ const customStyle = {
   tooltip: tw`absolute -bottom-9 left-10 z-200 h-auto min-w-4/5 whitespace-nowrap rounded bg-gray-100 p-5 shadow-xl`,
 };
 
-const TWTriangle = styled.div(({ theme }: Props) => [
+const TWTriangle = styled.div(({ color }: Props) => [
   tw`absolute bottom-4 right-1/2 h-4 border-4`,
-  theme && [getLightBorderColor(theme), tw`border-x-transparent border-t-transparent`],
+  color && [getLightBorderColor(color), tw`border-x-transparent border-t-transparent`],
 ]);

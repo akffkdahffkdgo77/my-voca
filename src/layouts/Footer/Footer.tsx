@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
+import { LinkFilled } from '@fluentui/react-icons';
 
 import Typography from '@components/Typography';
 
@@ -20,7 +20,7 @@ const Footer = () => {
                 <Typography color="inherit" component="span" fontFamily="nanumpenscript" variant="b24">
                   데이터 등록
                 </Typography>
-                <ArrowTopRightOnSquareIcon className="h-3 w-3" />
+                <LinkFilled className="h-3 w-3 -rotate-45" />
               </Link>
             </li>
             <li>
@@ -28,7 +28,7 @@ const Footer = () => {
                 <Typography color="inherit" component="span" fontFamily="nanumpenscript" variant="b24">
                   Guide
                 </Typography>
-                <ArrowTopRightOnSquareIcon className="h-3 w-3" />
+                <LinkFilled className="h-3 w-3 -rotate-45" />
               </Link>
             </li>
             <li>
@@ -41,7 +41,7 @@ const Footer = () => {
                 <Typography color="inherit" component="span" fontFamily="nanumpenscript" variant="b24">
                   GitHub
                 </Typography>
-                <ArrowTopRightOnSquareIcon className="h-3 w-3" />
+                <LinkFilled className="h-3 w-3 -rotate-45" />
               </Link>
             </li>
           </ul>

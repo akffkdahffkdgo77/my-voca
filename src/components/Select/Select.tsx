@@ -1,23 +1,23 @@
 import { MouseEvent, useCallback, useEffect, useId, useRef, useState } from 'react';
 
 import styled from '@emotion/styled';
-import tw, { theme as twinTheme } from 'twin.macro';
+import tw from 'twin.macro';
 
-import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
+import { ChevronDownFilled, ChevronUpFilled } from '@fluentui/react-icons';
 
 import Typography from '@components/Typography';
 
 import { useClickAway } from '@hooks/utils';
-import { getBackgroundColor, getBorderColor, OptionalThemeType, StyleThemes, ThemeType } from '@utils/theme';
+import { COLOR, ColorType, getBackgroundColor, getBorderColor, OptionalColorType } from '@utils/color';
 
-interface Props extends OptionalThemeType {
+interface Props extends OptionalColorType {
   caption: string;
   options?: { label: string; value: number | string }[];
   value?: string;
   onChange?: (newValue: number | string) => void;
 }
 
-const Select = ({ theme = StyleThemes.Gray, options = [], caption, value, onChange }: Props) => {
+const Select = ({ color = COLOR.Gray, options = [], caption, value, onChange }: Props) => {
   const id = useId();
   const listId = useId();
   const ref = useRef<HTMLButtonElement>(null);
@@ -58,13 +58,7 @@ const Select = ({ theme = StyleThemes.Gray, options = [], caption, value, onChan
 
   return (
     <div className="relative flex flex-col">
-      <Typography
-        color={twinTheme`colors.gray.900`}
-        component="small"
-        id={id}
-        twStyle={customStyle.caption}
-        variant="c11"
-      >
+      <Typography color={COLOR.Gray} component="small" id={id} twStyle={customStyle.caption} variant="c11">
         {caption}
       </Typography>
       <TWButton
@@ -73,8 +67,8 @@ const Select = ({ theme = StyleThemes.Gray, options = [], caption, value, onChan
         aria-expanded={!!isOpen}
         aria-haspopup="listbox"
         aria-labelledby={id}
+        color={color}
         role="combobox"
-        theme={theme}
         type="button"
         onClick={handleClick}
       >
@@ -83,24 +77,24 @@ const Select = ({ theme = StyleThemes.Gray, options = [], caption, value, onChan
         </Typography>
         <div className="flex h-5 w-5 flex-none items-center justify-center rounded-full bg-gray-900 p-1">
           {isOpen ? (
-            <ChevronUpIcon aria-hidden="true" className="h-3 w-3 flex-none stroke-3 text-white" />
+            <ChevronUpFilled className="h-3 w-3 flex-none stroke-3 text-white" />
           ) : (
-            <ChevronDownIcon aria-hidden="true" className="h-3 w-3 flex-none stroke-3 text-white" />
+            <ChevronDownFilled className="h-3 w-3 flex-none stroke-3 text-white" />
           )}
         </div>
       </TWButton>
       {isOpen && (
-        <TWList aria-labelledby={id} id={listId} role="listbox" tabIndex={0} theme={theme}>
+        <TWList aria-labelledby={id} color={color} id={listId} role="listbox" tabIndex={0}>
           {options.map(({ label, value }) => (
             <li
               key={label}
               aria-selected={selected === value}
-              className="h-10 cursor-pointer border-inherit py-1 hover:opacity-50"
+              className="h-10 cursor-pointer border-inherit py-2 hover:opacity-80"
               role="option"
               onClick={() => handleChange(value)}
               onKeyDown={() => handleChange(value)}
             >
-              <Typography align="center" color="inherit" lineHeight="32px" variant="b16">
+              <Typography align="center" color="inherit" variant="b16">
                 {label}
               </Typography>
             </li>
@@ -118,13 +112,13 @@ const customStyle = {
   buttonText: tw`h-auto uppercase`,
 };
 
-const TWButton = styled.button(({ theme }: ThemeType) => [
+const TWButton = styled.button(({ color }: ColorType) => [
   tw`flex h-10 w-auto min-w-30 items-center justify-between gap-x-1 rounded-2xl border border-gray-200 px-2 py-1 text-left text-gray-900`,
-  theme && getBorderColor(theme),
-  theme && getBackgroundColor(theme),
+  color && getBorderColor(color),
+  color && getBackgroundColor(color),
 ]);
 
-const TWList = styled.ul(({ theme }: ThemeType) => [
+const TWList = styled.ul(({ color }: ColorType) => [
   tw`absolute top-14 z-1 w-full divide-y overflow-hidden rounded border border-gray-200 bg-white py-0.5`,
-  theme && getBorderColor(theme),
+  color && getBorderColor(color),
 ]);
